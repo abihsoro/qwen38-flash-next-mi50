@@ -1,0 +1,38 @@
+{
+  "balanced": {
+    "description": "150 W/card TP4 MTP2 with optimized prefill MoE tiles, mask-aware top-10 router, 2048-token prefill chunks and 32768-token context; TunableOp off.",
+    "arguments": [
+      "--numa",
+      "--chunk",
+      "2048",
+      "--env",
+      "VLLM_TUNED_CONFIG_FOLDER=<tuning>/moe_configs",
+      "--env",
+      "VLLM_MI50_TOPK=1",
+      "--mtp",
+      "2",
+      "--max-model-len",
+      "32768"
+    ]
+  },
+  "reference": {
+    "description": "150 W/card repeat-control configuration: original routing and MoE defaults, 1024-token chunks, MTP and TunableOp off.",
+    "arguments": [
+      "--numa",
+      "--chunk",
+      "1024"
+    ]
+  },
+  "mtp0": {
+    "description": "Validated 150 W/card TP4 preset: original weight precision, prefill MoE tiles, mask-aware top-10 router, 2048-token chunk budget; MTP and TunableOp off.",
+    "arguments": [
+      "--numa",
+      "--chunk",
+      "2048",
+      "--env",
+      "VLLM_TUNED_CONFIG_FOLDER=<tuning>/moe_configs",
+      "--env",
+      "VLLM_MI50_TOPK=1"
+    ]
+  }
+}

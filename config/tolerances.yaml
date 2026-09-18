@@ -1,0 +1,42 @@
+# config/tolerances.yaml — correctness tolerances for the T1/T2/T3 tiers (Work Order Rev 4, S3).
+#
+# [I4] This file is frozen once declared. ANY change — loosening a tolerance, regenerating a
+#      golden trace, altering a benchmark protocol — requires human decision H6 recorded in
+#      DECISIONS.md. The executor never edits this file outside a task that declares the
+#      tolerance set, and never loosens values.
+#
+# Schema (declared at bootstrap; VALUES are UNSET until task S3 declares and freezes them):
+#
+#   tiers:
+#     t1:            # kernel tier: per-shape max abs/rel error vs PyTorch reference
+#       metric: max_abs_rel_error
+#       shapes: []   # shape inventory filled from S4
+#       abs_tol: UNSET   # declared at S3
+#       rel_tol: UNSET   # declared at S3
+#     t2:            # layer tier: cosine similarity of hidden states vs golden trace
+#       metric: cosine_similarity
+#       drift_budget_per_layer: UNSET
+#       inputs: 8    # golden traces for >= 8 fixed inputs (S3 acceptance)
+#     t3:            # slice tier: deterministic output match for the surrogate on fixed inputs
+#       metric: deterministic_output_match
+#       match: exact
+#
+# Until S3 declares values, no tier has a usable tolerance and no kernel change is falsifiable —
+# that is intentional: kernel work is gated on S3 completing first (Work Order §6.S3).
+
+tiers:
+  t1:
+    metric: max_abs_rel_error
+    shapes: []
+    abs_tol: UNSET
+    rel_tol: UNSET
+    status: undeclared
+  t2:
+    metric: cosine_similarity
+    drift_budget_per_layer: UNSET
+    inputs: 8
+    status: undeclared
+  t3:
+    metric: deterministic_output_match
+    match: exact
+    status: undeclared

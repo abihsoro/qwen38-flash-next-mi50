@@ -1,0 +1,6 @@
+# container topology — redacted summary (raw rocminfo / rocm-smi output removed)
+
+- rocm-smi --showtopo: weight 40, 2 hops, PCIE link type for every GPU pair (uniform).
+- All four GPUs on NUMA node 1; pcie link 16.0 GT/s x16 (Gen4).
+- 2 NUMA nodes, ~516 GB each.
+- Raw output removed: it contained PCI bus addresses and device IDs.

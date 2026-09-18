@@ -1,0 +1,4024 @@
+[
+  {
+    "name": "multiply",
+    "question": "Calculate 17 * 23. Answer with only the integer.",
+    "smoke_pass": true,
+    "scoring_revision": 2,
+    "response": {
+      "id": "cmpl-bbfd20589ba33661",
+      "object": "text_completion",
+      "created": 1789711191,
+      "model": "qwen38-flash-next",
+      "choices": [
+        {
+          "index": 0,
+          "text": "391",
+          "logprobs": {
+            "text_offset": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "token_logprobs": [
+              -0.007487921975553036,
+              -0.0016191004542633891,
+              -0.0011433977633714676,
+              -6.460934673668817e-05
+            ],
+            "tokens": [
+              "3",
+              "9",
+              "1",
+              "<|im_end|>"
+            ],
+            "top_logprobs": [
+              {
+                "3": -0.007487921975553036,
+                "The": -6.171550273895264,
+                "1": -6.530925273895264,
+                "4": -7.976237773895264,
+                "0": -8.546550750732422
+              },
+              {
+                "9": -0.0016191004542633891,
+                "8": -7.0797438621521,
+                "<|im_end|>": -8.454744338989258,
+                "7": -8.579744338989258,
+                "5": -9.267244338989258
+              },
+              {
+                "1": -0.0011433977633714676,
+                "<|im_end|>": -7.735518455505371,
+                "7": -8.798018455505371,
+                "0": -8.907393455505371,
+                "2": -9.173018455505371
+              },
+              {
+                "<|im_end|>": -6.460934673668817e-05,
+                "\n\n": -10.359439849853516,
+                ".": -11.742252349853516,
+                "\n": -12.046939849853516,
+                "\n\n\n": -12.125064849853516
+              }
+            ]
+          },
+          "finish_reason": "stop",
+          "stop_reason": null,
+          "token_ids": [
+            18,
+            24,
+            16,
+            248046
+          ],
+          "prompt_logprobs": null,
+          "prompt_token_ids": [
+            248045,
+            846,
+            198,
+            46270,
+            220,
+            16,
+            22,
+            348,
+            220,
+            17,
+            18,
+            13,
+            21134,
+            440,
+            1132,
+            279,
+            7308,
+            13,
+            248046,
+            198,
+            248045,
+            74455,
+            198,
+            248068,
+            271,
+            248069,
+            271
+          ],
+          "routed_experts": null
+        }
+      ],
+      "service_tier": null,
+      "system_fingerprint": "vllm-0.1.dev20693+g1a7243dfc.d20260902-tp4-ep-fac20fc3",
+      "usage": {
+        "prompt_tokens": 27,
+        "total_tokens": 31,
+        "completion_tokens": 4,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": null,
+          "multimodal_tokens": null
+        },
+        "completion_tokens_details": null
+      },
+      "kv_transfer_params": null,
+      "ec_transfer_params": null,
+      "metrics": {
+        "time_to_first_token_ms": 1226.240685005905,
+        "generation_time_ms": 46.11646799457958,
+        "queue_time_ms": 0.04748199717141688,
+        "mean_itl_ms": 15.372155998193193,
+        "tokens_per_second": 3.1437713778455696,
+        "speculative_decoding": {
+          "mean_acceptance_length": 3.0,
+          "draft_acceptance_rate": 1.0,
+          "acceptance_histogram": [
+            0,
+            0,
+            1
+          ],
+          "num_spec_steps": 1,
+          "num_accepted_draft_tokens": 2,
+          "num_draft_tokens": 2,
+          "num_spec_tokens": 2,
+          "per_step_accepted": null,
+          "per_step_drafted": null
+        }
+      }
+    }
+  },
+  {
+    "name": "algebra",
+    "question": "Solve 2*x + 5 = 17. Answer with only the value of x.",
+    "smoke_pass": true,
+    "scoring_revision": 2,
+    "response": {
+      "id": "cmpl-8d4ae05dd16e53e6",
+      "object": "text_completion",
+      "created": 1789711192,
+      "model": "qwen38-flash-next",
+      "choices": [
+        {
+          "index": 0,
+          "text": "6",
+          "logprobs": {
+            "text_offset": [
+              0,
+              1
+            ],
+            "token_logprobs": [
+              -0.0397627055644989,
+              -0.0003455280093476176
+            ],
+            "tokens": [
+              "6",
+              "<|im_end|>"
+            ],
+            "top_logprobs": [
+              {
+                "6": -0.0397627055644989,
+                "x": -3.4928877353668213,
+                "3": -6.078824996948242,
+                "The": -6.750699996948242,
+                "4": -6.860074996948242
+              },
+              {
+                "<|im_end|>": -0.0003455280093476176,
+                ".": -8.281595230102539,
+                "x": -10.687845230102539,
+                "\n\n": -11.250345230102539,
+                "\n\n\n": -12.078470230102539
+              }
+            ]
+          },
+          "finish_reason": "stop",
+          "stop_reason": null,
+          "token_ids": [
+            21,
+            248046
+          ],
+          "prompt_logprobs": null,
+          "prompt_token_ids": [
+            248045,
+            846,
+            198,
+            50,
+            3815,
+            220,
+            17,
+            17930,
+            478,
+            220,
+            20,
+            283,
+            220,
+            16,
+            22,
+            13,
+            21134,
+            440,
+            1132,
+            279,
+            869,
+            314,
+            830,
+            13,
+            248046,
+            198,
+            248045,
+            74455,
+            198,
+            248068,
+            271,
+            248069,
+            271
+          ],
+          "routed_experts": null
+        }
+      ],
+      "service_tier": null,
+      "system_fingerprint": "vllm-0.1.dev20693+g1a7243dfc.d20260902-tp4-ep-fac20fc3",
+      "usage": {
+        "prompt_tokens": 33,
+        "total_tokens": 35,
+        "completion_tokens": 2,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": null,
+          "multimodal_tokens": null
+        },
+        "completion_tokens_details": null
+      },
+      "kv_transfer_params": null,
+      "ec_transfer_params": null,
+      "metrics": {
+        "time_to_first_token_ms": 519.7433940047631,
+        "generation_time_ms": 59.04687599831959,
+        "queue_time_ms": 0.023019994841888547,
+        "mean_itl_ms": 59.04687599831959,
+        "tokens_per_second": 3.4554831061506057,
+        "speculative_decoding": {
+          "mean_acceptance_length": 3.0,
+          "draft_acceptance_rate": 1.0,
+          "acceptance_histogram": [
+            0,
+            0,
+            1
+          ],
+          "num_spec_steps": 1,
+          "num_accepted_draft_tokens": 2,
+          "num_draft_tokens": 2,
+          "num_spec_tokens": 2,
+          "per_step_accepted": null,
+          "per_step_drafted": null
+        }
+      }
+    }
+  },
+  {
+    "name": "units",
+    "question": "Convert 2.5 hours to minutes. Answer with only the number.",
+    "smoke_pass": true,
+    "scoring_revision": 2,
+    "response": {
+      "id": "cmpl-b73fc6321a360720",
+      "object": "text_completion",
+      "created": 1789711193,
+      "model": "qwen38-flash-next",
+      "choices": [
+        {
+          "index": 0,
+          "text": "150",
+          "logprobs": {
+            "text_offset": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "token_logprobs": [
+              -0.0015323336701840162,
+              -0.0006780709372833371,
+              -0.0023543518036603928,
+              -3.85038583772257e-05
+            ],
+            "tokens": [
+              "1",
+              "5",
+              "0",
+              "<|im_end|>"
+            ],
+            "top_logprobs": [
+              {
+                "1": -0.0015323336701840162,
+                "The": -7.696845054626465,
+                "2": -8.243720054626465,
+                "3": -9.235907554626465,
+                "To": -9.689032554626465
+              },
+              {
+                "5": -0.0006780709372833371,
+                "4": -8.578803062438965,
+                "2": -8.610053062438965,
+                "<|im_end|>": -9.110053062438965,
+                "6": -9.867865562438965
+              },
+              {
+                "0": -0.0023543518036603928,
+                "<|im_end|>": -6.064854145050049,
+                "5": -12.033604621887207,
+                "2": -12.533604621887207,
+                "6": -12.767979621887207
+              },
+              {
+                "<|im_end|>": -3.85038583772257e-05,
+                "\n\n": -11.273475646972656,
+                ".": -11.929725646972656,
+                "\n\n\n": -12.148475646972656,
+                "0": -12.164100646972656
+              }
+            ]
+          },
+          "finish_reason": "stop",
+          "stop_reason": null,
+          "token_ids": [
+            16,
+            20,
+            15,
+            248046
+          ],
+          "prompt_logprobs": null,
+          "prompt_token_ids": [
+            248045,
+            846,
+            198,
+            11670,
+            220,
+            17,
+            13,
+            20,
+            3979,
+            310,
+            4276,
+            13,
+            21134,
+            440,
+            1132,
+            279,
+            1324,
+            13,
+            248046,
+            198,
+            248045,
+            74455,
+            198,
+            248068,
+            271,
+            248069,
+            271
+          ],
+          "routed_experts": null
+        }
+      ],
+      "service_tier": null,
+      "system_fingerprint": "vllm-0.1.dev20693+g1a7243dfc.d20260902-tp4-ep-fac20fc3",
+      "usage": {
+        "prompt_tokens": 27,
+        "total_tokens": 31,
+        "completion_tokens": 4,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": null,
+          "multimodal_tokens": null
+        },
+        "completion_tokens_details": null
+      },
+      "kv_transfer_params": null,
+      "ec_transfer_params": null,
+      "metrics": {
+        "time_to_first_token_ms": 471.16970299975947,
+        "generation_time_ms": 46.7397090033046,
+        "queue_time_ms": 0.006710994057357311,
+        "mean_itl_ms": 15.579903001101533,
+        "tokens_per_second": 7.723358385262045,
+        "speculative_decoding": {
+          "mean_acceptance_length": 3.0,
+          "draft_acceptance_rate": 1.0,
+          "acceptance_histogram": [
+            0,
+            0,
+            1
+          ],
+          "num_spec_steps": 1,
+          "num_accepted_draft_tokens": 2,
+          "num_draft_tokens": 2,
+          "num_spec_tokens": 2,
+          "per_step_accepted": null,
+          "per_step_drafted": null
+        }
+      }
+    }
+  },
+  {
+    "name": "python_sum",
+    "question": "What does Python print for print(sum(range(5)))? Answer with only the printed output.",
+    "smoke_pass": true,
+    "scoring_revision": 2,
+    "response": {
+      "id": "cmpl-88010c9036e0f74c",
+      "object": "text_completion",
+      "created": 1789711193,
+      "model": "qwen38-flash-next",
+      "choices": [
+        {
+          "index": 0,
+          "text": "10",
+          "logprobs": {
+            "text_offset": [
+              0,
+              1,
+              2
+            ],
+            "token_logprobs": [
+              -0.041919756680727005,
+              -0.005711426492780447,
+              -0.00019536494801286608
+            ],
+            "tokens": [
+              "1",
+              "0",
+              "<|im_end|>"
+            ],
+            "top_logprobs": [
+              {
+                "1": -0.041919756680727005,
+                "0": -3.916919708251953,
+                "6": -5.401294708251953,
+                "The": -5.682544708251953,
+                "`": -6.768482208251953
+              },
+              {
+                "0": -0.005711426492780447,
+                "5": -5.458836555480957,
+                "<|im_end|>": -7.193211555480957,
+                "2": -8.677586555480957,
+                "1": -8.747899055480957
+              },
+              {
+                "<|im_end|>": -0.00019536494801286608,
+                "\n\n": -9.758008003234863,
+                "\n": -9.961133003234863,
+                "0": -10.937695503234863,
+                ".": -11.211133003234863
+              }
+            ]
+          },
+          "finish_reason": "stop",
+          "stop_reason": null,
+          "token_ids": [
+            16,
+            15,
+            248046
+          ],
+          "prompt_logprobs": null,
+          "prompt_token_ids": [
+            248045,
+            846,
+            198,
+            3710,
+            1503,
+            12654,
+            1133,
+            364,
+            1133,
+            19111,
+            21649,
+            7,
+            20,
+            7461,
+            30,
+            21134,
+            440,
+            1132,
+            279,
+            16218,
+            2468,
+            13,
+            248046,
+            198,
+            248045,
+            74455,
+            198,
+            248068,
+            271,
+            248069,
+            271
+          ],
+          "routed_experts": null
+        }
+      ],
+      "service_tier": null,
+      "system_fingerprint": "vllm-0.1.dev20693+g1a7243dfc.d20260902-tp4-ep-fac20fc3",
+      "usage": {
+        "prompt_tokens": 31,
+        "total_tokens": 34,
+        "completion_tokens": 3,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": null,
+          "multimodal_tokens": null
+        },
+        "completion_tokens_details": null
+      },
+      "kv_transfer_params": null,
+      "ec_transfer_params": null,
+      "metrics": {
+        "time_to_first_token_ms": 527.9758959950414,
+        "generation_time_ms": 48.94161099946359,
+        "queue_time_ms": 0.0057010038290172815,
+        "mean_itl_ms": 24.470805499731796,
+        "tokens_per_second": 5.20005020410756,
+        "speculative_decoding": {
+          "mean_acceptance_length": 3.0,
+          "draft_acceptance_rate": 1.0,
+          "acceptance_histogram": [
+            0,
+            0,
+            1
+          ],
+          "num_spec_steps": 1,
+          "num_accepted_draft_tokens": 2,
+          "num_draft_tokens": 2,
+          "num_spec_tokens": 2,
+          "per_step_accepted": null,
+          "per_step_drafted": null
+        }
+      }
+    }
+  },
+  {
+    "name": "python_sort",
+    "question": "What does Python print for print(sorted([3, 1, 3, 2]))? Answer with only the printed output.",
+    "smoke_pass": true,
+    "scoring_revision": 2,
+    "response": {
+      "id": "cmpl-8352bac44bd1c350",
+      "object": "text_completion",
+      "created": 1789711194,
+      "model": "qwen38-flash-next",
+      "choices": [
+        {
+          "index": 0,
+          "text": "[1, 2, 3, 3]",
+          "logprobs": {
+            "text_offset": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "token_logprobs": [
+              -0.017842616885900497,
+              -0.0021120640449225903,
+              -0.0004292996891308576,
+              -0.0011923355050384998,
+              -0.0016254083020612597,
+              -0.0006083783810026944,
+              -0.00017653337272349745,
+              -8.689980313647538e-05,
+              -0.009524618275463581,
+              -0.00025078488397412,
+              -0.00032026408007368445,
+              -0.0006459057331085205,
+              -0.00015198030450847
+            ],
+            "tokens": [
+              "[",
+              "1",
+              ",",
+              " ",
+              "2",
+              ",",
+              " ",
+              "3",
+              ",",
+              " ",
+              "3",
+              "]",
+              "<|im_end|>"
+            ],
+            "top_logprobs": [
+              {
+                "[": -0.017842616885900497,
+                "```": -5.369405269622803,
+                "The": -5.713155269622803,
+                " [": -6.150655269622803,
+                "$": -7.088155269622803
+              },
+              {
+                "1": -0.0021120640449225903,
+                "3": -6.752111911773682,
+                "0": -7.705236911773682,
+                "2": -8.12711238861084,
+                " ": -11.11148738861084
+              },
+              {
+                ",": -0.0004292996891308576,
+                "]": -8.437929153442383,
+                " ": -10.125429153442383,
+                ".": -10.359804153442383,
+                "2": -10.937929153442383
+              },
+              {
+                " ": -0.0011923355050384998,
+                "2": -6.860567569732666,
+                "1": -10.719942092895508,
+                "3": -10.962129592895508,
+                "<|im_end|>": -11.071504592895508
+              },
+              {
+                "2": -0.0016254083020612597,
+                "3": -6.7516255378723145,
+                "1": -7.7516255378723145,
+                "4": -11.782875061035156,
+                "5": -12.212562561035156
+              },
+              {
+                ",": -0.0006083783810026944,
+                "]": -7.602170944213867,
+                "<|im_end|>": -11.024045944213867,
+                "3": -11.352170944213867,
+                ".": -11.500608444213867
+              },
+              {
+                " ": -0.00017653337272349745,
+                "<|im_end|>": -10.000176429748535,
+                " '": -10.445488929748535,
+                "3": -10.679863929748535,
+                " [": -10.945488929748535
+              },
+              {
+                "3": -8.689980313647538e-05,
+                "2": -9.640711784362793,
+                "1": -11.570399284362793,
+                "4": -11.812586784362793,
+                "5": -13.398524284362793
+              },
+              {
+                ",": -0.009524618275463581,
+                "]": -4.665774822235107,
+                "<|im_end|>": -10.86889934539795,
+                ".": -11.93139934539795,
+                "3": -12.15796184539795
+              },
+              {
+                " ": -0.00025078488397412,
+                "<|im_end|>": -9.492438316345215,
+                "3": -10.070563316345215,
+                " [": -10.500250816345215,
+                " '": -10.836188316345215
+              },
+              {
+                "3": -0.00032026408007368445,
+                "4": -8.562820434570312,
+                "2": -9.609695434570312,
+                "1": -10.328445434570312,
+                "5": -11.320632934570312
+              },
+              {
+                "]": -0.0006459057331085205,
+                "]]": -8.422520637512207,
+                ",": -8.719395637512207,
+                "<|im_end|>": -9.258458137512207,
+                "][": -9.813145637512207
+              },
+              {
+                "<|im_end|>": -0.00015198030450847,
+                "\n": -9.203276634216309,
+                "\n\n": -10.867339134216309,
+                "\n\n\n": -11.422026634216309,
+                " ": -13.070464134216309
+              }
+            ]
+          },
+          "finish_reason": "stop",
+          "stop_reason": null,
+          "token_ids": [
+            58,
+            16,
+            11,
+            220,
+            17,
+            11,
+            220,
+            18,
+            11,
+            220,
+            18,
+            60,
+            248046
+          ],
+          "prompt_logprobs": null,
+          "prompt_token_ids": [
+            248045,
+            846,
+            198,
+            3710,
+            1503,
+            12654,
+            1133,
+            364,
+            1133,
+            42911,
+            2477,
+            18,
+            11,
+            220,
+            16,
+            11,
+            220,
+            18,
+            11,
+            220,
+            17,
+            9087,
+            30,
+            21134,
+            440,
+            1132,
+            279,
+            16218,
+            2468,
+            13,
+            248046,
+            198,
+            248045,
+            74455,
+            198,
+            248068,
+            271,
+            248069,
+            271
+          ],
+          "routed_experts": null
+        }
+      ],
+      "service_tier": null,
+      "system_fingerprint": "vllm-0.1.dev20693+g1a7243dfc.d20260902-tp4-ep-fac20fc3",
+      "usage": {
+        "prompt_tokens": 39,
+        "total_tokens": 52,
+        "completion_tokens": 13,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": null,
+          "multimodal_tokens": null
+        },
+        "completion_tokens_details": null
+      },
+      "kv_transfer_params": null,
+      "ec_transfer_params": null,
+      "metrics": {
+        "time_to_first_token_ms": 549.5525810038089,
+        "generation_time_ms": 180.59146399900783,
+        "queue_time_ms": 0.005809997674077749,
+        "mean_itl_ms": 15.049288666583985,
+        "tokens_per_second": 17.804705919295483,
+        "speculative_decoding": {
+          "mean_acceptance_length": 3.0,
+          "draft_acceptance_rate": 1.0,
+          "acceptance_histogram": [
+            0,
+            0,
+            4
+          ],
+          "num_spec_steps": 4,
+          "num_accepted_draft_tokens": 8,
+          "num_draft_tokens": 8,
+          "num_spec_tokens": 2,
+          "per_step_accepted": null,
+          "per_step_drafted": null
+        }
+      }
+    }
+  },
+  {
+    "name": "python_dict",
+    "question": "What does Python print for print(len({\"x\": 1, \"x\": 2}))? Answer with only the printed output.",
+    "smoke_pass": true,
+    "scoring_revision": 2,
+    "response": {
+      "id": "cmpl-b405588995546182",
+      "object": "text_completion",
+      "created": 1789711195,
+      "model": "qwen38-flash-next",
+      "choices": [
+        {
+          "index": 0,
+          "text": "1",
+          "logprobs": {
+            "text_offset": [
+              0,
+              1
+            ],
+            "token_logprobs": [
+              -0.157271146774292,
+              -0.0004007013631053269
+            ],
+            "tokens": [
+              "1",
+              "<|im_end|>"
+            ],
+            "top_logprobs": [
+              {
+                "1": -0.157271146774292,
+                "2": -2.126021146774292,
+                "The": -5.415083885192871,
+                "3": -5.758833885192871,
+                "6": -5.797896385192871
+              },
+              {
+                "<|im_end|>": -0.0004007013631053269,
+                "\n\n": -8.97696304321289,
+                "\n": -9.28946304321289,
+                "\n\n\n": -9.93008804321289,
+                ".": -10.79727554321289
+              }
+            ]
+          },
+          "finish_reason": "stop",
+          "stop_reason": null,
+          "token_ids": [
+            16,
+            248046
+          ],
+          "prompt_logprobs": null,
+          "prompt_token_ids": [
+            248045,
+            846,
+            198,
+            3710,
+            1503,
+            12654,
+            1133,
+            364,
+            1133,
+            6686,
+            16371,
+            87,
+            763,
+            220,
+            16,
+            11,
+            328,
+            87,
+            763,
+            220,
+            17,
+            63099,
+            30,
+            21134,
+            440,
+            1132,
+            279,
+            16218,
+            2468,
+            13,
+            248046,
+            198,
+            248045,
+            74455,
+            198,
+            248068,
+            271,
+            248069,
+            271
+          ],
+          "routed_experts": null
+        }
+      ],
+      "service_tier": null,
+      "system_fingerprint": "vllm-0.1.dev20693+g1a7243dfc.d20260902-tp4-ep-fac20fc3",
+      "usage": {
+        "prompt_tokens": 39,
+        "total_tokens": 41,
+        "completion_tokens": 2,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": null,
+          "multimodal_tokens": null
+        },
+        "completion_tokens_details": null
+      },
+      "kv_transfer_params": null,
+      "ec_transfer_params": null,
+      "metrics": {
+        "time_to_first_token_ms": 548.6740620035562,
+        "generation_time_ms": 49.06406599911861,
+        "queue_time_ms": 0.005579997377935797,
+        "mean_itl_ms": 49.06406599911861,
+        "tokens_per_second": 3.345946839099831,
+        "speculative_decoding": {
+          "mean_acceptance_length": 3.0,
+          "draft_acceptance_rate": 1.0,
+          "acceptance_histogram": [
+            0,
+            0,
+            1
+          ],
+          "num_spec_steps": 1,
+          "num_accepted_draft_tokens": 2,
+          "num_draft_tokens": 2,
+          "num_spec_tokens": 2,
+          "per_step_accepted": null,
+          "per_step_drafted": null
+        }
+      }
+    }
+  },
+  {
+    "name": "reverse",
+    "question": "Reverse the string \"hello\". Answer with only the reversed string.",
+    "smoke_pass": true,
+    "scoring_revision": 2,
+    "response": {
+      "id": "cmpl-85ac135a975e56e0",
+      "object": "text_completion",
+      "created": 1789711196,
+      "model": "qwen38-flash-next",
+      "choices": [
+        {
+          "index": 0,
+          "text": "olleh",
+          "logprobs": {
+            "text_offset": [
+              0,
+              4,
+              5
+            ],
+            "token_logprobs": [
+              -0.02447694167494774,
+              -0.0014787703985348344,
+              -2.4199194740504026e-05
+            ],
+            "tokens": [
+              "olle",
+              "h",
+              "<|im_end|>"
+            ],
+            "top_logprobs": [
+              {
+                "olle": -0.02447694167494774,
+                "ol": -4.571352005004883,
+                " ol": -5.735414505004883,
+                "oll": -6.313539505004883,
+                "dl": -6.579164505004883
+              },
+              {
+                "h": -0.0014787703985348344,
+                "<|im_end|>": -7.173353672027588,
+                "H": -7.985853672027588,
+                " h": -9.079604148864746,
+                "b": -9.978041648864746
+              },
+              {
+                "<|im_end|>": -2.4199194740504026e-05,
+                "\n": -12.00783634185791,
+                "\n\n": -12.03127384185791,
+                "\"": -12.82814884185791,
+                "\n\n\n": -12.97658634185791
+              }
+            ]
+          },
+          "finish_reason": "stop",
+          "stop_reason": null,
+          "token_ids": [
+            52233,
+            71,
+            248046
+          ],
+          "prompt_logprobs": null,
+          "prompt_token_ids": [
+            248045,
+            846,
+            198,
+            44174,
+            279,
+            886,
+            328,
+            14556,
+            3158,
+            21134,
+            440,
+            1132,
+            279,
+            26548,
+            886,
+            13,
+            248046,
+            198,
+            248045,
+            74455,
+            198,
+            248068,
+            271,
+            248069,
+            271
+          ],
+          "routed_experts": null
+        }
+      ],
+      "service_tier": null,
+      "system_fingerprint": "vllm-0.1.dev20693+g1a7243dfc.d20260902-tp4-ep-fac20fc3",
+      "usage": {
+        "prompt_tokens": 25,
+        "total_tokens": 28,
+        "completion_tokens": 3,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": null,
+          "multimodal_tokens": null
+        },
+        "completion_tokens_details": null
+      },
+      "kv_transfer_params": null,
+      "ec_transfer_params": null,
+      "metrics": {
+        "time_to_first_token_ms": 464.10075899621006,
+        "generation_time_ms": 44.64413000096101,
+        "queue_time_ms": 0.0058200021157972515,
+        "mean_itl_ms": 22.322065000480507,
+        "tokens_per_second": 5.896865137875973,
+        "speculative_decoding": {
+          "mean_acceptance_length": 3.0,
+          "draft_acceptance_rate": 1.0,
+          "acceptance_histogram": [
+            0,
+            0,
+            1
+          ],
+          "num_spec_steps": 1,
+          "num_accepted_draft_tokens": 2,
+          "num_draft_tokens": 2,
+          "num_spec_tokens": 2,
+          "per_step_accepted": null,
+          "per_step_drafted": null
+        }
+      }
+    }
+  },
+  {
+    "name": "logic",
+    "question": "A is taller than B. B is taller than C. Who is tallest? Answer with only A, B, or C.",
+    "smoke_pass": true,
+    "scoring_revision": 2,
+    "response": {
+      "id": "cmpl-be92a121c6ff0b56",
+      "object": "text_completion",
+      "created": 1789711196,
+      "model": "qwen38-flash-next",
+      "choices": [
+        {
+          "index": 0,
+          "text": "A",
+          "logprobs": {
+            "text_offset": [
+              0,
+              1
+            ],
+            "token_logprobs": [
+              -0.0009188005933538079,
+              -6.007968113408424e-05
+            ],
+            "tokens": [
+              "A",
+              "<|im_end|>"
+            ],
+            "top_logprobs": [
+              {
+                "A": -0.0009188005933538079,
+                " A": -7.961856365203857,
+                "B": -9.2118558883667,
+                "C": -9.2509183883667,
+                "The": -9.5946683883667
+              },
+              {
+                "<|im_end|>": -6.007968113408424e-05,
+                " is": -11.226622581481934,
+                ".": -11.468810081481934,
+                "\n\n": -11.882872581481934,
+                "\n": -12.242247581481934
+              }
+            ]
+          },
+          "finish_reason": "stop",
+          "stop_reason": null,
+          "token_ids": [
+            32,
+            248046
+          ],
+          "prompt_logprobs": null,
+          "prompt_token_ids": [
+            248045,
+            846,
+            198,
+            32,
+            369,
+            48230,
+            1056,
+            417,
+            13,
+            417,
+            369,
+            48230,
+            1056,
+            351,
+            13,
+            10166,
+            369,
+            78802,
+            30,
+            21134,
+            440,
+            1132,
+            357,
+            11,
+            417,
+            11,
+            466,
+            351,
+            13,
+            248046,
+            198,
+            248045,
+            74455,
+            198,
+            248068,
+            271,
+            248069,
+            271
+          ],
+          "routed_experts": null
+        }
+      ],
+      "service_tier": null,
+      "system_fingerprint": "vllm-0.1.dev20693+g1a7243dfc.d20260902-tp4-ep-fac20fc3",
+      "usage": {
+        "prompt_tokens": 38,
+        "total_tokens": 40,
+        "completion_tokens": 2,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": null,
+          "multimodal_tokens": null
+        },
+        "completion_tokens_details": null
+      },
+      "kv_transfer_params": null,
+      "ec_transfer_params": null,
+      "metrics": {
+        "time_to_first_token_ms": 551.41672299942,
+        "generation_time_ms": 72.09901900205296,
+        "queue_time_ms": 0.00547999661648646,
+        "mean_itl_ms": 72.09901900205296,
+        "tokens_per_second": 3.2076174910677318,
+        "speculative_decoding": {
+          "mean_acceptance_length": 3.0,
+          "draft_acceptance_rate": 1.0,
+          "acceptance_histogram": [
+            0,
+            0,
+            1
+          ],
+          "num_spec_steps": 1,
+          "num_accepted_draft_tokens": 2,
+          "num_draft_tokens": 2,
+          "num_spec_tokens": 2,
+          "per_step_accepted": null,
+          "per_step_drafted": null
+        }
+      }
+    }
+  },
+  {
+    "name": "json",
+    "question": "Extract the name and age from \"Ada is 27 years old.\" Return only JSON with keys name and age.",
+    "smoke_pass": true,
+    "scoring_revision": 2,
+    "response": {
+      "id": "cmpl-bbc63db9c9b0b6c3",
+      "object": "text_completion",
+      "created": 1789711197,
+      "model": "qwen38-flash-next",
+      "choices": [
+        {
+          "index": 0,
+          "text": "{\"name\": \"Ada\", \"age\": 27}",
+          "logprobs": {
+            "text_offset": [
+              0,
+              2,
+              6,
+              8,
+              10,
+              13,
+              15,
+              17,
+              20,
+              22,
+              23,
+              24,
+              25,
+              26
+            ],
+            "token_logprobs": [
+              -0.8644776344299316,
+              -0.00023815181339159608,
+              -0.010264229960739613,
+              -3.8980677345534787e-05,
+              -0.00016211149340961128,
+              -4.243760849931277e-05,
+              -2.5272052880609408e-05,
+              -1.597391747054644e-05,
+              -1.3113013892507297e-06,
+              -0.0011085085570812225,
+              -2.9444261599564925e-05,
+              -3.5762725474342005e-06,
+              -0.0001506692060502246,
+              -3.5762725474342005e-06
+            ],
+            "tokens": [
+              "{\"",
+              "name",
+              "\":",
+              " \"",
+              "Ada",
+              "\",",
+              " \"",
+              "age",
+              "\":",
+              " ",
+              "2",
+              "7",
+              "}",
+              "<|im_end|>"
+            ],
+            "top_logprobs": [
+              {
+                "{\"": -0.8644776344299316,
+                "{": -1.0988526344299316,
+                "```": -1.4113526344299316,
+                " {\"": -8.341039657592773,
+                "{'": -8.645727157592773
+              },
+              {
+                "name": -0.00023815181339159608,
+                " name": -10.297113418579102,
+                "key": -10.750238418579102,
+                "Name": -10.883050918579102,
+                "type": -11.297113418579102
+              },
+              {
+                "\":": -0.010264229960739613,
+                "\":\"": -4.5883893966674805,
+                "\"": -10.47120189666748,
+                " \":": -12.87745189666748,
+                ":": -13.32276439666748
+              },
+              {
+                " \"": -3.8980677345534787e-05,
+                " ": -11.382851600646973,
+                " \"\",": -11.914101600646973,
+                " [\"": -12.421914100646973,
+                " null": -12.710976600646973
+              },
+              {
+                "Ada": -0.00016211149340961128,
+                "ada": -9.703287124633789,
+                "ADA": -10.250162124633789,
+                "2": -10.687662124633789,
+                " Ada": -11.586099624633789
+              },
+              {
+                "\",": -4.243760849931277e-05,
+                "\"}": -10.875041961669922,
+                "\",\"": -11.328166961669922,
+                ",": -12.335979461669922,
+                "\"": -13.695354461669922
+              },
+              {
+                " \"": -2.5272052880609408e-05,
+                " age": -10.843774795532227,
+                " ": -13.257837295532227,
+                " \\\"": -14.312524795532227,
+                " {\"": -14.312524795532227
+              },
+              {
+                "age": -1.597391747054644e-05,
+                "name": -12.843766212463379,
+                "Age": -13.250016212463379,
+                "AGE": -13.601578712463379,
+                " age": -13.890641212463379
+              },
+              {
+                "\":": -1.3113013892507297e-06,
+                "\"": -14.515625953674316,
+                "\\\":": -15.531250953674316,
+                "\":\"": -15.640625953674316,
+                "':": -16.109376907348633
+              },
+              {
+                " ": -0.0011085085570812225,
+                " \"": -6.813608646392822,
+                "2": -12.383920669555664,
+                " null": -13.094858169555664,
+                " {\"": -13.962045669555664
+              },
+              {
+                "2": -2.9444261599564925e-05,
+                "7": -11.109404563903809,
+                "3": -11.859404563903809,
+                "1": -13.031279563903809,
+                "0": -13.265654563903809
+              },
+              {
+                "7": -3.5762725474342005e-06,
+                "9": -13.273441314697266,
+                "8": -14.335941314697266,
+                "6": -15.125003814697266,
+                "3": -15.226566314697266
+              },
+              {
+                "}": -0.0001506692060502246,
+                ",": -9.562650680541992,
+                "<|im_end|>": -9.843900680541992,
+                "\"}": -11.468900680541992,
+                "}\"": -12.687650680541992
+              },
+              {
+                "<|im_end|>": -3.5762725474342005e-06,
+                "\n": -13.164066314697266,
+                "\n\n": -14.875003814697266,
+                "<": -15.632816314697266,
+                "\n\n\n": -16.070316314697266
+              }
+            ]
+          },
+          "finish_reason": "stop",
+          "stop_reason": null,
+          "token_ids": [
+            4754,
+            591,
+            763,
+            328,
+            92055,
+            487,
+            328,
+            416,
+            763,
+            220,
+            17,
+            22,
+            92,
+            248046
+          ],
+          "prompt_logprobs": null,
+          "prompt_token_ids": [
+            248045,
+            846,
+            198,
+            28014,
+            279,
+            803,
+            321,
+            4092,
+            494,
+            328,
+            92055,
+            369,
+            220,
+            17,
+            22,
+            1578,
+            2235,
+            1149,
+            3301,
+            1132,
+            4566,
+            440,
+            6679,
+            803,
+            321,
+            4092,
+            13,
+            248046,
+            198,
+            248045,
+            74455,
+            198,
+            248068,
+            271,
+            248069,
+            271
+          ],
+          "routed_experts": null
+        }
+      ],
+      "service_tier": null,
+      "system_fingerprint": "vllm-0.1.dev20693+g1a7243dfc.d20260902-tp4-ep-fac20fc3",
+      "usage": {
+        "prompt_tokens": 36,
+        "total_tokens": 50,
+        "completion_tokens": 14,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": null,
+          "multimodal_tokens": null
+        },
+        "completion_tokens_details": null
+      },
+      "kv_transfer_params": null,
+      "ec_transfer_params": null,
+      "metrics": {
+        "time_to_first_token_ms": 525.1330519968178,
+        "generation_time_ms": 243.24252000224078,
+        "queue_time_ms": 0.005680005415342748,
+        "mean_itl_ms": 18.710963077095446,
+        "tokens_per_second": 18.22025648678112,
+        "speculative_decoding": {
+          "mean_acceptance_length": 3.0,
+          "draft_acceptance_rate": 1.0,
+          "acceptance_histogram": [
+            0,
+            0,
+            5
+          ],
+          "num_spec_steps": 5,
+          "num_accepted_draft_tokens": 10,
+          "num_draft_tokens": 10,
+          "num_spec_tokens": 2,
+          "per_step_accepted": null,
+          "per_step_drafted": null
+        }
+      }
+    }
+  },
+  {
+    "name": "prime",
+    "question": "What is the largest prime number less than 20? Answer with only the integer.",
+    "smoke_pass": true,
+    "scoring_revision": 2,
+    "response": {
+      "id": "cmpl-a48d6501d7b5eacf",
+      "object": "text_completion",
+      "created": 1789711198,
+      "model": "qwen38-flash-next",
+      "choices": [
+        {
+          "index": 0,
+          "text": "19",
+          "logprobs": {
+            "text_offset": [
+              0,
+              1,
+              2
+            ],
+            "token_logprobs": [
+              -0.00304057402536273,
+              -0.011462426744401455,
+              -5.912605774938129e-05
+            ],
+            "tokens": [
+              "1",
+              "9",
+              "<|im_end|>"
+            ],
+            "top_logprobs": [
+              {
+                "1": -0.00304057402536273,
+                "The": -6.565540790557861,
+                "2": -7.893665790557861,
+                "Prime": -9.042102813720703,
+                "7": -9.073352813720703
+              },
+              {
+                "9": -0.011462426744401455,
+                "7": -4.495837211608887,
+                "<|im_end|>": -8.886462211608887,
+                "3": -9.448962211608887,
+                "1": -11.183337211608887
+              },
+              {
+                "<|im_end|>": -5.912605774938129e-05,
+                "\n\n": -10.367246627807617,
+                ".": -11.515684127807617,
+                "\n\n\n": -11.968809127807617,
+                " ": -13.515684127807617
+              }
+            ]
+          },
+          "finish_reason": "stop",
+          "stop_reason": null,
+          "token_ids": [
+            16,
+            24,
+            248046
+          ],
+          "prompt_logprobs": null,
+          "prompt_token_ids": [
+            248045,
+            846,
+            198,
+            3710,
+            369,
+            279,
+            7526,
+            9944,
+            1324,
+            2599,
+            1056,
+            220,
+            17,
+            15,
+            30,
+            21134,
+            440,
+            1132,
+            279,
+            7308,
+            13,
+            248046,
+            198,
+            248045,
+            74455,
+            198,
+            248068,
+            271,
+            248069,
+            271
+          ],
+          "routed_experts": null
+        }
+      ],
+      "service_tier": null,
+      "system_fingerprint": "vllm-0.1.dev20693+g1a7243dfc.d20260902-tp4-ep-fac20fc3",
+      "usage": {
+        "prompt_tokens": 30,
+        "total_tokens": 33,
+        "completion_tokens": 3,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": null,
+          "multimodal_tokens": null
+        },
+        "completion_tokens_details": null
+      },
+      "kv_transfer_params": null,
+      "ec_transfer_params": null,
+      "metrics": {
+        "time_to_first_token_ms": 495.46512799861375,
+        "generation_time_ms": 49.1409489986836,
+        "queue_time_ms": 0.005761001375503838,
+        "mean_itl_ms": 24.5704744993418,
+        "tokens_per_second": 5.508568719138417,
+        "speculative_decoding": {
+          "mean_acceptance_length": 3.0,
+          "draft_acceptance_rate": 1.0,
+          "acceptance_histogram": [
+            0,
+            0,
+            1
+          ],
+          "num_spec_steps": 1,
+          "num_accepted_draft_tokens": 2,
+          "num_draft_tokens": 2,
+          "num_spec_tokens": 2,
+          "per_step_accepted": null,
+          "per_step_drafted": null
+        }
+      }
+    }
+  },
+  {
+    "name": "packing",
+    "question": "Items weigh 3 kg, 5 kg, and 8 kg. There are 12, 9, and 6 items respectively. A box holds at most 20 kg. What is the minimum number of boxes? Give the number first, then a concise justification.",
+    "smoke_pass": false,
+    "scoring_revision": 2,
+    "response": {
+      "id": "cmpl-a028008c190cba3b",
+      "object": "text_completion",
+      "created": 1789711198,
+      "model": "qwen38-flash-next",
+      "choices": [
+        {
+          "index": 0,
+          "text": "**4**\n\n**Justification:**\n1.  **Total Weight Calculation:** The total weight of all items is $(12 \\times 3) + (9 \\times 5) + (6 \\times 8) = 36 + 45 + 48 = 129$ kg.\n2.  **Theoretical Lower Bound:** Since each box holds at most 20 kg, the minimum number of boxes required is $\\lceil 129 / 20 \\rceil = \\lceil 6.45 \\rceil = 7$ boxes.\n3.  **Constraint Analysis (The \"8 kg\" Items):**\n    *   There are 6 items weighing 8 kg.\n    *   Two 8 kg items weigh 16 kg. Adding any other item (minimum 3 kg) results in $16 + 3 = ",
+          "logprobs": {
+            "text_offset": [
+              0,
+              2,
+              3,
+              5,
+              7,
+              9,
+              13,
+              22,
+              25,
+              26,
+              27,
+              28,
+              29,
+              32,
+              37,
+              44,
+              56,
+              59,
+              63,
+              69,
+              76,
+              79,
+              83,
+              89,
+              92,
+              95,
+              96,
+              97,
+              99,
+              104,
+              105,
+              106,
+              107,
+              109,
+              111,
+              112,
+              114,
+              119,
+              120,
+              121,
+              122,
+              124,
+              126,
+              127,
+              129,
+              134,
+              135,
+              136,
+              137,
+              139,
+              140,
+              141,
+              142,
+              144,
+              145,
+              146,
+              147,
+              149,
+              150,
+              151,
+              152,
+              154,
+              155,
+              156,
+              157,
+              158,
+              159,
+              162,
+              163,
+              164,
+              165,
+              166,
+              167,
+              170,
+              173,
+              181,
+              187,
+              193,
+              196,
+              202,
+              207,
+              211,
+              217,
+              220,
+              225,
+              226,
+              227,
+              228,
+              231,
+              232,
+              236,
+              244,
+              251,
+              254,
+              260,
+              269,
+              272,
+              275,
+              276,
+              280,
+              281,
+              282,
+              283,
+              284,
+              286,
+              287,
+              288,
+              289,
+              291,
+              292,
+              296,
+              298,
+              300,
+              301,
+              305,
+              306,
+              307,
+              308,
+              309,
+              310,
+              312,
+              313,
+              317,
+              319,
+              320,
+              321,
+              322,
+              328,
+              329,
+              330,
+              331,
+              332,
+              333,
+              336,
+              346,
+              355,
+              357,
+              360,
+              362,
+              363,
+              366,
+              367,
+              373,
+              377,
+              378,
+              381,
+              383,
+              385,
+              391,
+              395,
+              396,
+              397,
+              403,
+              412,
+              413,
+              414,
+              417,
+              418,
+              419,
+              422,
+              424,
+              426,
+              430,
+              431,
+              432,
+              435,
+              441,
+              447,
+              448,
+              449,
+              450,
+              453,
+              454,
+              461,
+              465,
+              471,
+              476,
+              478,
+              485,
+              486,
+              487,
+              490,
+              491,
+              499,
+              502,
+              504,
+              505,
+              506,
+              508,
+              509,
+              510,
+              512
+            ],
+            "token_logprobs": [
+              -0.4050596356391907,
+              -1.7544482946395874,
+              -0.01963137648999691,
+              -0.0016612315084785223,
+              -0.05423595756292343,
+              -0.0017302557826042175,
+              -0.0003895001136697829,
+              -0.005164496134966612,
+              -0.045626185834407806,
+              -0.5435981750488281,
+              -6.198863957251888e-06,
+              -0.21793609857559204,
+              -0.0030950044747442007,
+              -0.43155935406684875,
+              -0.015106556937098503,
+              -1.2119181156158447,
+              -0.6117284297943115,
+              -0.4074714183807373,
+              -0.04577583074569702,
+              -0.0012432949151843786,
+              -0.39272305369377136,
+              -0.03029332123696804,
+              -0.0001559135998832062,
+              -0.0005647733341902494,
+              -0.19908322393894196,
+              -0.010786796920001507,
+              -0.00013660451804753393,
+              -2.7417760065873154e-05,
+              -1.108640390157234e-05,
+              -8.583031558373477e-06,
+              -0.0001305256737396121,
+              -0.0014148474438115954,
+              -6.723177648382261e-05,
+              -1.5258672647178173e-05,
+              -0.00014900050882715732,
+              -6.318072792055318e-06,
+              -4.5536911784438416e-05,
+              -1.2040067304042168e-05,
+              -0.0004943579551763833,
+              -0.00010942813969450071,
+              -8.106198947643861e-06,
+              -1.2516897186287679e-05,
+              -0.0004512245941441506,
+              -7.390948667307384e-06,
+              -2.3007129129837267e-05,
+              -4.827859811484814e-05,
+              -0.0006237468915060163,
+              -0.00019786786288022995,
+              -0.0001045410826918669,
+              -4.0531076592742465e-06,
+              -3.683499380713329e-05,
+              -7.629365427419543e-06,
+              -3.1709168979432434e-05,
+              -1.7881377516459906e-06,
+              -0.00016866691294126213,
+              -3.123234637314454e-05,
+              -1.823885577323381e-05,
+              -1.8358063243795186e-05,
+              -5.8291647292207927e-05,
+              -6.246371776796877e-05,
+              -3.0040289857424796e-05,
+              -4.446407547220588e-05,
+              -6.05564855504781e-05,
+              -0.0002532876969780773,
+              -0.00020263527403585613,
+              -0.03379053249955177,
+              -1.645074735279195e-05,
+              -0.0001223012659465894,
+              -0.0797346979379654,
+              -0.0023934785276651382,
+              -2.455681169521995e-05,
+              -0.0008579387213103473,
+              -0.0009891861118376255,
+              -0.6677642464637756,
+              -0.004187981132417917,
+              -0.2854689955711365,
+              -0.0004979324294254184,
+              -0.0007509749266318977,
+              -0.24873566627502441,
+              -0.055334366858005524,
+              -8.642300963401794e-05,
+              -0.0015876797260716558,
+              -0.107049360871315,
+              -0.000176652567461133,
+              -0.001105888863094151,
+              -8.702240847924259e-06,
+              -1.1801650543930009e-05,
+              -8.702240847924259e-06,
+              -0.00011717586312443018,
+              -0.017605813220143318,
+              -0.13227342069149017,
+              -0.02439842000603676,
+              -0.00018594920402392745,
+              -0.0002374367177253589,
+              -0.17239661514759064,
+              -0.12482438236474991,
+              -0.06482094526290894,
+              -7.819823804311454e-05,
+              -3.2066789572127163e-05,
+              -0.00042119689169339836,
+              -1.3351351299206726e-05,
+              -2.0503786799963564e-05,
+              -4.8993817472364753e-05,
+              -0.00020728347590193152,
+              -1.1920922133867862e-06,
+              -2.1219029804342426e-05,
+              -1.6569954823353328e-05,
+              -0.00021085898333694786,
+              -3.5285331250634044e-05,
+              -3.075552376685664e-05,
+              -0.00017283852503169328,
+              -0.37697917222976685,
+              -1.4305013792181853e-05,
+              -3.957669832743704e-05,
+              -9.298281838709954e-06,
+              -1.5139465176616795e-05,
+              -1.585470999998506e-05,
+              -0.00026866167900152504,
+              -3.2543604902457446e-05,
+              -2.7656171369017102e-05,
+              -3.5762725474342005e-06,
+              -5.304672959027812e-05,
+              -0.0012919898144900799,
+              -0.0003711488388944417,
+              -0.00037734542274847627,
+              -0.5171622633934021,
+              -0.025610370561480522,
+              -0.06535865366458893,
+              -0.5225265622138977,
+              -0.11749858409166336,
+              -1.1920928955078125e-07,
+              -0.0026397404726594687,
+              -0.0008816407644189894,
+              -1.2743028402328491,
+              -0.33721017837524414,
+              -0.43416017293930054,
+              -1.0815845727920532,
+              -0.6641079783439636,
+              -0.9002743363380432,
+              -0.07754216343164444,
+              -0.03159702569246292,
+              -1.2317187786102295,
+              -0.00022337326663546264,
+              -0.9302595257759094,
+              -3.98151132685598e-05,
+              -0.04809959977865219,
+              -0.0007826602668501437,
+              -0.4584248661994934,
+              -6.043728717486374e-05,
+              -0.41034165024757385,
+              -0.001465914654545486,
+              -0.00031192207825370133,
+              -0.130165696144104,
+              -5.531158603844233e-05,
+              -2.4795222998363897e-05,
+              -1.2278482245164923e-05,
+              -0.09407095611095428,
+              -0.059266116470098495,
+              -0.00027831498300656676,
+              -6.425174069590867e-05,
+              -0.000302745756926015,
+              -0.5090445876121521,
+              -0.0011297041783109307,
+              -0.00018010902567766607,
+              -0.005185725167393684,
+              -0.00014184899919200689,
+              -0.18449805676937103,
+              -0.053526706993579865,
+              -4.887569048150908e-06,
+              -3.4689302992774174e-05,
+              -7.188061863416806e-05,
+              -0.2047884166240692,
+              -0.25217586755752563,
+              -0.2356025129556656,
+              -0.15085473656654358,
+              -0.028511499986052513,
+              -0.10649287700653076,
+              -0.43513223528862,
+              -0.03657739236950874,
+              -0.00029237763374112546,
+              -0.0004315636761020869,
+              -0.013182039372622967,
+              -0.475437730550766,
+              -5.614599649561569e-05,
+              -0.0830875113606453,
+              -8.511182386428118e-05,
+              -0.00011109688057331368,
+              -0.033679429441690445,
+              -6.079655577195808e-06,
+              -2.098061486321967e-05,
+              -3.98151132685598e-05,
+              -1.9073469275099342e-06
+            ],
+            "tokens": [
+              "**",
+              "4",
+              "**",
+              "\n\n",
+              "**",
+              "Just",
+              "ification",
+              ":**",
+              "\n",
+              "1",
+              ".",
+              " ",
+              " **",
+              "Total",
+              " Weight",
+              " Calculation",
+              ":**",
+              " The",
+              " total",
+              " weight",
+              " of",
+              " all",
+              " items",
+              " is",
+              " $(",
+              "1",
+              "2",
+              " \\",
+              "times",
+              " ",
+              "3",
+              ")",
+              " +",
+              " (",
+              "9",
+              " \\",
+              "times",
+              " ",
+              "5",
+              ")",
+              " +",
+              " (",
+              "6",
+              " \\",
+              "times",
+              " ",
+              "8",
+              ")",
+              " =",
+              " ",
+              "3",
+              "6",
+              " +",
+              " ",
+              "4",
+              "5",
+              " +",
+              " ",
+              "4",
+              "8",
+              " =",
+              " ",
+              "1",
+              "2",
+              "9",
+              "$",
+              " kg",
+              ".",
+              "\n",
+              "2",
+              ".",
+              " ",
+              " **",
+              "The",
+              "oretical",
+              " Lower",
+              " Bound",
+              ":**",
+              " Since",
+              " each",
+              " box",
+              " holds",
+              " at",
+              " most",
+              " ",
+              "2",
+              "0",
+              " kg",
+              ",",
+              " the",
+              " minimum",
+              " number",
+              " of",
+              " boxes",
+              " required",
+              " is",
+              " $\\",
+              "l",
+              "ceil",
+              " ",
+              "1",
+              "2",
+              "9",
+              " /",
+              " ",
+              "2",
+              "0",
+              " \\",
+              "r",
+              "ceil",
+              " =",
+              " \\",
+              "l",
+              "ceil",
+              " ",
+              "6",
+              ".",
+              "4",
+              "5",
+              " \\",
+              "r",
+              "ceil",
+              " =",
+              " ",
+              "7",
+              "$",
+              " boxes",
+              ".",
+              "\n",
+              "3",
+              ".",
+              " ",
+              " **",
+              "Constraint",
+              " Analysis",
+              " (",
+              "The",
+              " \"",
+              "8",
+              " kg",
+              "\"",
+              " Items",
+              "):**",
+              "\n",
+              "   ",
+              " *",
+              "  ",
+              " There",
+              " are",
+              " ",
+              "6",
+              " items",
+              " weighing",
+              " ",
+              "8",
+              " kg",
+              ".",
+              "\n",
+              "   ",
+              " *",
+              "  ",
+              " Two",
+              " ",
+              "8",
+              " kg",
+              " items",
+              " weigh",
+              " ",
+              "1",
+              "6",
+              " kg",
+              ".",
+              " Adding",
+              " any",
+              " other",
+              " item",
+              " (",
+              "minimum",
+              " ",
+              "3",
+              " kg",
+              ")",
+              " results",
+              " in",
+              " $",
+              "1",
+              "6",
+              " +",
+              " ",
+              "3",
+              " =",
+              " "
+            ],
+            "top_logprobs": [
+              {
+                "**": -0.4050596356391907,
+                "1": -2.842559576034546,
+                "6": -3.280059576034546,
+                "5": -3.358184576034546,
+                "3": -3.389434576034546
+              },
+              {
+                "4": -1.7544482946395874,
+                "Minimum": -1.9575732946395874,
+                "3": -1.9731982946395874,
+                "5": -2.051323413848877,
+                "6": -2.113823413848877
+              },
+              {
+                "**": -0.01963137648999691,
+                " boxes": -5.144631385803223,
+                "2": -6.316506385803223,
+                "5": -6.332131385803223,
+                "0": -6.410256385803223
+              },
+              {
+                "\n\n": -0.0016612315084785223,
+                " boxes": -7.15009880065918,
+                "\n": -8.54853630065918,
+                " Just": -9.55634880065918,
+                " The": -9.87666130065918
+              },
+              {
+                "**": -0.05423595756292343,
+                "The": -3.9604859352111816,
+                "To": -4.679235935211182,
+                "Just": -5.054235935211182,
+                "Items": -5.335485935211182
+              },
+              {
+                "Just": -0.0017302557826042175,
+                "Con": -7.001730442047119,
+                "Reason": -8.282979965209961,
+                " justification": -9.931417465209961,
+                "Step": -9.962667465209961
+              },
+              {
+                "ification": -0.0003895001136697829,
+                "ication": -9.039451599121094,
+                "ifications": -10.391014099121094,
+                " justification": -10.476951599121094,
+                "ization": -10.562889099121094
+              },
+              {
+                ":**": -0.005164496134966612,
+                "**": -6.005164623260498,
+                "**:": -6.036414623260498,
+                ":": -9.09110164642334,
+                " (": -10.01297664642334
+              },
+              {
+                "\n": -0.045626185834407806,
+                "\n\n": -3.186251163482666,
+                " The": -5.998751163482666,
+                "  \n": -7.967501163482666,
+                " First": -9.365939140319824
+              },
+              {
+                "1": -0.5435981750488281,
+                "The": -1.0123481750488281,
+                "First": -3.699848175048828,
+                "To": -4.168598175048828,
+                "Total": -4.871723175048828
+              },
+              {
+                ".": -6.198863957251888e-06,
+                ")": -12.953130722045898,
+                ".**": -14.507818222045898,
+                " ": -14.515630722045898,
+                ",": -14.953130722045898
+              },
+              {
+                " ": -0.21793609857559204,
+                " **": -1.6710610389709473,
+                " The": -5.905436038970947,
+                " Calculate": -6.186686038970947,
+                " Total": -6.569498538970947
+              },
+              {
+                " **": -0.0030950044747442007,
+                " The": -6.7218451499938965,
+                " Calculate": -7.0343451499938965,
+                " Total": -8.284344673156738,
+                " An": -8.987469673156738
+              },
+              {
+                "Total": -0.43155935406684875,
+                "Lower": -1.8534343242645264,
+                "Calculate": -2.1346843242645264,
+                "Weight": -3.2284343242645264,
+                "Upper": -5.0565595626831055
+              },
+              {
+                " Weight": -0.015106556937098503,
+                " Lower": -5.077606678009033,
+                " Mass": -5.640106678009033,
+                " Capacity": -6.311981678009033,
+                " Count": -7.319794178009033
+              },
+              {
+                " Calculation": -1.2119181156158447,
+                " Constraint": -1.6025431156158447,
+                ":**": -1.8369181156158447,
+                " Lower": -1.9150431156158447,
+                " Check": -2.3525431156158447
+              },
+              {
+                ":**": -0.6117284297943115,
+                "**:": -0.7836034297943115,
+                " (": -7.361728668212891,
+                ":": -10.54922866821289,
+                " &": -10.58829116821289
+              },
+              {
+                " The": -0.4074714183807373,
+                "\n": -1.1262214183807373,
+                " First": -5.719971656799316,
+                " Calculate": -5.969971656799316,
+                " $": -7.063721656799316
+              },
+              {
+                " total": -0.04577583074569702,
+                " combined": -3.764525890350342,
+                " sum": -3.952025890350342,
+                " aggregate": -7.139525890350342,
+                " cumulative": -8.077025413513184
+              },
+              {
+                " weight": -0.0012432949151843786,
+                " mass": -7.2043681144714355,
+                " combined": -8.485618591308594,
+                " sum": -10.368431091308594,
+                " number": -11.001243591308594
+              },
+              {
+                " of": -0.39272305369377136,
+                " is": -1.1427230834960938,
+                " to": -5.345848083496094,
+                " required": -7.783348083496094,
+                " requires": -9.744285583496094
+              },
+              {
+                " all": -0.03029332123696804,
+                " the": -3.5615432262420654,
+                " items": -6.6709184646606445,
+                " $": -9.850605964660645,
+                " ": -10.155293464660645
+              },
+              {
+                " items": -0.0001559135998832062,
+                " ": -9.757967948913574,
+                " $": -10.781405448913574,
+                " goods": -10.945467948913574,
+                " item": -12.023592948913574
+              },
+              {
+                " is": -0.0005647733341902494,
+                " must": -8.203689575195312,
+                " $(": -9.524002075195312,
+                " $": -10.414627075195312,
+                " exceeds": -10.813064575195312
+              },
+              {
+                " $(": -0.19908322393894196,
+                " $": -1.7772082090377808,
+                " calculated": -5.02720832824707,
+                " ": -6.65220832824707,
+                " exactly": -7.50377082824707
+              },
+              {
+                "1": -0.010786796920001507,
+                "3": -4.542037010192871,
+                "2": -10.354537010192871,
+                "4": -11.112349510192871,
+                "7": -11.315474510192871
+              },
+              {
+                "2": -0.00013660451804753393,
+                " \\": -10.101698875427246,
+                "7": -10.297011375427246,
+                "0": -11.132948875427246,
+                "3": -11.211073875427246
+              },
+              {
+                " \\": -2.7417760065873154e-05,
+                " ": -11.085965156555176,
+                " \\\\": -12.796902656555176,
+                " +": -13.226590156555176,
+                "_": -13.695340156555176
+              },
+              {
+                "times": -1.108640390157234e-05,
+                "text": -12.187511444091797,
+                "cdot": -13.703136444091797,
+                " times": -13.890636444091797,
+                "time": -14.570323944091797
+              },
+              {
+                " ": -8.583031558373477e-06,
+                " \\": -12.046883583068848,
+                ")": -14.304696083068848,
+                " +": -14.507821083068848,
+                " ?": -15.703133583068848
+              },
+              {
+                "3": -0.0001305256737396121,
+                "2": -10.351693153381348,
+                "0": -10.687630653381348,
+                "1": -10.757943153381348,
+                "8": -11.070443153381348
+              },
+              {
+                ")": -0.0014148474438115954,
+                "\\": -7.298289775848389,
+                " \\": -7.907664775848389,
+                " +": -8.032665252685547,
+                ")\\": -10.985790252685547
+              },
+              {
+                " +": -6.723177648382261e-05,
+                " \\": -9.671941757202148,
+                " kg": -13.437566757202148,
+                " /": -13.781316757202148,
+                " +(": -14.476629257202148
+              },
+              {
+                " (": -1.5258672647178173e-05,
+                " ($": -12.046890258789062,
+                " ": -12.890640258789062,
+                " $(": -13.148452758789062,
+                " (\\": -13.257827758789062
+              },
+              {
+                "9": -0.00014900050882715732,
+                "1": -9.46889877319336,
+                "8": -11.10952377319336,
+                "7": -11.15639877319336,
+                "5": -11.18764877319336
+              },
+              {
+                " \\": -6.318072792055318e-06,
+                " +": -13.031256675720215,
+                "5": -13.804694175720215,
+                "\\t": -14.039069175720215,
+                ")": -14.898444175720215
+              },
+              {
+                "times": -4.5536911784438416e-05,
+                " times": -11.179733276367188,
+                "text": -11.820358276367188,
+                "cdot": -12.468795776367188,
+                "imes": -12.765670776367188
+              },
+              {
+                " ": -1.2040067304042168e-05,
+                " \\": -12.093762397766113,
+                "5": -13.632824897766113,
+                " [": -14.117199897766113,
+                " +": -14.273449897766113
+              },
+              {
+                "5": -0.0004943579551763833,
+                "4": -8.641119003295898,
+                "6": -9.344244003295898,
+                "8": -9.812994003295898,
+                "2": -9.914556503295898
+              },
+              {
+                ")": -0.00010942813969450071,
+                " +": -9.414172172546387,
+                "0": -12.078234672546387,
+                " )": -12.437609672546387,
+                " \\": -12.875109672546387
+              },
+              {
+                " +": -8.106198947643861e-06,
+                " (": -13.101570129394531,
+                " =": -13.468757629394531,
+                " +(": -13.546882629394531,
+                " \\": -13.617195129394531
+              },
+              {
+                " (": -1.2516897186287679e-05,
+                " ": -11.812512397766113,
+                " $(": -13.687512397766113,
+                "6": -14.351574897766113,
+                " \\": -14.492199897766113
+              },
+              {
+                "6": -0.0004512245941441506,
+                "8": -8.00045108795166,
+                "1": -9.39107608795166,
+                "3": -12.06295108795166,
+                "7": -12.21138858795166
+              },
+              {
+                " \\": -7.390948667307384e-06,
+                "8": -12.664070129394531,
+                ")": -13.968757629394531,
+                "\\t": -14.484382629394531,
+                " ": -14.812507629394531
+              },
+              {
+                "times": -2.3007129129837267e-05,
+                " times": -12.625022888183594,
+                "text": -13.015647888183594,
+                "8": -13.601585388183594,
+                "time": -13.750022888183594
+              },
+              {
+                " ": -4.827859811484814e-05,
+                " \\": -10.304736137390137,
+                " )": -12.953173637390137,
+                ")": -13.281298637390137,
+                "8": -13.640673637390137
+              },
+              {
+                "8": -0.0006237468915060163,
+                "6": -8.25062370300293,
+                "7": -8.82874870300293,
+                "1": -9.89906120300293,
+                "3": -10.24281120300293
+              },
+              {
+                ")": -0.00019786786288022995,
+                " =": -9.383009910583496,
+                ")$": -9.937697410583496,
+                "0": -11.476759910583496,
+                " \\": -11.570509910583496
+              },
+              {
+                " =": -0.0001045410826918669,
+                " \\": -9.336042404174805,
+                " ": -12.601667404174805,
+                "3": -12.851667404174805,
+                "$.": -12.937604904174805
+              },
+              {
+                " ": -4.0531076592742465e-06,
+                " \\": -13.492191314697266,
+                " $": -13.945316314697266,
+                "3": -15.257816314697266,
+                " (": -15.609378814697266
+              },
+              {
+                "3": -3.683499380713329e-05,
+                "1": -11.09378719329834,
+                "9": -12.07816219329834,
+                "4": -12.42191219329834,
+                "7": -12.56253719329834
+              },
+              {
+                "6": -7.629365427419543e-06,
+                "9": -13.421882629394531,
+                "4": -13.671882629394531,
+                "7": -13.734382629394531,
+                "0": -13.906257629394531
+              },
+              {
+                " +": -3.1709168979432434e-05,
+                " \\": -10.734406471252441,
+                "0": -12.570343971252441,
+                " -": -12.781281471252441,
+                "\\": -13.898468971252441
+              },
+              {
+                " ": -1.7881377516459906e-06,
+                "4": -14.726564407348633,
+                " \\": -15.195314407348633,
+                " +": -16.304689407348633,
+                " **": -16.515626907348633
+              },
+              {
+                "4": -0.00016866691294126213,
+                "2": -9.656418800354004,
+                "3": -9.929856300354004,
+                "5": -10.718918800354004,
+                "1": -11.789231300354004
+              },
+              {
+                "5": -3.123234637314454e-05,
+                "0": -11.062531471252441,
+                "7": -12.523468971252441,
+                "9": -13.062531471252441,
+                "8": -13.109406471252441
+              },
+              {
+                " +": -1.823885577323381e-05,
+                " =": -12.117205619812012,
+                " \\": -12.687518119812012,
+                "4": -12.726580619812012,
+                " ": -12.859393119812012
+              },
+              {
+                " ": -1.8358063243795186e-05,
+                " +": -11.773455619812012,
+                "4": -12.867205619812012,
+                " $": -13.242205619812012,
+                " -": -14.585955619812012
+              },
+              {
+                "4": -5.8291647292207927e-05,
+                "6": -10.9531831741333,
+                "5": -11.4844331741333,
+                "3": -11.5234956741333,
+                "2": -12.0469331741333
+              },
+              {
+                "8": -6.246371776796877e-05,
+                "0": -10.875061988830566,
+                "7": -11.570374488830566,
+                "2": -11.859436988830566,
+                " =": -12.195374488830566
+              },
+              {
+                " =": -3.0040289857424796e-05,
+                " \\": -11.500029563903809,
+                " +": -11.851592063903809,
+                "$.": -12.539092063903809,
+                "0": -12.875029563903809
+              },
+              {
+                " ": -4.446407547220588e-05,
+                " \\": -10.382857322692871,
+                " $": -12.070357322692871,
+                "1": -12.710982322692871,
+                " **": -13.070357322692871
+              },
+              {
+                "1": -6.05564855504781e-05,
+                "9": -10.335997581481934,
+                "7": -11.984435081481934,
+                "2": -12.000060081481934,
+                "8": -12.054747581481934
+              },
+              {
+                "2": -0.0002532876969780773,
+                "0": -9.156503677368164,
+                "1": -9.781503677368164,
+                "3": -9.984628677368164,
+                "5": -11.062753677368164
+              },
+              {
+                "9": -0.00020263527403585613,
+                "0": -9.765827178955078,
+                "7": -10.031452178955078,
+                "8": -10.468952178955078,
+                "5": -11.093952178955078
+              },
+              {
+                "$": -0.03379053249955177,
+                " \\": -3.4087905883789062,
+                "\\": -9.057228088378906,
+                " $": -12.307228088378906,
+                "$.": -12.463478088378906
+              },
+              {
+                " kg": -1.645074735279195e-05,
+                " **": -12.664078712463379,
+                " k": -12.664078712463379,
+                " km": -13.703141212463379,
+                " KG": -13.859391212463379
+              },
+              {
+                ".": -0.0001223012659465894,
+                " (": -10.2891845703125,
+                "\n": -10.9141845703125,
+                " since": -12.0548095703125,
+                ",": -12.1954345703125
+              },
+              {
+                "\n": -0.0797346979379654,
+                " Since": -2.8141098022460938,
+                " Div": -5.017234802246094,
+                " A": -5.470359802246094,
+                " The": -5.610984802246094
+              },
+              {
+                "2": -0.0023934785276651382,
+                "   ": -6.1117682456970215,
+                "3": -10.83833122253418,
+                "4": -11.09614372253418,
+                "  ": -11.45551872253418
+              },
+              {
+                ".": -2.455681169521995e-05,
+                ".**": -12.562524795532227,
+                " .": -14.000024795532227,
+                " ": -14.484399795532227,
+                "   ": -14.515649795532227
+              },
+              {
+                " ": -0.0008579387213103473,
+                "  ": -8.071170806884766,
+                " **": -9.258670806884766,
+                " Lower": -9.399295806884766,
+                "   ": -9.571170806884766
+              },
+              {
+                " **": -0.0009891861118376255,
+                " The": -8.008801460266113,
+                " Lower": -8.883801460266113,
+                "Lower": -8.930676460266113,
+                "**": -9.266613960266113
+              },
+              {
+                "The": -0.6677642464637756,
+                "Lower": -0.7771392464637756,
+                "Absolute": -4.511514186859131,
+                "Initial": -5.402139186859131,
+                "Minimum": -5.839639186859131
+              },
+              {
+                "oretical": -0.004187981132417917,
+                " Lower": -5.551063060760498,
+                "oret": -10.05106258392334,
+                "orem": -10.14481258392334,
+                "ological": -10.43387508392334
+              },
+              {
+                " Lower": -0.2854689955711365,
+                " Minimum": -1.3948440551757812,
+                " Limit": -9.371406555175781,
+                " Floor": -9.785469055175781,
+                "Lower": -10.152656555175781
+              },
+              {
+                " Bound": -0.0004979324294254184,
+                " Limit": -8.719247817993164,
+                " Bounds": -9.227060317993164,
+                "Bound": -9.437997817993164,
+                " bound": -10.094247817993164
+              },
+              {
+                ":**": -0.0007509749266318977,
+                " (": -7.75856351852417,
+                " Div": -9.164813041687012,
+                ":": -9.907000541687012,
+                " Since": -10.477313041687012
+              },
+              {
+                " Since": -0.24873566627502441,
+                " Div": -1.6862356662750244,
+                " With": -3.7487356662750244,
+                " The": -5.748735427856445,
+                " A": -5.920610427856445
+              },
+              {
+                " each": -0.055334366858005524,
+                " a": -3.4928343296051025,
+                " the": -4.086584568023682,
+                " one": -5.180334568023682,
+                " $": -7.524084568023682
+              },
+              {
+                " box": -8.642300963401794e-05,
+                " holds": -10.156336784362793,
+                " of": -11.132899284362793,
+                " Box": -12.515711784362793,
+                " ": -13.265711784362793
+              },
+              {
+                " holds": -0.0015876797260716558,
+                " can": -6.954712867736816,
+                " has": -7.532837867736816,
+                " supports": -10.626587867736816,
+                " is": -11.610962867736816
+              },
+              {
+                " at": -0.107049360871315,
+                " a": -2.3726744651794434,
+                " ": -5.060174465179443,
+                " max": -6.669549465179443,
+                " $": -8.185173988342285
+              },
+              {
+                " most": -0.000176652567461133,
+                " least": -9.015801429748535,
+                " max": -10.906426429748535,
+                "most": -11.273613929748535,
+                " maximum": -11.484551429748535
+              },
+              {
+                " ": -0.001105888863094151,
+                " $": -6.813605785369873,
+                " a": -13.196418762207031,
+                " $\\": -13.430793762207031,
+                " the": -14.493293762207031
+              },
+              {
+                "2": -8.702240847924259e-06,
+                "1": -12.328133583068848,
+                "5": -13.812508583068848,
+                "4": -14.062508583068848,
+                "3": -14.359383583068848
+              },
+              {
+                "0": -1.1801650543930009e-05,
+                " kg": -12.101573944091797,
+                "8": -13.570323944091797,
+                "5": -13.765636444091797,
+                "1": -13.843761444091797
+              },
+              {
+                " kg": -8.702240847924259e-06,
+                "kg": -13.226571083068848,
+                ",": -13.835946083068848,
+                " km": -14.000008583068848,
+                " k": -14.429696083068848
+              },
+              {
+                ",": -0.00011717586312443018,
+                " and": -10.031367301940918,
+                " ($": -10.765742301940918,
+                " (": -11.140742301940918,
+                " at": -11.734492301940918
+              },
+              {
+                " the": -0.017605813220143318,
+                " a": -5.173855781555176,
+                " at": -5.267605781555176,
+                " we": -5.330105781555176,
+                " dividing": -6.892605781555176
+              },
+              {
+                " minimum": -0.13227342069149017,
+                " absolute": -2.3510234355926514,
+                " theoretical": -3.5853984355926514,
+                " mathematical": -7.741648197174072,
+                " number": -8.44477367401123
+              },
+              {
+                " number": -0.02439842000603676,
+                " theoretical": -3.9775233268737793,
+                " possible": -5.399398326873779,
+                " integer": -7.571273326873779,
+                " mathematical": -9.321273803710938
+              },
+              {
+                " of": -0.00018594920402392745,
+                " boxes": -8.7970609664917,
+                " required": -10.7736234664917,
+                " $": -12.5314359664917,
+                "of": -13.7970609664917
+              },
+              {
+                " boxes": -0.0002374367177253589,
+                " required": -8.937737464904785,
+                "boxes": -11.508049964904785,
+                " bins": -11.937737464904785,
+                " $": -12.054924964904785
+              },
+              {
+                " required": -0.17239661514759064,
+                " must": -2.516146659851074,
+                " $": -3.125521659851074,
+                " is": -4.047396659851074,
+                " ($": -5.172396659851074
+              },
+              {
+                " is": -0.12482438236474991,
+                " by": -2.484199285507202,
+                " based": -3.952949285507202,
+                " must": -4.968574523925781,
+                " cannot": -5.718574523925781
+              },
+              {
+                " $\\": -0.06482094526290894,
+                " at": -2.9241960048675537,
+                " the": -5.017945766448975,
+                " $": -7.611695766448975,
+                " ceiling": -7.830445766448975
+              },
+              {
+                "l": -7.819823804311454e-05,
+                "ceil": -10.531328201293945,
+                "lf": -10.898515701293945,
+                "ce": -11.617265701293945,
+                "text": -12.070390701293945
+              },
+              {
+                "ceil": -3.2066789572127163e-05,
+                " ceil": -10.421907424926758,
+                "ce": -13.625032424926758,
+                ".ceil": -13.828157424926758,
+                " ceilings": -17.328157424926758
+              },
+              {
+                " ": -0.00042119689169339836,
+                " \\": -7.781671047210693,
+                " {": -14.086359024047852,
+                "1": -14.391046524047852,
+                " (": -14.523859024047852
+              },
+              {
+                "1": -1.3351351299206726e-05,
+                "2": -11.90626335144043,
+                "9": -13.25001335144043,
+                "7": -13.30470085144043,
+                "6": -13.57032585144043
+              },
+              {
+                "2": -2.0503786799963564e-05,
+                "0": -12.093770027160645,
+                "1": -12.257832527160645,
+                ".": -13.015645027160645,
+                "3": -13.406270027160645
+              },
+              {
+                "9": -4.8993817472364753e-05,
+                "0": -11.539111137390137,
+                ".": -11.539111137390137,
+                "7": -11.882861137390137,
+                " /": -11.976611137390137
+              },
+              {
+                " /": -0.00020728347590193152,
+                "/": -8.53145694732666,
+                " \\": -11.75801944732666,
+                " //": -14.07051944732666,
+                " ": -15.07051944732666
+              },
+              {
+                " ": -1.1920922133867862e-06,
+                " \\": -15.546875953674316,
+                " a": -15.757813453674316,
+                " (": -16.195314407348633,
+                "2": -16.796876907348633
+              },
+              {
+                "2": -2.1219029804342426e-05,
+                "1": -12.015645980834961,
+                "4": -12.437520980834961,
+                "3": -12.656270980834961,
+                "6": -13.031270980834961
+              },
+              {
+                "0": -1.6569954823353328e-05,
+                "1": -12.148453712463379,
+                "4": -12.812516212463379,
+                " \\": -13.117203712463379,
+                "2": -13.335953712463379
+              },
+              {
+                " \\": -0.00021085898333694786,
+                " ": -8.562710762023926,
+                ".": -12.023648262023926,
+                "\\r": -13.078335762023926,
+                " \\\\": -13.203335762023926
+              },
+              {
+                "r": -3.5285331250634044e-05,
+                "l": -10.375035285949707,
+                "rf": -13.664097785949707,
+                "rangle": -13.687535285949707,
+                "ceil": -14.531285285949707
+              },
+              {
+                "ceil": -3.075552376685664e-05,
+                "ce": -11.734405517578125,
+                " ceil": -12.210968017578125,
+                " =": -12.414093017578125,
+                "Vert": -12.484405517578125
+              },
+              {
+                " =": -0.00017283852503169328,
+                "$.": -9.18767261505127,
+                " ": -10.82829761505127,
+                "$": -11.04704761505127,
+                "$,": -11.11736011505127
+              },
+              {
+                " \\": -0.37697917222976685,
+                " ": -1.158229112625122,
+                " l": -12.337916374206543,
+                "7": -12.361353874206543,
+                " $\\": -13.080103874206543
+              },
+              {
+                "l": -1.4305013792181853e-05,
+                "text": -12.062514305114746,
+                "lf": -12.945326805114746,
+                "math": -13.031264305114746,
+                "boxed": -13.414076805114746
+              },
+              {
+                "ceil": -3.957669832743704e-05,
+                " ceil": -10.554726600646973,
+                "ce": -12.093789100646973,
+                "6": -13.125039100646973,
+                ".ceil": -13.593789100646973
+              },
+              {
+                " ": -9.298281838709954e-06,
+                "6": -11.875009536743164,
+                " \\": -14.101572036743164,
+                " ...": -15.335947036743164,
+                " {": -15.687509536743164
+              },
+              {
+                "6": -1.5139465176616795e-05,
+                "7": -12.570327758789062,
+                "5": -12.601577758789062,
+                "1": -12.835952758789062,
+                "4": -13.328140258789062
+              },
+              {
+                ".": -1.585470999998506e-05,
+                "4": -11.625016212463379,
+                " \\": -12.562516212463379,
+                " .": -14.570328712463379,
+                "5": -14.664078712463379
+              },
+              {
+                "4": -0.00026866167900152504,
+                "5": -8.547143936157227,
+                "3": -10.679956436157227,
+                "9": -11.242456436157227,
+                "1": -11.312768936157227
+              },
+              {
+                "5": -3.2543604902457446e-05,
+                " \\": -10.601594924926758,
+                "7": -12.585969924926758,
+                "6": -13.718782424926758,
+                "2": -14.054719924926758
+              },
+              {
+                " \\": -2.7656171369017102e-05,
+                "\\r": -11.867215156555176,
+                "...": -12.195340156555176,
+                "5": -12.890652656555176,
+                " +": -13.562527656555176
+              },
+              {
+                "r": -3.5762725474342005e-06,
+                "dots": -13.062503814697266,
+                "rf": -14.882816314697266,
+                "rangle": -14.890628814697266,
+                " r": -15.031253814697266
+              },
+              {
+                "ceil": -5.304672959027812e-05,
+                "ce": -11.156303405761719,
+                " ceil": -11.523490905761719,
+                "br": -11.562553405761719,
+                "vert": -11.898490905761719
+              },
+              {
+                " =": -0.0012919898144900799,
+                "$.": -7.188791751861572,
+                "$": -8.14972972869873,
+                " \\": -9.29035472869873,
+                "$,": -9.40754222869873
+              },
+              {
+                " ": -0.0003711488388944417,
+                " **": -8.156620979309082,
+                " \\": -9.805058479309082,
+                " $": -11.258183479309082,
+                " ?": -12.492558479309082
+              },
+              {
+                "7": -0.00037734542274847627,
+                "6": -8.406627655029297,
+                "8": -10.305065155029297,
+                "4": -10.375377655029297,
+                "1": -10.523815155029297
+              },
+              {
+                "$": -0.5171622633934021,
+                "$.": -0.9077872633934021,
+                "$,": -8.946849822998047,
+                " $.": -10.954662322998047,
+                "**": -11.024974822998047
+              },
+              {
+                " boxes": -0.025610370561480522,
+                "?": -3.9787354469299316,
+                " if": -5.681860446929932,
+                " (": -7.025610446929932,
+                " **": -7.509985446929932
+              },
+              {
+                ".": -0.06535865366458893,
+                " based": -3.6278586387634277,
+                "?": -3.9716086387634277,
+                " if": -4.377858638763428,
+                " (": -6.455983638763428
+              },
+              {
+                "\n": -0.5225265622138977,
+                " However": -1.803776502609253,
+                "\n\n": -2.491276502609253,
+                " Wait": -2.741276502609253,
+                " *": -3.381901502609253
+              },
+              {
+                "3": -0.11749858409166336,
+                "   ": -2.2268736362457275,
+                "    \n": -6.101873397827148,
+                "*(": -8.500310897827148,
+                "   \n": -9.203435897827148
+              },
+              {
+                ".": -1.1920928955078125e-07,
+                ",": -16.9765625,
+                "\n": -17.46875,
+                ".**": -17.4921875,
+                ").": -17.53125
+              },
+              {
+                " ": -0.0026397404726594687,
+                " **": -7.5573272705078125,
+                "   ": -8.072952270507812,
+                "  ": -8.174514770507812,
+                "\n": -10.674514770507812
+              },
+              {
+                " **": -0.0008816407644189894,
+                " *": -9.14931869506836,
+                " ": -9.52431869506836,
+                " **\"": -9.80556869506836,
+                " Wait": -9.93838119506836
+              },
+              {
+                "Constraint": -1.2743028402328491,
+                "Fe": -1.4149278402328491,
+                "P": -2.1961779594421387,
+                "Ref": -2.4461779594421387,
+                "Verification": -3.0243029594421387
+              },
+              {
+                " Analysis": -0.33721017837524414,
+                " Check": -1.7278351783752441,
+                " Verification": -2.712210178375244,
+                " on": -4.274710178375244,
+                " Viol": -5.563772678375244
+              },
+              {
+                " (": -0.43416017293930054,
+                ":**": -1.1685352325439453,
+                " for": -3.5435352325439453,
+                " &": -4.606035232543945,
+                " and": -7.145097732543945
+              },
+              {
+                "The": -1.0815845727920532,
+                "P": -1.6597095727920532,
+                "8": -1.9878345727920532,
+                "Item": -2.3159594535827637,
+                "Bin": -3.5972094535827637
+              },
+              {
+                " \"": -0.6641079783439636,
+                " ": -1.1797330379486084,
+                " Trap": -2.2109830379486084,
+                " Bott": -3.8672330379486084,
+                " Trick": -5.101607799530029
+              },
+              {
+                "8": -0.9002743363380432,
+                "Trap": -1.8065242767333984,
+                "W": -2.6815242767333984,
+                "P": -2.8221492767333984,
+                "Tr": -2.9158992767333984
+              },
+              {
+                " kg": -0.07754216343164444,
+                "kg": -2.6244170665740967,
+                "0": -7.421292304992676,
+                "s": -7.913479804992676,
+                "-": -8.444729804992676
+              },
+              {
+                "\"": -0.03159702569246292,
+                " +": -4.969097137451172,
+                " Items": -5.312847137451172,
+                " Trap": -5.430034637451172,
+                " items": -5.531597137451172
+              },
+              {
+                " Items": -1.2317187786102295,
+                " items": -1.3567187786102295,
+                " Problem": -1.4504687786102295,
+                " Bott": -2.5754687786102295,
+                " Trap": -3.0754687786102295
+              },
+              {
+                "):**": -0.00022337326663546264,
+                " Problem": -10.890848159790039,
+                " are": -11.093973159790039,
+                " There": -11.211160659790039,
+                " and": -11.320535659790039
+              },
+              {
+                "\n": -0.9302595257759094,
+                " There": -0.9927595257759094,
+                " The": -1.8677594661712646,
+                " We": -3.1021344661712646,
+                " Let": -4.383384704589844
+              },
+              {
+                "   ": -3.98151132685598e-05,
+                "  ": -11.265665054321289,
+                "       ": -12.140665054321289,
+                "</think>": -12.304727554321289,
+                "    ": -12.640665054321289
+              },
+              {
+                " *": -0.04809959977865219,
+                " -": -3.3918495178222656,
+                " There": -5.563724517822266,
+                " The": -5.751224517822266,
+                " Let": -5.891849517822266
+              },
+              {
+                "  ": -0.0007826602668501437,
+                " There": -8.27422046661377,
+                " We": -8.85234546661377,
+                " Each": -9.17265796661377,
+                " The": -9.76640796661377
+              },
+              {
+                " There": -0.4584248661994934,
+                " The": -2.3490498065948486,
+                " We": -2.3802998065948486,
+                " An": -2.5365498065948486,
+                " Each": -3.1459248065948486
+              },
+              {
+                " are": -6.043728717486374e-05,
+                " is": -10.562560081481934,
+                " six": -11.218810081481934,
+                " ": -12.101622581481934,
+                " can": -12.781310081481934
+              },
+              {
+                " ": -0.41034165024757385,
+                " six": -1.0978416204452515,
+                " $": -6.894716739654541,
+                " only": -7.996279239654541,
+                " **": -8.027528762817383
+              },
+              {
+                "6": -0.001465914654545486,
+                "8": -6.782715797424316,
+                "1": -9.220215797424316,
+                "9": -9.673340797424316,
+                "3": -9.704590797424316
+              },
+              {
+                " items": -0.00031192207825370133,
+                " boxes": -8.859686851501465,
+                " heavy": -9.648749351501465,
+                " item": -10.640936851501465,
+                " weights": -11.258124351501465
+              },
+              {
+                " weighing": -0.130165696144104,
+                " of": -2.1145405769348145,
+                " that": -7.2239155769348145,
+                " weighting": -9.005166053771973,
+                " weigh": -9.067666053771973
+              },
+              {
+                " ": -5.531158603844233e-05,
+                " **": -10.593805313110352,
+                " exactly": -10.671930313110352,
+                " $": -12.250055313110352,
+                "8": -14.968805313110352
+              },
+              {
+                "8": -2.4795222998363897e-05,
+                "3": -11.906274795532227,
+                "2": -12.304712295532227,
+                "1": -12.585962295532227,
+                "5": -12.765649795532227
+              },
+              {
+                " kg": -1.2278482245164923e-05,
+                "kg": -12.125012397766113,
+                "0": -13.476574897766113,
+                " km": -13.492199897766113,
+                " k": -14.117199897766113
+              },
+              {
+                ".": -0.09407095611095428,
+                " each": -2.4221959114074707,
+                " ($": -7.109695911407471,
+                " and": -9.062821388244629,
+                " (": -9.875321388244629
+              },
+              {
+                "\n": -0.059266116470098495,
+                " Two": -3.8248910903930664,
+                " An": -4.293641090393066,
+                " Let": -4.496766090393066,
+                " Each": -5.574891090393066
+              },
+              {
+                "   ": -0.00027831498300656676,
+                "8": -10.02371597290039,
+                "       ": -10.26590347290039,
+                "4": -11.04715347290039,
+                "2": -11.76590347290039
+              },
+              {
+                " *": -6.425174069590867e-05,
+                " -": -11.0000638961792,
+                " An": -11.4375638961792,
+                " To": -11.7422513961792,
+                " A": -11.8672513961792
+              },
+              {
+                "  ": -0.000302745756926015,
+                "   ": -9.0549898147583,
+                " Two": -10.6174898147583,
+                " An": -11.0940523147583,
+                " Any": -11.3831148147583
+              },
+              {
+                " Two": -0.5090445876121521,
+                " An": -1.6184196472167969,
+                " Any": -2.868419647216797,
+                " A": -3.430919647216797,
+                " In": -3.696544647216797
+              },
+              {
+                " ": -0.0011297041783109307,
+                " items": -7.126129627227783,
+                " such": -8.407380104064941,
+                " $": -9.829255104064941,
+                " or": -11.399567604064941
+              },
+              {
+                "8": -0.00018010902567766607,
+                "5": -9.4376802444458,
+                "1": -10.2970552444458,
+                "3": -10.4376802444458,
+                "9": -11.3751802444458
+              },
+              {
+                " kg": -0.005185725167393684,
+                "-": -5.427060604095459,
+                "kg": -7.380185604095459,
+                "-k": -9.856748580932617,
+                "-item": -10.958311080932617
+              },
+              {
+                " items": -0.00014184899919200689,
+                " weights": -9.437642097473145,
+                " weigh": -10.218892097473145,
+                " boxes": -12.140767097473145,
+                " item": -12.367329597473145
+              },
+              {
+                " weigh": -0.18449805676937103,
+                " sum": -2.5126230716705322,
+                " (": -3.6219980716705322,
+                " ($": -3.8094980716705322,
+                " total": -4.481372833251953
+              },
+              {
+                " ": -0.053526706993579865,
+                " $": -2.9597766399383545,
+                " exactly": -8.256651878356934,
+                " only": -12.201964378356934,
+                " a": -12.780089378356934
+              },
+              {
+                "1": -4.887569048150908e-06,
+                "4": -13.500004768371582,
+                "8": -13.515629768371582,
+                "6": -13.937504768371582,
+                "2": -14.734379768371582
+              },
+              {
+                "6": -3.4689302992774174e-05,
+                "4": -11.09378433227539,
+                "2": -12.05472183227539,
+                "5": -12.41409683227539,
+                "7": -12.42972183227539
+              },
+              {
+                " kg": -7.188061863416806e-05,
+                ".": -10.75788402557373,
+                " g": -11.14850902557373,
+                "kg": -11.76569652557373,
+                " k": -12.20319652557373
+              },
+              {
+                ".": -0.2047884166240692,
+                ",": -1.7047884464263916,
+                ";": -6.7985382080078125,
+                " (": -7.0172882080078125,
+                " together": -7.7360382080078125
+              },
+              {
+                " Adding": -0.25217586755752563,
+                " They": -2.814675807952881,
+                " A": -2.814675807952881,
+                " The": -3.595925807952881,
+                " Only": -3.908425807952881
+              },
+              {
+                " any": -0.2356025129556656,
+                " a": -2.188727617263794,
+                " the": -3.407477617263794,
+                " another": -3.579352617263794,
+                " even": -3.907477617263794
+              },
+              {
+                " other": -0.15085473656654358,
+                " ": -2.1977298259735107,
+                " single": -4.150854587554932,
+                " remaining": -5.760229587554932,
+                " item": -5.869604587554932
+              },
+              {
+                " item": -0.028511499986052513,
+                " single": -4.3722615242004395,
+                " ": -4.7160115242004395,
+                " positive": -6.4347615242004395,
+                " minimum": -6.8566365242004395
+              },
+              {
+                " (": -0.10649287700653076,
+                " ($": -3.2158679962158203,
+                " to": -4.24711799621582,
+                " exceeds": -4.65336799621582,
+                ":": -4.95024299621582
+              },
+              {
+                "minimum": -0.43513223528862,
+                "min": -1.2163822650909424,
+                "3": -3.5757572650909424,
+                "even": -4.122632026672363,
+                "sm": -4.966382026672363
+              },
+              {
+                " ": -0.03657739236950874,
+                " weight": -3.3334524631500244,
+                " $": -10.013139724731445,
+                " other": -10.614702224731445,
+                " remaining": -10.724077224731445
+              },
+              {
+                "3": -0.00029237763374112546,
+                "5": -8.594042778015137,
+                "1": -9.703417778015137,
+                "2": -10.547167778015137,
+                "0": -11.062792778015137
+              },
+              {
+                " kg": -0.0004315636761020869,
+                " or": -7.875431537628174,
+                "kg": -10.625432014465332,
+                ",": -11.742619514465332,
+                ")": -12.305119514465332
+              },
+              {
+                ")": -0.013182039372622967,
+                " or": -4.450682163238525,
+                ",": -6.981932163238525,
+                " results": -8.700681686401367,
+                " +": -9.552244186401367
+              },
+              {
+                " results": -0.475437730550766,
+                " exceeds": -1.6941877603530884,
+                " would": -1.9285627603530884,
+                " makes": -3.787937641143799,
+                " to": -4.022312641143799
+              },
+              {
+                " in": -5.614599649561569e-05,
+                " at": -11.304743766784668,
+                " $": -11.414118766784668,
+                " to": -11.656306266784668,
+                " for": -13.164118766784668
+              },
+              {
+                " $": -0.0830875113606453,
+                " ": -2.56746244430542,
+                " at": -6.59871244430542,
+                " a": -6.59871244430542,
+                " $\\": -9.161212921142578
+              },
+              {
+                "1": -8.511182386428118e-05,
+                ">": -9.46883487701416,
+                "3": -12.75789737701416,
+                "8": -12.92195987701416,
+                "9": -13.96102237701416
+              },
+              {
+                "6": -0.00011109688057331368,
+                "9": -9.578235626220703,
+                "7": -11.140735626220703,
+                "8": -11.640735626220703,
+                "5": -12.414173126220703
+              },
+              {
+                " +": -0.033679429441690445,
+                "+": -3.408679485321045,
+                " >": -10.564929008483887,
+                " <": -12.564929008483887,
+                " \\": -13.041491508483887
+              },
+              {
+                " ": -6.079655577195808e-06,
+                " \\": -13.398443222045898,
+                " min": -14.484380722045898,
+                " a": -14.546880722045898,
+                " k": -14.703130722045898
+              },
+              {
+                "3": -2.098061486321967e-05,
+                "1": -12.273458480834961,
+                "8": -12.656270980834961,
+                "2": -12.656270980834961,
+                "9": -12.898458480834961
+              },
+              {
+                " =": -3.98151132685598e-05,
+                " +": -10.546915054321289,
+                " >": -11.703165054321289,
+                " \\": -13.398477554321289,
+                "2": -13.617227554321289
+              },
+              {
+                " ": -1.9073469275099342e-06,
+                " >": -13.585939407348633,
+                " \\": -15.875001907348633,
+                " $": -16.125001907348633,
+                " <": -16.468751907348633
+              }
+            ]
+          },
+          "finish_reason": "length",
+          "stop_reason": null,
+          "token_ids": [
+            332,
+            19,
+            332,
+            271,
+            332,
+            9658,
+            2325,
+            64700,
+            198,
+            16,
+            13,
+            220,
+            2972,
+            7354,
+            16030,
+            71690,
+            64700,
+            561,
+            2702,
+            4528,
+            314,
+            660,
+            3470,
+            369,
+            4771,
+            16,
+            17,
+            1088,
+            14695,
+            220,
+            18,
+            8,
+            478,
+            318,
+            24,
+            1088,
+            14695,
+            220,
+            20,
+            8,
+            478,
+            318,
+            21,
+            1088,
+            14695,
+            220,
+            23,
+            8,
+            283,
+            220,
+            18,
+            21,
+            478,
+            220,
+            19,
+            20,
+            478,
+            220,
+            19,
+            23,
+            283,
+            220,
+            16,
+            17,
+            24,
+            3,
+            20332,
+            13,
+            198,
+            17,
+            13,
+            220,
+            2972,
+            760,
+            87643,
+            26644,
+            35945,
+            64700,
+            8439,
+            1754,
+            3618,
+            9687,
+            506,
+            1379,
+            220,
+            17,
+            15,
+            20332,
+            11,
+            279,
+            7776,
+            1324,
+            314,
+            14273,
+            2483,
+            369,
+            56014,
+            75,
+            21378,
+            220,
+            16,
+            17,
+            24,
+            593,
+            220,
+            17,
+            15,
+            1088,
+            81,
+            21378,
+            283,
+            1088,
+            75,
+            21378,
+            220,
+            21,
+            13,
+            19,
+            20,
+            1088,
+            81,
+            21378,
+            283,
+            220,
+            22,
+            3,
+            14273,
+            13,
+            198,
+            18,
+            13,
+            220,
+            2972,
+            17355,
+            17775,
+            318,
+            760,
+            328,
+            23,
+            20332,
+            1,
+            18821,
+            188912,
+            198,
+            262,
+            348,
+            256,
+            2532,
+            513,
+            220,
+            21,
+            3470,
+            45164,
+            220,
+            23,
+            20332,
+            13,
+            198,
+            262,
+            348,
+            256,
+            8771,
+            220,
+            23,
+            20332,
+            3470,
+            17008,
+            220,
+            16,
+            21,
+            20332,
+            13,
+            29381,
+            866,
+            975,
+            1455,
+            318,
+            36733,
+            220,
+            18,
+            20332,
+            8,
+            2961,
+            303,
+            393,
+            16,
+            21,
+            478,
+            220,
+            18,
+            283,
+            220
+          ],
+          "prompt_logprobs": null,
+          "prompt_token_ids": [
+            248045,
+            846,
+            198,
+            4212,
+            17008,
+            220,
+            18,
+            20332,
+            11,
+            220,
+            20,
+            20332,
+            11,
+            321,
+            220,
+            23,
+            20332,
+            13,
+            2532,
+            513,
+            220,
+            16,
+            17,
+            11,
+            220,
+            24,
+            11,
+            321,
+            220,
+            21,
+            3470,
+            15119,
+            13,
+            357,
+            3618,
+            9687,
+            506,
+            1379,
+            220,
+            17,
+            15,
+            20332,
+            13,
+            3437,
+            369,
+            279,
+            7776,
+            1324,
+            314,
+            14273,
+            30,
+            20052,
+            279,
+            1324,
+            1118,
+            11,
+            1179,
+            264,
+            61446,
+            40064,
+            13,
+            248046,
+            198,
+            248045,
+            74455,
+            198,
+            248068,
+            271,
+            248069,
+            271
+          ],
+          "routed_experts": null
+        }
+      ],
+      "service_tier": null,
+      "system_fingerprint": "vllm-0.1.dev20693+g1a7243dfc.d20260902-tp4-ep-fac20fc3",
+      "usage": {
+        "prompt_tokens": 70,
+        "total_tokens": 262,
+        "completion_tokens": 192,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": null,
+          "multimodal_tokens": null
+        },
+        "completion_tokens_details": null
+      },
+      "kv_transfer_params": null,
+      "ec_transfer_params": null,
+      "metrics": {
+        "time_to_first_token_ms": 2482.79112399905,
+        "generation_time_ms": 3599.580251997395,
+        "queue_time_ms": 0.005791000148747116,
+        "mean_itl_ms": 18.845969905745523,
+        "tokens_per_second": 31.56663546683642,
+        "speculative_decoding": {
+          "mean_acceptance_length": 2.757142857142857,
+          "draft_acceptance_rate": 0.8785714285714286,
+          "acceptance_histogram": [
+            4,
+            9,
+            57
+          ],
+          "num_spec_steps": 70,
+          "num_accepted_draft_tokens": 123,
+          "num_draft_tokens": 140,
+          "num_spec_tokens": 2,
+          "per_step_accepted": null,
+          "per_step_drafted": null
+        }
+      }
+    }
+  },
+  {
+    "name": "binary_search",
+    "question": "Give the worst-case time complexity of binary search on a sorted array with n elements. Answer concisely.",
+    "smoke_pass": true,
+    "scoring_revision": 2,
+    "response": {
+      "id": "cmpl-9151a549d09d2d83",
+      "object": "text_completion",
+      "created": 1789711204,
+      "model": "qwen38-flash-next",
+      "choices": [
+        {
+          "index": 0,
+          "text": "O(log n)",
+          "logprobs": {
+            "text_offset": [
+              0,
+              1,
+              5,
+              7,
+              8
+            ],
+            "token_logprobs": [
+              -0.29972174763679504,
+              -0.012167868204414845,
+              -0.0005834784242324531,
+              -0.0006934384000487626,
+              -0.0011725700460374355
+            ],
+            "tokens": [
+              "O",
+              "(log",
+              " n",
+              ")",
+              "<|im_end|>"
+            ],
+            "top_logprobs": [
+              {
+                "O": -0.29972174763679504,
+                "$": -1.9872217178344727,
+                "The": -3.0028467178344727,
+                "**": -3.2997217178344727,
+                "W": -4.237221717834473
+              },
+              {
+                "(log": -0.012167868204414845,
+                "(\\": -5.027792930603027,
+                "(n": -5.559042930603027,
+                "(": -6.934042930603027,
+                "($": -8.090292930603027
+              },
+              {
+                " n": -0.0005834784242324531,
+                "\u2082": -8.23495864868164,
+                " N": -8.99277114868164,
+                " log": -9.88339614868164,
+                "": -10.78183364868164
+              },
+              {
+                ")": -0.0006934384000487626,
+                ").": -8.172568321228027,
+                "),": -8.625693321228027,
+                ")**": -9.047568321228027,
+                "<|im_end|>": -9.805380821228027
+              },
+              {
+                "<|im_end|>": -0.0011725700460374355,
+                " or": -7.8136725425720215,
+                " (": -8.09492301940918,
+                "\n\n": -8.43086051940918,
+                "\n": -9.93086051940918
+              }
+            ]
+          },
+          "finish_reason": "stop",
+          "stop_reason": null,
+          "token_ids": [
+            46,
+            12171,
+            307,
+            8,
+            248046
+          ],
+          "prompt_logprobs": null,
+          "prompt_token_ids": [
+            248045,
+            846,
+            198,
+            33963,
+            279,
+            11447,
+            37208,
+            854,
+            22373,
+            314,
+            7620,
+            2624,
+            383,
+            264,
+            10300,
+            1287,
+            440,
+            307,
+            5255,
+            13,
+            21134,
+            3413,
+            284,
+            943,
+            13,
+            248046,
+            198,
+            248045,
+            74455,
+            198,
+            248068,
+            271,
+            248069,
+            271
+          ],
+          "routed_experts": null
+        }
+      ],
+      "service_tier": null,
+      "system_fingerprint": "vllm-0.1.dev20693+g1a7243dfc.d20260902-tp4-ep-fac20fc3",
+      "usage": {
+        "prompt_tokens": 34,
+        "total_tokens": 39,
+        "completion_tokens": 5,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": null,
+          "multimodal_tokens": null
+        },
+        "completion_tokens_details": null
+      },
+      "kv_transfer_params": null,
+      "ec_transfer_params": null,
+      "metrics": {
+        "time_to_first_token_ms": 517.835919999925,
+        "generation_time_ms": 171.74814200552646,
+        "queue_time_ms": 0.011579999409150332,
+        "mean_itl_ms": 42.937035501381615,
+        "tokens_per_second": 7.250747625255402,
+        "speculative_decoding": {
+          "mean_acceptance_length": 2.0,
+          "draft_acceptance_rate": 0.5,
+          "acceptance_histogram": [
+            1,
+            0,
+            1
+          ],
+          "num_spec_steps": 2,
+          "num_accepted_draft_tokens": 2,
+          "num_draft_tokens": 4,
+          "num_spec_tokens": 2,
+          "per_step_accepted": null,
+          "per_step_drafted": null
+        }
+      }
+    }
+  }
+]

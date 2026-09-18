@@ -1,0 +1,8 @@
+{"bytes": 5120, "correct": true, "impl": "rccl", "iqr_us": 4.04, "kind": "allreduce_latency", "median_us": 72.16, "min_us": 65.76, "phase": "phase2_collectives", "repeats": 100, "world": 4}
+{"bytes": 20480, "correct": true, "impl": "rccl", "iqr_us": 9.48, "kind": "allreduce_latency", "median_us": 106.96, "min_us": 97.92, "phase": "phase2_collectives", "repeats": 100, "world": 4}
+{"bytes": 81920, "correct": true, "impl": "rccl", "iqr_us": 0.96, "kind": "allreduce_latency", "median_us": 100.0, "min_us": 98.56, "phase": "phase2_collectives", "repeats": 100, "world": 4}
+{"bytes": 163840, "correct": true, "impl": "rccl", "iqr_us": 1.8, "kind": "allreduce_latency", "median_us": 108.96, "min_us": 107.04, "phase": "phase2_collectives", "repeats": 100, "world": 4}
+{"bytes": 327680, "correct": true, "impl": "rccl", "iqr_us": 1.8, "kind": "allreduce_latency", "median_us": 118.72, "min_us": 116.48, "phase": "phase2_collectives", "repeats": 100, "world": 4}
+{"bytes": 655360, "correct": true, "impl": "rccl", "iqr_us": 1.8, "kind": "allreduce_latency", "median_us": 146.08, "min_us": 143.52, "phase": "phase2_collectives", "repeats": 100, "world": 4}
+{"bytes": 1310720, "correct": true, "impl": "rccl", "iqr_us": 1.92, "kind": "allreduce_latency", "median_us": 193.12, "min_us": 189.6, "phase": "phase2_collectives", "repeats": 100, "world": 4}
+{"backend": "rccl", "hip": "7.14.60850", "impl": "rccl", "kind": "summary", "phase": "phase2_collectives", "torch": "2.13.0+gfx906.20260802001858", "world": 4}

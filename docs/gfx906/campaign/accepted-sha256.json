@@ -1,0 +1,18 @@
+{
+  "deterministic_greedy_output": {
+    "algorithm": "sha256 over the full greedy output of the fixed TP4 gate prompt",
+    "reference": "0128852903291e32",
+    "note": "16-char prefix as recorded in the decision log; the full digest lives in the tp4_gate artifacts"
+  },
+  "moe_prefill_tiles": {
+    "path": "E=128,N=640,device_name=AMD_Radeon_Graphics,dtype=int4_w4a16.json",
+    "sha256": "99c732928e568e4313917f9e5f92cd8aa555c9bb6542a7efc734926ab93f8feb",
+    "role": "prefill MoE tile configuration (VLLM_TUNED_CONFIG_FOLDER)"
+  },
+  "patched_sources": {
+    "vllm/model_executor/layers/rdna_dense_int8.py": "a3ae2e63fbde366895bc544299f3f08bffc88f7b8596fda368fb6392137af43e",
+    "vllm/model_executor/layers/fused_moe/router/fused_topk_router.py": "e1c01eb97df6a4874505054a268bdaf15fef2a8ba48f87c5d87c9732a17df86f",
+    "vllm/model_executor/layers/fused_moe/router/mi50_topk.py": "455a23fc5c1b07f2ba86a93a04511cad94dee88be997e5085abce3800afc50a0"
+  },
+  "note": "Full sha256 digests come from tools/review_20260918/final-state.json. The source tree (vllm/) is a separate repo and is not committed here."
+}

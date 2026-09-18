@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+
+# Editor / OS
+.DS_Store
+*.swp
+*.stackdump
+
+# Local scratch (never commit)
+scratch/
+*.tmp
+
+# vllm/ is the port tree (separate repo, branch mi50/qwen38-flash-next-gfx906)
+# based on leapdragon/vllm-rdna2-qwen @ rdna2/qwen38-flash-next (D033)
+# its commit is recorded in results rows via vllm_commit (env fingerprint)
+vllm/
+
+# Backups and bundled evidence (extracted copies live in data/ and results/)
+# (the backups are named *.bak-YYYYMMDD-HHMM, hence the trailing wildcard)
+*.bak
+*.bak*
+*.tar.gz
+
+# External working notes from the review (canonical copies are the campaign/ files + the
+# MI50_*_REVIEW*.md / TUNING-20260918.md handoffs)
+docs/i-x20/

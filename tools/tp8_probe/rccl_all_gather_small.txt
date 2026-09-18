@@ -1,0 +1,28 @@
+# nThread 1 nGpus 4 minBytes 1024 maxBytes 1048576 step: 2(factor) warmup iters: 100 iters: 1000 agg iters: 1 validation: 1 graph: 0
+#
+rccl-tests: Version :+
+# Using devices
+#  Rank  0 Group  0 Pid 140202 on <container> device  0 [0000:a7:00] AMD Radeon Graphics
+#  Rank  1 Group  0 Pid 140202 on <container> device  1 [0000:ac:00] AMD Radeon Graphics
+#  Rank  2 Group  0 Pid 140202 on <container> device  2 [0000:b2:00] AMD Radeon Graphics
+#  Rank  3 Group  0 Pid 140202 on <container> device  3 [0000:b5:00] AMD Radeon Graphics
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+        1024            64     float    none      -1    30.81    0.03    0.02      0    27.03    0.04    0.03      0
+        2048           128     float    none      -1    27.07    0.08    0.06      0    27.35    0.07    0.06      0
+        4096           256     float    none      -1    27.49    0.15    0.11      0    27.88    0.15    0.11      0
+        8192           512     float    none      -1    27.25    0.30    0.23      0    27.43    0.30    0.22      0
+       16384          1024     float    none      -1    27.96    0.59    0.44      0    27.83    0.59    0.44      0
+       32768          2048     float    none      -1    30.64    1.07    0.80      0    30.45    1.08    0.81      0
+       65536          4096     float    none      -1    31.13    2.11    1.58      0    30.79    2.13    1.60      0
+      131072          8192     float    none      -1    32.57    4.02    3.02      0    32.21    4.07    3.05      0
+      262144         16384     float    none      -1    36.26    7.23    5.42      0    35.85    7.31    5.48      0
+      524288         32768     float    none      -1    48.23   10.87    8.15      0    47.44   11.05    8.29      0
+     1048576         65536     float    none      -1    68.71   15.26   11.45      0    67.07   15.63   11.73      0
+# Errors with asterisks indicate errors that have exceeded the maximum threshold.
+# Out of bounds values : 0 OK
+# Avg bus bandwidth    : 2.86779 
+#
+

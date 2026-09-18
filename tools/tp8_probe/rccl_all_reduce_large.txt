@@ -1,0 +1,26 @@
+# nThread 1 nGpus 4 minBytes 1048576 maxBytes 268435456 step: 2(factor) warmup iters: 20 iters: 200 agg iters: 1 validation: 1 graph: 0
+#
+rccl-tests: Version :+
+# Using devices
+#  Rank  0 Group  0 Pid 140151 on <container> device  0 [0000:a7:00] AMD Radeon Graphics
+#  Rank  1 Group  0 Pid 140151 on <container> device  1 [0000:ac:00] AMD Radeon Graphics
+#  Rank  2 Group  0 Pid 140151 on <container> device  2 [0000:b2:00] AMD Radeon Graphics
+#  Rank  3 Group  0 Pid 140151 on <container> device  3 [0000:b5:00] AMD Radeon Graphics
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+     1048576        262144     float     sum      -1    128.7    8.14   12.22      0    119.3    8.79   13.18      0
+     2097152        524288     float     sum      -1    191.9   10.93   16.39      0    191.1   10.98   16.46      0
+     4194304       1048576     float     sum      -1    333.7   12.57   18.85      0    334.1   12.55   18.83      0
+     8388608       2097152     float     sum      -1    621.7   13.49   20.24      0    621.0   13.51   20.26      0
+    16777216       4194304     float     sum      -1   1195.8   14.03   21.04      0   1196.9   14.02   21.03      0
+    33554432       8388608     float     sum      -1   2404.5   13.95   20.93      0   2412.7   13.91   20.86      0
+    67108864      16777216     float     sum      -1   4746.4   14.14   21.21      0   4774.2   14.06   21.08      0
+   134217728      33554432     float     sum      -1   9469.6   14.17   21.26      0   9495.6   14.13   21.20      0
+   268435456      67108864     float     sum      -1    18916   14.19   21.29      0    18925   14.18   21.28      0
+# Errors with asterisks indicate errors that have exceeded the maximum threshold.
+# Out of bounds values : 0 OK
+# Avg bus bandwidth    : 19.3121 
+#
+

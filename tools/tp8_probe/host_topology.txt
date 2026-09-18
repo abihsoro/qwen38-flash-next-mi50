@@ -1,0 +1,6 @@
+# host topology — redacted summary (raw lspci -tv / lspci -nn dump removed)
+
+- 4x Vega 20 GPUs behind a Broadcom/LSI PEX880xx Gen4 switch, under one root complex.
+- Spare downstream switch ports exist for four more cards on the same fabric.
+- The host itself has no ROCm stack installed; the GPUs are passed through to the container.
+- Raw output removed: it contained the full PCI bus tree, bus addresses and device IDs.

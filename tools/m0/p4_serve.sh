@@ -1,0 +1,41 @@
+#!/bin/bash
+# p4_serve.sh — TP4 graphs-no-compile serve WITH the torch profiler enabled.
+#
+# Same config as the D142 measurement (TP4+EP, MTP=0, fp16, no offload, graphs-no-compile,
+# PLE int4 sidecar, VLLM_RDNA_AR=1 so the live custom AR is in the profile) plus
+# VLLM_TORCH_PROFILER_DIR, which makes the API server expose POST /start_profile and
+# /stop_profile. This is D127's "viable path 1": profile inside the NORMAL multiprocessing
+# engine rather than an in-process engine (which double-builds the GPU engine and OOMs).
+export HOME=<workdir>
+export ROCM_PATH=/opt/rocm
+export PYTHONDONTWRITEBYTECODE=1
+export PYTHONPATH=<workdir>/vllm-w:<workdir>
+# LD_LIBRARY_PATH deliberately UNSET (TRAPS #11: it hides the GPUs here)
+export ROCR_VISIBLE_DEVICES=0,1,2,3
+export HSA_NO_SCRATCH_RECLAIM=1
+export VLLM_ROCM_USE_AITER=0
+export TORCH_BLAS_PREFER_HIPBLASLT=0
+export FLASH_ATTENTION_TRITON_AMD_ENABLE=TRUE
+export PYTORCH_TUNABLEOP_ENABLED=0
+export VLLM_PLE_CPU_OFFLOAD=1
+export VLLM_PLE_QUANT_DIR=<models>/qwen38-flash-next-ple/ples_int4
+export VLLM_PLE_OFFLOAD_READY_TIMEOUT=3600
+export VLLM_RDNA_DENSE_INT8=1
+export VLLM_RDNA_AR=1
+export VLLM_DISABLE_COMPILE_CACHE=1
+export VLLM_ROCM_USE_SKINNY_GEMM=1
+# --- profiler: enables /start_profile and /stop_profile on the API server ---
+export VLLM_TORCH_PROFILER_DIR=<workdir>/tprof
+mkdir -p <workdir>/tprof
+rm -rf <workdir>/tprof/* 2>/dev/null   # NOTE: traces are *.json.gz; '*.json' left stale files behind
+cd <workdir>
+
+exec <home>/gfx906-venv/bin/python3 -m vllm.entrypoints.openai.api_server \
+  --model <models>/models/qwen38-flash-next-awq --served-model-name qwen38-flash-next \
+  --dtype float16 --tensor-parallel-size 4 --enable-expert-parallel \
+  --max-model-len 2048 --gpu-memory-utilization 0.90 \
+  --max-num-seqs 4 --max-num-batched-tokens 1024 \
+  -cc.mode=none -cc.cudagraph_mode=full \
+  --language-model-only --enable-prefix-caching \
+  --profiler-config '{"profiler":"torch","torch_profiler_dir":"<workdir>/tprof","torch_profiler_with_stack":true}' \
+  --host 0.0.0.0 --port 8002

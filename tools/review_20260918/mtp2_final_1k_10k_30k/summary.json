@@ -1,0 +1,141 @@
+[
+  {
+    "kind": "prose",
+    "prompt_tokens": 1000,
+    "phase": "cold",
+    "n": 3,
+    "hashes": [
+      "2d7c6858cd14c3b4fcdd79d33ccb13ac4a962119333b053855361ad362601bcb"
+    ],
+    "cached_tokens": [
+      {
+        "cached_tokens": 0
+      },
+      {
+        "cached_tokens": 0
+      },
+      {
+        "cached_tokens": 0
+      }
+    ],
+    "server_ttft_s": 1.557889964999049,
+    "server_ttft_s_range": [
+      1.5570756180022727,
+      1.56253147800453
+    ],
+    "effective_pp_tps": 641.893858017508,
+    "effective_pp_tps_range": [
+      639.9871068690885,
+      642.2295670411945
+    ],
+    "decode_tps": 60.338282475905324,
+    "decode_tps_range": [
+      60.116616788351294,
+      60.354645704077356
+    ],
+    "client_decode_tps": 60.368499885506424,
+    "client_decode_tps_range": [
+      60.15052618993334,
+      60.378031839680716
+    ],
+    "request_tps": 34.8540177871816,
+    "request_tps_range": [
+      34.82622339225471,
+      34.911840137215016
+    ]
+  },
+  {
+    "kind": "prose",
+    "prompt_tokens": 10000,
+    "phase": "cold",
+    "n": 3,
+    "hashes": [
+      "5ed5ea8356ca51fc879ff9dfa0a3d87f58d77a114cb7fb9875eeba57fd57fc69",
+      "683cf4c06810377ec7caf9521e86f6a8418ffa11a368923654accf62a38af91e",
+      "e06512b1dd66744a67bf94fb01cdd89ee9eb47bbed851a43b0ef57a99a8522dc"
+    ],
+    "cached_tokens": [
+      {
+        "cached_tokens": 0
+      },
+      {
+        "cached_tokens": 0
+      },
+      {
+        "cached_tokens": 0
+      }
+    ],
+    "server_ttft_s": 12.392589693001355,
+    "server_ttft_s_range": [
+      12.375256467996223,
+      12.414379385001666
+    ],
+    "effective_pp_tps": 806.933840926521,
+    "effective_pp_tps_range": [
+      805.5175123841809,
+      808.0640612064163
+    ],
+    "decode_tps": 61.221085704720586,
+    "decode_tps_range": [
+      39.021475349476916,
+      65.3486374429034
+    ],
+    "client_decode_tps": 61.52612408589812,
+    "client_decode_tps_range": [
+      39.144701935544504,
+      65.68682716192093
+    ],
+    "request_tps": 8.846971853304813,
+    "request_tps_range": [
+      8.17539176879612,
+      8.909277826256021
+    ]
+  },
+  {
+    "kind": "prose",
+    "prompt_tokens": 30000,
+    "phase": "cold",
+    "n": 3,
+    "hashes": [
+      "8fb111d2d62f48d1139d74be82bfe70a2085d2d844b8b6934209ddd87b7dc369",
+      "c62090e79dd07b52e0b08a36b2bd4cbf0ac52e709c4d69a15698fe44b6a03b93",
+      "dc890f2200448d1d1e4fb1102499c332faf39cdafb16e7f741d8a41947a78489"
+    ],
+    "cached_tokens": [
+      {
+        "cached_tokens": 0
+      },
+      {
+        "cached_tokens": 0
+      },
+      {
+        "cached_tokens": 0
+      }
+    ],
+    "server_ttft_s": 37.26289492000069,
+    "server_ttft_s_range": [
+      37.21397795899975,
+      37.66909771099745
+    ],
+    "effective_pp_tps": 805.0904274723335,
+    "effective_pp_tps_range": [
+      796.4087759723943,
+      806.1487012501673
+    ],
+    "decode_tps": 57.33668765296458,
+    "decode_tps_range": [
+      56.99600471205898,
+      61.834011725237154
+    ],
+    "client_decode_tps": 58.114774728007006,
+    "client_decode_tps_range": [
+      57.76388802190001,
+      62.74107771269077
+    ],
+    "request_tps": 3.243735825349832,
+    "request_tps_range": [
+      3.207795230228952,
+      3.2540733446666072
+    ]
+  }
+]

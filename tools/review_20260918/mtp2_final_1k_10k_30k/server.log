@@ -1,0 +1,650 @@
+<workdir>/vllm-w/vllm/entrypoints/openai/api_server.py:24: DeprecationWarning: `vllm.entrypoints.openai.api_server` is deprecated and will likely beunsupported in a future version. Use the corresponding function from `vllm.entrypoints.launchers` instead.
+  warnings.warn(
+<workdir>/vllm-w/vllm/entrypoints/openai/api_server.py:51: DeprecationWarning: The `python -m vllm.entrypoints.openai.api_server` command is deprecated and may be removed in a future release. Please use `vllm server` instead.
+  warnings.warn(
+(APIServer pid=<pid>) INFO 09-18 05:50:26 [api_utils.py:347] 
+(APIServer pid=<pid>) INFO 09-18 05:50:26 [api_utils.py:347]        █     █     █▄   ▄█
+(APIServer pid=<pid>) INFO 09-18 05:50:26 [api_utils.py:347]  ▄▄ ▄█ █     █     █ ▀▄▀ █  version 0.1.dev20693+g1a7243dfc.d20260902
+(APIServer pid=<pid>) INFO 09-18 05:50:26 [api_utils.py:347]   █▄█▀ █     █     █     █  model   <models>/models/qwen38-flash-next-awq
+(APIServer pid=<pid>) INFO 09-18 05:50:26 [api_utils.py:347]    ▀▀  ▀▀▀▀▀ ▀▀▀▀▀ ▀     ▀
+(APIServer pid=<pid>) INFO 09-18 05:50:26 [api_utils.py:347] 
+(APIServer pid=<pid>) INFO 09-18 05:50:26 [api_utils.py:286] non-default args: {'enable_prompt_tokens_details': True, 'enable_per_request_metrics': True, 'host': '0.0.0.0', 'port': 8002, 'model': '<models>/models/qwen38-flash-next-awq', 'dtype': 'float16', 'max_model_len': 32768, 'served_model_name': ['qwen38-flash-next'], 'tensor_parallel_size': 4, 'enable_expert_parallel': True, 'gpu_memory_utilization': 0.9, 'enable_prefix_caching': True, 'language_model_only': True, 'per_request_spec_decode_metrics': 'summary', 'max_num_batched_tokens': 2048, 'max_num_seqs': 4, 'speculative_config': {'method': 'mtp', 'num_speculative_tokens': 2}, 'compilation_config': {'mode': <CompilationMode.NONE: 0>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': [], 'ir_enable_torch_wrap': None, 'splitting_ops': None, 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': None, 'compile_ranges_endpoints': None, 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL: 2>, 'cudagraph_num_of_warmups': 0, 'cudagraph_capture_sizes': None, 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': None, 'pass_config': {}, 'max_cudagraph_capture_size': None, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': None, 'static_all_moe_layers': []}}
+(APIServer pid=<pid>) WARNING 09-18 05:50:26 [envs.py:2285] Unknown vLLM environment variable detected: VLLM_RDNA_AR_BLOCKS
+(APIServer pid=<pid>) WARNING 09-18 05:50:26 [envs.py:2285] Unknown vLLM environment variable detected: VLLM_MI50_TOPK
+(APIServer pid=<pid>) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=<pid>) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=<pid>) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=<pid>) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=<pid>) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=<pid>) INFO 09-18 05:50:26 [model.py:684] Resolved architecture: Qwen4ExpForConditionalGeneration
+(APIServer pid=<pid>) WARNING 09-18 05:50:26 [model.py:2355] Casting torch.bfloat16 to torch.float16.
+(APIServer pid=<pid>) INFO 09-18 05:50:26 [model.py:2021] Using max model len 32768
+(APIServer pid=<pid>) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=<pid>) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=<pid>) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=<pid>) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=<pid>) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=<pid>) INFO 09-18 05:50:29 [registry.py:141] All limits of multimodal modalities supported by the model are set to 0, running in text-only mode.
+(APIServer pid=<pid>) INFO 09-18 05:50:29 [model.py:887] Disabled mm_prefix attention mode because multimodal inputs are configuration-disabled. Attention backends without mm_prefix support may now be selected.
+(APIServer pid=<pid>) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=<pid>) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=<pid>) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=<pid>) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=<pid>) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=<pid>) INFO 09-18 05:50:29 [model.py:684] Resolved architecture: Qwen4ExpMTP
+(APIServer pid=<pid>) WARNING 09-18 05:50:29 [model.py:2355] Casting torch.bfloat16 to torch.float16.
+(APIServer pid=<pid>) INFO 09-18 05:50:29 [model.py:2021] Using max model len 262144
+(APIServer pid=<pid>) WARNING 09-18 05:50:29 [speculative.py:1318] Enabling num_speculative_tokens > 1 will run multiple times of forward on same MTP layer,which may result in lower acceptance rate
+(APIServer pid=<pid>) INFO 09-18 05:50:29 [speculative.py:1586] Overriding draft model max model len from 262144 to 32768
+(APIServer pid=<pid>) INFO 09-18 05:50:29 [config.py:625] Mamba cache mode is set to 'align' for Qwen4ExpForConditionalGeneration by default when prefix caching is enabled
+(APIServer pid=<pid>) WARNING 09-18 05:50:29 [vllm.py:1404] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+(APIServer pid=<pid>) INFO 09-18 05:50:29 [kernel.py:369] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+(APIServer pid=<pid>) WARNING 09-18 05:50:29 [vllm.py:1922] max_num_scheduled_tokens is set to 2048 based on the speculative decoding settings. This may lead to suboptimal performance. Consider increasing max_num_batched_tokens to accommodate the additional draft token slots, or decrease num_speculative_tokens.
+(APIServer pid=<pid>) INFO 09-18 05:50:29 [compilation.py:329] Enabled custom fusions: norm_quant, act_quant
+(EngineCore pid=107821) INFO 09-18 05:50:48 [core.py:123] Initializing a V1 LLM engine (v0.1.dev20693+g1a7243dfc.d20260902) with config: model='<models>/models/qwen38-flash-next-awq', speculative_config=SpeculativeConfig(method='mtp', model='<models>/models/qwen38-flash-next-awq', num_spec_tokens=2), tokenizer='<models>/models/qwen38-flash-next-awq', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.float16, max_seq_len=32768, download_dir=None, load_format=auto, tensor_parallel_size=4, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=True, quantization=compressed-tensors, quantization_config=None, enforce_eager=False, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, per_request_spec_decode_metrics='summary', kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False, jit_monitor_mode='warn', jit_monitor_verbose=False), seed=0, served_model_name=qwen38-flash-next, enable_prefix_caching=True, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.NONE: 0>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['+sparse_attn_indexer', 'all'], 'ir_enable_torch_wrap': False, 'splitting_ops': [], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [], 'compile_ranges_endpoints': [<bus>], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL: 2>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1, 2, 3, 4, 6, 8, 12, 16, 24], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': True, 'fuse_act_quant': True, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'enable_qk_norm_rope_fusion': False, 'fuse_rope_kvcache_cat_mla': False, 'fuse_act_padding': False, 'fuse_qk_norm_rope_kvcache': False}, 'max_cudagraph_capture_size': 24, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native']), enable_flashinfer_autotune=True, enable_cutedsl_warmup=True, enable_jit_warmup=True, enable_bf16x3_router_gemm=False, moe_backend='auto', linear_backend='auto')
+(EngineCore pid=107821) INFO 09-18 05:50:48 [multiproc_executor.py:153] DP group leader: node_rank=0, node_rank_within_dp=0, master_addr=127.0.0.1, mq_connect_ip=<container-ip> (local), world_size=4, local_world_size=4
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+INFO 09-18 05:51:04 [registry.py:141] All limits of multimodal modalities supported by the model are set to 0, running in text-only mode.
+INFO 09-18 05:51:04 [registry.py:141] All limits of multimodal modalities supported by the model are set to 0, running in text-only mode.
+INFO 09-18 05:51:04 [registry.py:141] All limits of multimodal modalities supported by the model are set to 0, running in text-only mode.
+INFO 09-18 05:51:04 [registry.py:141] All limits of multimodal modalities supported by the model are set to 0, running in text-only mode.
+(Worker pid=107990) INFO 09-18 05:51:04 [parallel_state.py:1638] world_size=4 rank=2 local_rank=2 distributed_init_method=file:///tmp/vllm_dist_afa647d73b11430cac07b7e906f19d48 backend=nccl
+(Worker pid=107991) INFO 09-18 05:51:04 [parallel_state.py:1638] world_size=4 rank=3 local_rank=3 distributed_init_method=file:///tmp/vllm_dist_afa647d73b11430cac07b7e906f19d48 backend=nccl
+(Worker pid=107988) INFO 09-18 05:51:04 [parallel_state.py:1638] world_size=4 rank=0 local_rank=0 distributed_init_method=file:///tmp/vllm_dist_afa647d73b11430cac07b7e906f19d48 backend=nccl
+(Worker pid=107989) INFO 09-18 05:51:04 [parallel_state.py:1638] world_size=4 rank=1 local_rank=1 distributed_init_method=file:///tmp/vllm_dist_afa647d73b11430cac07b7e906f19d48 backend=nccl
+(Worker pid=107988) INFO 09-18 05:51:05 [pynccl.py:113] vLLM is using nccl==2.30.4
+(Worker pid=107990) INFO 09-18 05:51:08 [flashinfer_all_reduce.py:361] FlashInfer All Reduce is disabled because flashinfer is not available
+(Worker pid=107988) INFO 09-18 05:51:08 [flashinfer_all_reduce.py:361] FlashInfer All Reduce is disabled because flashinfer is not available
+(Worker pid=107991) INFO 09-18 05:51:08 [flashinfer_all_reduce.py:361] FlashInfer All Reduce is disabled because flashinfer is not available
+(Worker pid=107989) INFO 09-18 05:51:08 [flashinfer_all_reduce.py:361] FlashInfer All Reduce is disabled because flashinfer is not available
+(Worker pid=107988) INFO 09-18 05:51:08 [rdna_all_reduce.py:124] rdna_ar: one-shot all-reduce active (handle 0, rank 0/4, devices [0, 1, 2, 3], max 64 KB; blocks cap 0, pace 0)
+(Worker pid=107989) INFO 09-18 05:51:08 [rdna_all_reduce.py:124] rdna_ar: one-shot all-reduce active (handle 0, rank 1/4, devices [0, 1, 2, 3], max 64 KB; blocks cap 0, pace 0)
+(Worker pid=107991) INFO 09-18 05:51:08 [rdna_all_reduce.py:124] rdna_ar: one-shot all-reduce active (handle 0, rank 3/4, devices [0, 1, 2, 3], max 64 KB; blocks cap 0, pace 0)
+(Worker pid=107990) INFO 09-18 05:51:08 [rdna_all_reduce.py:124] rdna_ar: one-shot all-reduce active (handle 0, rank 2/4, devices [0, 1, 2, 3], max 64 KB; blocks cap 0, pace 0)
+(Worker pid=107988) INFO 09-18 05:51:08 [cuda_communicator.py:293] Using ['PYNCCL'] all-reduce backends (in dispatch order) for group 'tp:0' out of potential backends: ['FLASHINFER', 'NCCL_SYMM_MEM', 'QUICK_REDUCE', 'AITER_CUSTOM', 'CUSTOM', 'SYMM_MEM', 'PYNCCL'].
+(Worker pid=107991) INFO 09-18 05:51:09 [rdna_all_reduce.py:124] rdna_ar: one-shot all-reduce active (handle 1, rank 3/4, devices [0, 1, 2, 3], max 64 KB; blocks cap 0, pace 0)
+(Worker pid=107990) INFO 09-18 05:51:09 [rdna_all_reduce.py:124] rdna_ar: one-shot all-reduce active (handle 1, rank 2/4, devices [0, 1, 2, 3], max 64 KB; blocks cap 0, pace 0)
+(Worker pid=107988) INFO 09-18 05:51:09 [rdna_all_reduce.py:124] rdna_ar: one-shot all-reduce active (handle 1, rank 0/4, devices [0, 1, 2, 3], max 64 KB; blocks cap 0, pace 0)
+(Worker pid=107989) INFO 09-18 05:51:09 [rdna_all_reduce.py:124] rdna_ar: one-shot all-reduce active (handle 1, rank 1/4, devices [0, 1, 2, 3], max 64 KB; blocks cap 0, pace 0)
+(Worker pid=107988) INFO 09-18 05:51:09 [cuda_communicator.py:293] Using ['PYNCCL'] all-reduce backends (in dispatch order) for group 'ep:0' out of potential backends: ['FLASHINFER', 'NCCL_SYMM_MEM', 'QUICK_REDUCE', 'AITER_CUSTOM', 'CUSTOM', 'SYMM_MEM', 'PYNCCL'].
+(Worker pid=107988) INFO 09-18 05:51:09 [parallel_state.py:1982] rank 0 in world size 4 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank 0, EPLB rank N/A
+(Worker pid=107988) INFO 09-18 05:51:09 [gpu_worker.py:537] Using V2 Model Runner
+(Worker pid=107988) INFO 09-18 05:51:09 [gpu_worker.py:308] PleOffload: spawning worker (rank=0, local_rank=0, dp_size=1, tp_size=4, num_workers=4, ipc_addr=ipc:///tmp/<uuid>).
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:51:09 [model_runner.py:404] Loading model from scratch...
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:51:09 [qwen_gdn_linear_attn.py:158] Using Triton/FLA GDN prefill kernel (requested=auto, head_k_dim=128).
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:51:09 [qwen_gdn_linear_attn.py:500] Falling back to the Triton GDN decode path: the fused CUDA kernel requires a BF16 GDN model with K=V=128, SiLU or sigmoid gating, non-interleaved GQA layout, BF16 convolution cache, BF16 or FP32 recurrent state, and a GPU with compute capability 8.0+
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:51:09 [qwen_gdn_linear_attn.py:505] GDN decode kernel: triton
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:51:09 [expert_map_manager.py:245] [EP Rank 0/4] Expert parallelism is enabled. Expert placement strategy: linear. Local/global number of experts: 128/512. Experts local to global index map: 0->0, 1->1, 2->2, 3->3, 4->4, 5->5, 6->6, 7->7, 8->8, 9->9, 10->10, 11->11, 12->12, 13->13, 14->14, 15->15, 16->16, 17->17, 18->18, 19->19, 20->20, 21->21, 22->22, 23->23, 24->24, 25->25, 26->26, 27->27, 28->28, 29->29, 30->30, 31->31, 32->32, 33->33, 34->34, 35->35, 36->36, 37->37, 38->38, 39->39, 40->40, 41->41, 42->42, 43->43, 44->44, 45->45, 46->46, 47->47, 48->48, 49->49, 50->50, 51->51, 52->52, 53->53, 54->54, 55->55, 56->56, 57->57, 58->58, 59->59, 60->60, 61->61, 62->62, 63->63, 64->64, 65->65, 66->66, 67->67, 68->68, 69->69, 70->70, 71->71, 72->72, 73->73, 74->74, 75->75, 76->76, 77->77, 78->78, 79->79, 80->80, 81->81, 82->82, 83->83, 84->84, 85->85, 86->86, 87->87, 88->88, 89->89, 90->90, 91->91, 92->92, 93->93, 94->94, 95->95, 96->96, 97->97, 98->98, 99->99, 100->100, 101->101, 102->102, 103->103, 104->104, 105->105, 106->106, 107->107, 108->108, 109->109, 110->110, 111->111, 112->112, 113->113, 114->114, 115->115, 116->116, 117->117, 118->118, 119->119, 120->120, 121->121, 122->122, 123->123, 124->124, 125->125, 126->126, 127->127.
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:51:09 [compressed_tensors_moe.py:132] Using CompressedTensorsWNA16MoEMethod
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:51:09 [int_wna16.py:297] Using 'TRITON' WNA16 MoE backend.
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:51:10 [flash_attn.py:904] Using FlashAttention version None
+(Worker_TP0_EP0 pid=107988) WARNING 09-18 05:51:10 [compilation.py:1355] Op 'sparse_attn_indexer' doesn't exist (or wasn't imported/registered), enabling with '+sparse_attn_indexer' has no effect
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:51:11 [weight_utils.py:866] Filesystem type for checkpoints: ZFS. Checkpoint size: 72.95 GiB. Available RAM: 118.94 GiB.
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:51:11 [weight_utils.py:889] Auto-prefetch is disabled because the filesystem (ZFS) is not a recognized network FS (NFS/Lustre). If you want to force prefetching, start vLLM with --safetensors-load-strategy=prefetch.
+(Worker_TP0_EP0 pid=107988) 
+Loading safetensors checkpoint shards:   0% Completed | 0/5 [00:00<?, ?it/s]
+(PleOffloadWorker pid=108412) INFO 09-18 05:51:23 [parallel_state.py:1638] world_size=1 rank=0 local_rank=0 distributed_init_method=file:///tmp/vllm_ple_offload_pf4zviv2/store backend=gloo
+(PleOffloadWorker pid=108412) INFO 09-18 05:51:23 [scheduler.py:246] Chunked prefill is enabled with max_num_batched_tokens=2048.
+(PleOffloadWorker pid=108412) INFO 09-18 05:51:23 [kernel.py:369] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'])
+(PleOffloadWorker pid=108412) INFO 09-18 05:51:23 [parallel_state.py:1982] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank 0, EPLB rank N/A
+(PleOffloadWorker pid=108412) INFO 09-18 05:51:23 [worker.py:164] Distributed environment initialized (backend=gloo, rank=0, world_size=1).
+(PleOffloadWorker pid=108412) INFO 09-18 05:51:23 [worker.py:768] Initializing model structure for PLE weight discovery ...
+(PleOffloadWorker pid=108412) INFO 09-18 05:51:24 [qwen_gdn_linear_attn.py:158] Using Triton/FLA GDN prefill kernel (requested=auto, head_k_dim=128).
+(PleOffloadWorker pid=108412) INFO 09-18 05:51:24 [qwen_gdn_linear_attn.py:500] Falling back to the Triton GDN decode path: the fused CUDA kernel requires a BF16 GDN model with K=V=128, SiLU or sigmoid gating, non-interleaved GQA layout, BF16 convolution cache, BF16 or FP32 recurrent state, and a GPU with compute capability 8.0+
+(PleOffloadWorker pid=108412) INFO 09-18 05:51:24 [qwen_gdn_linear_attn.py:505] GDN decode kernel: triton
+(PleOffloadWorker pid=108412) INFO 09-18 05:51:24 [compressed_tensors_moe.py:132] Using CompressedTensorsWNA16MoEMethod
+(PleOffloadWorker pid=108412) INFO 09-18 05:51:24 [int_wna16.py:297] Using 'TRITON' WNA16 MoE backend.
+(PleOffloadWorker pid=108412) INFO 09-18 05:51:24 [flash_attn.py:904] Using FlashAttention version None
+(PleOffloadWorker pid=108412) WARNING 09-18 05:51:25 [compilation.py:1355] Op 'sparse_attn_indexer' doesn't exist (or wasn't imported/registered), enabling with '+sparse_attn_indexer' has no effect
+(PleOffloadWorker pid=108412) INFO 09-18 05:51:25 [worker.py:788] Found 1 PleOffloadLayer(s): ['language_model.model.layers.1.ple.ple_embedding']
+(PleOffloadWorker pid=108412) INFO 09-18 05:51:25 [worker.py:420] PLE quant table: group16_int4_fp16scale_lownibblefirst, 128 shards mmapped from <models>/qwen38-flash-next-ple/ples_int4
+(PleOffloadWorker pid=108412) INFO 09-18 05:51:25 [worker.py:642] PLE quant: language_model.model.layers.1.ple.ple_embedding.ngram_embedding.weight stubbed, gathers served from sidecar.
+(PleOffloadWorker pid=108412) INFO 09-18 05:51:25 [weight_utils.py:866] Filesystem type for checkpoints: ZFS. Checkpoint size: 72.95 GiB. Available RAM: 118.36 GiB.
+(PleOffloadWorker pid=108412) INFO 09-18 05:51:25 [weight_utils.py:889] Auto-prefetch is disabled because the filesystem (ZFS) is not a recognized network FS (NFS/Lustre). If you want to force prefetching, start vLLM with --safetensors-load-strategy=prefetch.
+(PleOffloadWorker pid=108412) 
+Loading safetensors checkpoint shards(PLE-offload):   0% Completed | 0/5 [00:00<?, ?it/s]
+(PleOffloadWorker pid=108412) 
+Loading safetensors checkpoint shards(PLE-offload):  20% Completed | 1/5 [00:01<00:05,  1.45s/it]
+(PleOffloadWorker pid=108412) 
+Loading safetensors checkpoint shards(PLE-offload):  40% Completed | 2/5 [00:03<00:04,  1.57s/it]
+(Worker_TP0_EP0 pid=107988) 
+Loading safetensors checkpoint shards:  20% Completed | 1/5 [00:17<01:11, 17.98s/it]
+(PleOffloadWorker pid=108412) 
+Loading safetensors checkpoint shards(PLE-offload):  60% Completed | 3/5 [00:04<00:03,  1.66s/it]
+(PleOffloadWorker pid=108412) 
+Loading safetensors checkpoint shards(PLE-offload):  80% Completed | 4/5 [00:05<00:01,  1.43s/it]
+(PleOffloadWorker pid=108412) 
+Loading safetensors checkpoint shards(PLE-offload): 100% Completed | 5/5 [00:06<00:00,  1.20s/it]
+(PleOffloadWorker pid=108412) 
+(PleOffloadWorker pid=108412) INFO 09-18 05:51:31 [worker.py:906] PLE offload matched 3 checkpoint tensor(s), loaded 3 offload entries, and verified 0/1 materialized parameter(s) for layers: ['language_model.model.layers.1.ple.ple_embedding']
+(PleOffloadWorker pid=108412) INFO 09-18 05:51:31 [worker.py:935] PLE weight loading complete.
+(PleOffloadWorker pid=108412) INFO 09-18 05:51:31 [worker.py:295] Bound IPC address ipc:///tmp/<uuid>; waiting for 4 GPU worker registration(s).
+(PleOffloadWorker pid=108412) INFO 09-18 05:51:31 [worker.py:971] Waiting for 4 GPU worker registration(s) ...
+(Worker_TP0_EP0 pid=107988) 
+Loading safetensors checkpoint shards:  40% Completed | 2/5 [00:37<00:57, 19.04s/it]
+(Worker_TP0_EP0 pid=107988) 
+Loading safetensors checkpoint shards:  60% Completed | 3/5 [00:57<00:39, 19.56s/it]
+(Worker_TP0_EP0 pid=107988) 
+Loading safetensors checkpoint shards:  80% Completed | 4/5 [01:10<00:16, 16.63s/it]
+(Worker_TP0_EP0 pid=107988) 
+Loading safetensors checkpoint shards: 100% Completed | 5/5 [01:10<00:00, 14.01s/it]
+(Worker_TP0_EP0 pid=107988) 
+(Worker_TP1_EP1 pid=107989) INFO 09-18 05:52:21 [kernel.py:369] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:21 [default_loader.py:430] Loading weights took 70.26 seconds
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:21 [int_wna16.py:408] Using MoEPrepareAndFinalizeNoDPEPModular
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:21 [int_wna16.py:409] Using TritonWNA16Experts
+(Worker_TP0_EP0 pid=107988) WARNING 09-18 05:52:21 [vllm.py:1404] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:21 [kernel.py:369] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+(Worker_TP0_EP0 pid=107988) WARNING 09-18 05:52:21 [vllm.py:1922] max_num_scheduled_tokens is set to 2048 based on the speculative decoding settings. This may lead to suboptimal performance. Consider increasing max_num_batched_tokens to accommodate the additional draft token slots, or decrease num_speculative_tokens.
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:21 [compilation.py:329] Enabled custom fusions: norm_quant, act_quant
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:21 [unquantized.py:319] Using TRITON Unquantized MoE backend out of potential backends: ['TRITON', 'BATCHED_TRITON'].
+(Worker_TP0_EP0 pid=107988) WARNING 09-18 05:52:21 [compilation.py:1355] Op 'sparse_attn_indexer' not present in model, enabling with '+sparse_attn_indexer' has no effect
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:22 [weight_utils.py:866] Filesystem type for checkpoints: ZFS. Checkpoint size: 72.95 GiB. Available RAM: 118.21 GiB.
+(Worker_TP0_EP0 pid=107988) 
+Loading safetensors checkpoint shards:   0% Completed | 0/5 [00:00<?, ?it/s]
+(Worker_TP2_EP2 pid=107990) INFO 09-18 05:52:22 [kernel.py:369] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+(Worker_TP0_EP0 pid=107988) 
+Loading safetensors checkpoint shards:  20% Completed | 1/5 [00:01<00:05,  1.47s/it]
+(Worker_TP3_EP3 pid=107991) INFO 09-18 05:52:24 [kernel.py:369] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+(Worker_TP0_EP0 pid=107988) 
+Loading safetensors checkpoint shards:  40% Completed | 2/5 [00:02<00:04,  1.50s/it]
+(Worker_TP0_EP0 pid=107988) 
+Loading safetensors checkpoint shards:  60% Completed | 3/5 [00:04<00:03,  1.61s/it]
+(Worker_TP0_EP0 pid=107988) 
+Loading safetensors checkpoint shards:  80% Completed | 4/5 [00:05<00:01,  1.44s/it]
+(Worker_TP0_EP0 pid=107988) 
+Loading safetensors checkpoint shards: 100% Completed | 5/5 [00:06<00:00,  1.07s/it]
+(Worker_TP0_EP0 pid=107988) 
+Loading safetensors checkpoint shards: 100% Completed | 5/5 [00:06<00:00,  1.26s/it]
+(Worker_TP0_EP0 pid=107988) 
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:28 [default_loader.py:430] Loading weights took 6.38 seconds
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:28 [unquantized.py:399] Using MoEPrepareAndFinalizeNoDPEPModular
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:28 [unquantized.py:400] Using TritonExperts MoE backend
+(Worker_TP1_EP1 pid=107989) INFO 09-18 05:52:28 [model_runner.py:426] Model loading took 19.81 GiB memory and 79.436855 seconds
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:29 [model_runner.py:426] Model loading took 19.81 GiB memory and 79.756302 seconds
+(Worker_TP1_EP1 pid=107989) INFO 09-18 05:52:29 [connector.py:263] PleOffload: registered 1 PleOffloadLayer(s) (dp_rank=0, tp_rank=1, ipc_addr=ipc:///tmp/<uuid>): ['language_model.model.layers.1.ple.ple_embedding']
+(Worker_TP1_EP1 pid=107989) INFO 09-18 05:52:29 [interface.py:917] Setting attention block size to 800 tokens to ensure that attention page size is >= mamba page size.
+(Worker_TP1_EP1 pid=107989) INFO 09-18 05:52:29 [interface.py:941] Padding mamba page size by 0.88% to ensure that mamba page size and attention page size are exactly equal.
+(PleOffloadWorker pid=108412) INFO 09-18 05:52:29 [worker.py:981] GPU worker 1 registered (dp_rank=0, tp_rank=1, layers=['language_model.model.layers.1.ple.ple_embedding']).
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:29 [connector.py:263] PleOffload: registered 1 PleOffloadLayer(s) (dp_rank=0, tp_rank=0, ipc_addr=ipc:///tmp/<uuid>): ['language_model.model.layers.1.ple.ple_embedding']
+(PleOffloadWorker pid=108412) INFO 09-18 05:52:29 [worker.py:981] GPU worker 0 registered (dp_rank=0, tp_rank=0, layers=['language_model.model.layers.1.ple.ple_embedding']).
+(Worker_TP2_EP2 pid=107990) INFO 09-18 05:52:30 [model_runner.py:426] Model loading took 19.81 GiB memory and 80.894481 seconds
+(Worker_TP2_EP2 pid=107990) INFO 09-18 05:52:30 [connector.py:263] PleOffload: registered 1 PleOffloadLayer(s) (dp_rank=0, tp_rank=2, ipc_addr=ipc:///tmp/<uuid>): ['language_model.model.layers.1.ple.ple_embedding']
+(Worker_TP2_EP2 pid=107990) INFO 09-18 05:52:30 [interface.py:917] Setting attention block size to 800 tokens to ensure that attention page size is >= mamba page size.
+(Worker_TP2_EP2 pid=107990) INFO 09-18 05:52:30 [interface.py:941] Padding mamba page size by 0.88% to ensure that mamba page size and attention page size are exactly equal.
+(PleOffloadWorker pid=108412) INFO 09-18 05:52:30 [worker.py:981] GPU worker 2 registered (dp_rank=0, tp_rank=2, layers=['language_model.model.layers.1.ple.ple_embedding']).
+(Worker_TP3_EP3 pid=107991) INFO 09-18 05:52:31 [model_runner.py:426] Model loading took 19.81 GiB memory and 81.960426 seconds
+(Worker_TP3_EP3 pid=107991) INFO 09-18 05:52:31 [connector.py:263] PleOffload: registered 1 PleOffloadLayer(s) (dp_rank=0, tp_rank=3, ipc_addr=ipc:///tmp/<uuid>): ['language_model.model.layers.1.ple.ple_embedding']
+(Worker_TP3_EP3 pid=107991) INFO 09-18 05:52:31 [interface.py:917] Setting attention block size to 800 tokens to ensure that attention page size is >= mamba page size.
+(Worker_TP3_EP3 pid=107991) INFO 09-18 05:52:31 [interface.py:941] Padding mamba page size by 0.88% to ensure that mamba page size and attention page size are exactly equal.
+(PleOffloadWorker pid=108412) INFO 09-18 05:52:31 [worker.py:981] GPU worker 3 registered (dp_rank=0, tp_rank=3, layers=['language_model.model.layers.1.ple.ple_embedding']).
+(PleOffloadWorker pid=108412) INFO 09-18 05:52:31 [worker.py:1070] Registrations complete (dp_size=1, tp_size=4, layers=['language_model.model.layers.1.ple.ple_embedding']).
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:31 [worker.py:238] Worker ready - 1 PleOffloadLayer(s): ['language_model.model.layers.1.ple.ple_embedding']
+(PleOffloadWorker pid=108412) INFO 09-18 05:52:31 [worker.py:1103] Busy-loop started.
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:31 [interface.py:917] Setting attention block size to 800 tokens to ensure that attention page size is >= mamba page size.
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:31 [interface.py:941] Padding mamba page size by 0.88% to ensure that mamba page size and attention page size are exactly equal.
+(EngineCore pid=107821) INFO 09-18 05:52:31 [torch_utils.py:277] Reducing Torch threads from 7 to 1 for serving. Set OMP_NUM_THREADS in the external environment to override.
+(EngineCore pid=107821) INFO 09-18 05:52:31 [utils.py:306] Using BLNHC KV cache layout.
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:36 [fused_moe.py:1154] Using configuration from <tuning>/moe_configs/E=128,N=640,device_name=AMD_Radeon_Graphics,dtype=int4_w4a16.json for MoE layer.
+(Worker_TP2_EP2 pid=107990) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP2_EP2 pid=107990)   return func(*args, **kwargs)
+(Worker_TP1_EP1 pid=107989) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP0_EP0 pid=107988) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP1_EP1 pid=107989)   return func(*args, **kwargs)
+(Worker_TP0_EP0 pid=107988)   return func(*args, **kwargs)
+(Worker_TP3_EP3 pid=107991) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP3_EP3 pid=107991)   return func(*args, **kwargs)
+(Worker_TP0_EP0 pid=107988) WARNING 09-18 05:52:38 [fused_moe.py:1167] Using default MoE config. Performance might be sub-optimal! Config file not found at <tuning>/moe_configs/E=128,N=640,device_name=AMD_Radeon_Graphics.json, <workdir>/vllm-w/vllm/model_executor/layers/fused_moe/configs/E=128,N=640,device_name=AMD_Radeon_Graphics.json
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:39 [fused_topk_router.py:103] MI50 top-10 router active: M=4, dtype=torch.float16, padding=False
+(Worker_TP2_EP2 pid=107990) WARNING 09-18 05:52:40 [compilation.py:1419] CUDAGraphMode.FULL is not supported with Qwen4ExpQSAFlashAttentionBackend backend (support: AttentionCGSupport.UNIFORM_BATCH); setting cudagraph_mode=FULL_DECODE_ONLY
+(Worker_TP0_EP0 pid=107988) WARNING 09-18 05:52:40 [compilation.py:1419] CUDAGraphMode.FULL is not supported with Qwen4ExpQSAFlashAttentionBackend backend (support: AttentionCGSupport.UNIFORM_BATCH); setting cudagraph_mode=FULL_DECODE_ONLY
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:40 [speculator.py:120] Fused multi-step draft decode is not supported by attention backend(s) QWEN4_EXP_EXP_QSA_STATE; falling back to rebuilding attention metadata between draft steps.
+(Worker_TP1_EP1 pid=107989) WARNING 09-18 05:52:40 [compilation.py:1419] CUDAGraphMode.FULL is not supported with Qwen4ExpQSAFlashAttentionBackend backend (support: AttentionCGSupport.UNIFORM_BATCH); setting cudagraph_mode=FULL_DECODE_ONLY
+(Worker_TP3_EP3 pid=107991) WARNING 09-18 05:52:40 [compilation.py:1419] CUDAGraphMode.FULL is not supported with Qwen4ExpQSAFlashAttentionBackend backend (support: AttentionCGSupport.UNIFORM_BATCH); setting cudagraph_mode=FULL_DECODE_ONLY
+(Worker_TP0_EP0 pid=107988) 
+Capturing CUDA graphs (FULL):   0%|          | 0/2 [00:00<?, ?it/s]
+Capturing CUDA graphs (FULL):  50%|█████     | 1/2 [00:01<00:01,  1.62s/it]
+Capturing CUDA graphs (FULL): 100%|██████████| 2/2 [00:01<00:00,  1.17it/s]
+Capturing CUDA graphs (FULL): 100%|██████████| 2/2 [00:01<00:00,  1.03it/s]
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:42 [speculator.py:151] Capturing model for speculator...
+(Worker_TP1_EP1 pid=107989) INFO 09-18 05:52:42 [speculator.py:151] Capturing model for speculator...
+(Worker_TP2_EP2 pid=107990) INFO 09-18 05:52:42 [speculator.py:151] Capturing model for speculator...
+(Worker_TP0_EP0 pid=107988) 
+Capturing prefill CUDA graphs (FULL):   0%|          | 0/4 [00:00<?, ?it/s]<home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP0_EP0 pid=107988)   return func(*args, **kwargs)
+(Worker_TP1_EP1 pid=107989) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP1_EP1 pid=107989)   return func(*args, **kwargs)
+(Worker_TP2_EP2 pid=107990) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP2_EP2 pid=107990)   return func(*args, **kwargs)
+(Worker_TP3_EP3 pid=107991) INFO 09-18 05:52:42 [speculator.py:151] Capturing model for speculator...
+(Worker_TP3_EP3 pid=107991) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP3_EP3 pid=107991)   return func(*args, **kwargs)
+(Worker_TP0_EP0 pid=107988) 
+Capturing prefill CUDA graphs (FULL):  25%|██▌       | 1/4 [00:00<00:00,  9.43it/s](Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:43 [fused_topk_router.py:103] MI50 top-10 router active: M=6, dtype=torch.float16, padding=False
+<home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP0_EP0 pid=107988)   return func(*args, **kwargs)
+(Worker_TP1_EP1 pid=107989) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP1_EP1 pid=107989)   return func(*args, **kwargs)
+(Worker_TP2_EP2 pid=107990) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP2_EP2 pid=107990)   return func(*args, **kwargs)
+(Worker_TP3_EP3 pid=107991) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP3_EP3 pid=107991)   return func(*args, **kwargs)
+(Worker_TP0_EP0 pid=107988) 
+Capturing prefill CUDA graphs (FULL):  75%|███████▌  | 3/4 [00:00<00:00,  3.37it/s](Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:44 [fused_topk_router.py:103] MI50 top-10 router active: M=3, dtype=torch.float16, padding=False
+(Worker_TP2_EP2 pid=107990) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP2_EP2 pid=107990)   return func(*args, **kwargs)
+(Worker_TP1_EP1 pid=107989) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP1_EP1 pid=107989)   return func(*args, **kwargs)
+<home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP0_EP0 pid=107988)   return func(*args, **kwargs)
+(Worker_TP3_EP3 pid=107991) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP3_EP3 pid=107991)   return func(*args, **kwargs)
+(Worker_TP0_EP0 pid=107988) 
+Capturing prefill CUDA graphs (FULL): 100%|██████████| 4/4 [00:01<00:00,  2.48it/s]
+Capturing prefill CUDA graphs (FULL): 100%|██████████| 4/4 [00:01<00:00,  2.78it/s]
+(Worker_TP0_EP0 pid=107988) 
+Capturing decode CUDA graphs (FULL):   0%|          | 0/4 [00:00<?, ?it/s](Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:44 [fused_topk_router.py:103] MI50 top-10 router active: M=2, dtype=torch.float16, padding=False
+
+Capturing decode CUDA graphs (FULL):  75%|███████▌  | 3/4 [00:00<00:00, 20.64it/s](Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:44 [fused_topk_router.py:103] MI50 top-10 router active: M=1, dtype=torch.float16, padding=False
+<home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP2_EP2 pid=107990) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP1_EP1 pid=107989) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP0_EP0 pid=107988)   return func(*args, **kwargs)
+(Worker_TP2_EP2 pid=107990)   return func(*args, **kwargs)
+(Worker_TP1_EP1 pid=107989)   return func(*args, **kwargs)
+(Worker_TP3_EP3 pid=107991) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP3_EP3 pid=107991)   return func(*args, **kwargs)
+(Worker_TP0_EP0 pid=107988) 
+Capturing decode CUDA graphs (FULL): 100%|██████████| 4/4 [00:00<00:00,  4.69it/s]
+(Worker_TP1_EP1 pid=107989) INFO 09-18 05:52:44 [model_runner.py:988] Graph capturing finished in 5 secs, took 0.52 GiB
+(Worker_TP2_EP2 pid=107990) INFO 09-18 05:52:44 [model_runner.py:988] Graph capturing finished in 5 secs, took 0.52 GiB
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:44 [model_runner.py:988] Graph capturing finished in 5 secs, took 0.52 GiB
+(Worker_TP3_EP3 pid=107991) INFO 09-18 05:52:44 [model_runner.py:988] Graph capturing finished in 4 secs, took 0.52 GiB
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:45 [gpu_worker.py:744] Available KV cache memory: 6.76 GiB
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:45 [gpu_worker.py:759] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.9000 is equivalent to --gpu-memory-utilization=0.8830 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.9170. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
+(Worker_TP2_EP2 pid=107990) INFO 09-18 05:52:45 [gpu_worker.py:759] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.9000 is equivalent to --gpu-memory-utilization=0.8830 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.9170. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
+(Worker_TP1_EP1 pid=107989) INFO 09-18 05:52:45 [gpu_worker.py:759] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.9000 is equivalent to --gpu-memory-utilization=0.8830 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.9170. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
+(Worker_TP3_EP3 pid=107991) INFO 09-18 05:52:45 [gpu_worker.py:759] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.9000 is equivalent to --gpu-memory-utilization=0.8830 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.9170. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
+(EngineCore pid=107821) INFO 09-18 05:52:45 [kv_cache_utils.py:2408] GPU KV cache size: 362,142 tokens, Maximum concurrency for 32,768 tokens per request: 11.05x
+(Worker_TP2_EP2 pid=107990) INFO 09-18 05:52:45 [kernel_warmup.py:124] JIT kernel warmup starting.
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:45 [kernel_warmup.py:124] JIT kernel warmup starting.
+(Worker_TP1_EP1 pid=107989) INFO 09-18 05:52:45 [kernel_warmup.py:124] JIT kernel warmup starting.
+(Worker_TP2_EP2 pid=107990) INFO 09-18 05:52:45 [kernel_warmup.py:134] JIT kernel warmup finished in 0.00s.
+(Worker_TP3_EP3 pid=107991) INFO 09-18 05:52:45 [kernel_warmup.py:124] JIT kernel warmup starting.
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:45 [kernel_warmup.py:134] JIT kernel warmup finished in 0.00s.
+(Worker_TP1_EP1 pid=107989) INFO 09-18 05:52:45 [kernel_warmup.py:134] JIT kernel warmup finished in 0.00s.
+(Worker_TP3_EP3 pid=107991) INFO 09-18 05:52:45 [kernel_warmup.py:134] JIT kernel warmup finished in 0.00s.
+(Worker_TP2_EP2 pid=107990) INFO 09-18 05:52:45 [ll_bf16.py:30] cuteDSL (CUTLASS Python) not available, ll_bf16_gemm disabled
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:45 [ll_bf16.py:30] cuteDSL (CUTLASS Python) not available, ll_bf16_gemm disabled
+(Worker_TP1_EP1 pid=107989) INFO 09-18 05:52:45 [ll_bf16.py:30] cuteDSL (CUTLASS Python) not available, ll_bf16_gemm disabled
+(Worker_TP3_EP3 pid=107991) INFO 09-18 05:52:45 [ll_bf16.py:30] cuteDSL (CUTLASS Python) not available, ll_bf16_gemm disabled
+(Worker_TP0_EP0 pid=107988) 
+Capturing CUDA graphs (FULL):   0%|          | 0/4 [00:00<?, ?it/s]
+Capturing CUDA graphs (FULL):  25%|██▌       | 1/4 [00:00<00:02,  1.05it/s]
+Capturing CUDA graphs (FULL):  50%|█████     | 2/4 [00:01<00:01,  1.73it/s](Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:47 [fused_topk_router.py:103] MI50 top-10 router active: M=6, dtype=torch.float16, padding=True
+
+Capturing CUDA graphs (FULL):  75%|███████▌  | 3/4 [00:02<00:00,  1.41it/s](Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:48 [fused_topk_router.py:103] MI50 top-10 router active: M=3, dtype=torch.float16, padding=True
+
+Capturing CUDA graphs (FULL): 100%|██████████| 4/4 [00:02<00:00,  1.34it/s](Worker_TP1_EP1 pid=107989) INFO 09-18 05:52:48 [speculator.py:151] Capturing model for speculator...
+
+Capturing CUDA graphs (FULL): 100%|██████████| 4/4 [00:02<00:00,  1.36it/s]
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:48 [speculator.py:151] Capturing model for speculator...
+(Worker_TP2_EP2 pid=107990) INFO 09-18 05:52:48 [speculator.py:151] Capturing model for speculator...
+(Worker_TP3_EP3 pid=107991) INFO 09-18 05:52:48 [speculator.py:151] Capturing model for speculator...
+(Worker_TP0_EP0 pid=107988) 
+Capturing prefill CUDA graphs (FULL):   0%|          | 0/4 [00:00<?, ?it/s](Worker_TP1_EP1 pid=107989) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP1_EP1 pid=107989)   return func(*args, **kwargs)
+<home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP0_EP0 pid=107988)   return func(*args, **kwargs)
+(Worker_TP2_EP2 pid=107990) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP3_EP3 pid=107991) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP2_EP2 pid=107990)   return func(*args, **kwargs)
+(Worker_TP3_EP3 pid=107991)   return func(*args, **kwargs)
+(Worker_TP0_EP0 pid=107988) 
+Capturing prefill CUDA graphs (FULL):  50%|█████     | 2/4 [00:00<00:00, 15.93it/s]
+Capturing prefill CUDA graphs (FULL): 100%|██████████| 4/4 [00:00<00:00, 17.89it/s]
+Capturing prefill CUDA graphs (FULL): 100%|██████████| 4/4 [00:00<00:00, 17.54it/s]
+(Worker_TP0_EP0 pid=107988) 
+Capturing decode CUDA graphs (FULL):   0%|          | 0/4 [00:00<?, ?it/s]
+Capturing decode CUDA graphs (FULL):  75%|███████▌  | 3/4 [00:00<00:00, 21.33it/s]<home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP0_EP0 pid=107988)   return func(*args, **kwargs)
+(Worker_TP1_EP1 pid=107989) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP1_EP1 pid=107989)   return func(*args, **kwargs)
+(Worker_TP2_EP2 pid=107990) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP2_EP2 pid=107990)   return func(*args, **kwargs)
+(Worker_TP3_EP3 pid=107991) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP3_EP3 pid=107991)   return func(*args, **kwargs)
+(Worker_TP1_EP1 pid=107989) INFO 09-18 05:52:49 [model_runner.py:988] Graph capturing finished in 4 secs, took 0.20 GiB
+(Worker_TP0_EP0 pid=107988) 
+Capturing decode CUDA graphs (FULL): 100%|██████████| 4/4 [00:00<00:00,  5.32it/s]
+(Worker_TP1_EP1 pid=107989) INFO 09-18 05:52:49 [gpu_worker.py:916] CUDA graph pool memory: 0.2 GiB (actual), 0.54 GiB (estimated), difference: 0.34 GiB (167.8%).
+(Worker_TP2_EP2 pid=107990) INFO 09-18 05:52:49 [model_runner.py:988] Graph capturing finished in 4 secs, took 0.20 GiB
+(Worker_TP1_EP1 pid=107989) INFO 09-18 05:52:49 [gpu_worker.py:979] Free memory on device (31.29/31.98 GiB) on startup. Desired GPU memory utilization is (0.9, 28.79 GiB). Actual usage is 20.85 GiB for consumed memory (weights + non-torch), 1.03 GiB for peak activation, and 0.2 GiB for CUDAGraph memory. Replace gpu_memory_utilization config with `--kv-cache-memory=7034191053` (6.55 GiB) to fit into requested memory, or `--kv-cache-memory=9721901056` (9.05 GiB) to fully utilize gpu memory. Current kv cache memory in use is 6.9 GiB.
+(Worker_TP2_EP2 pid=107990) INFO 09-18 05:52:49 [gpu_worker.py:916] CUDA graph pool memory: 0.2 GiB (actual), 0.54 GiB (estimated), difference: 0.34 GiB (167.8%).
+(Worker_TP2_EP2 pid=107990) INFO 09-18 05:52:49 [gpu_worker.py:979] Free memory on device (31.29/31.98 GiB) on startup. Desired GPU memory utilization is (0.9, 28.79 GiB). Actual usage is 20.38 GiB for consumed memory (weights + non-torch), 1.03 GiB for peak activation, and 0.2 GiB for CUDAGraph memory. Replace gpu_memory_utilization config with `--kv-cache-memory=7537507533` (7.02 GiB) to fit into requested memory, or `--kv-cache-memory=10225217536` (9.52 GiB) to fully utilize gpu memory. Current kv cache memory in use is 7.37 GiB.
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:49 [model_runner.py:988] Graph capturing finished in 4 secs, took 0.20 GiB
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:49 [gpu_worker.py:916] CUDA graph pool memory: 0.2 GiB (actual), 0.54 GiB (estimated), difference: 0.34 GiB (167.8%).
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:49 [gpu_worker.py:979] Free memory on device (31.3/31.98 GiB) on startup. Desired GPU memory utilization is (0.9, 28.79 GiB). Actual usage is 20.99 GiB for consumed memory (weights + non-torch), 1.03 GiB for peak activation, and 0.2 GiB for CUDAGraph memory. Replace gpu_memory_utilization config with `--kv-cache-memory=6881098957` (6.41 GiB) to fit into requested memory, or `--kv-cache-memory=9577197568` (8.92 GiB) to fully utilize gpu memory. Current kv cache memory in use is 6.76 GiB.
+(Worker_TP3_EP3 pid=107991) INFO 09-18 05:52:49 [model_runner.py:988] Graph capturing finished in 4 secs, took 0.20 GiB
+(Worker_TP3_EP3 pid=107991) INFO 09-18 05:52:49 [gpu_worker.py:916] CUDA graph pool memory: 0.2 GiB (actual), 0.54 GiB (estimated), difference: 0.34 GiB (167.8%).
+(Worker_TP3_EP3 pid=107991) INFO 09-18 05:52:49 [gpu_worker.py:979] Free memory on device (31.31/31.98 GiB) on startup. Desired GPU memory utilization is (0.9, 28.79 GiB). Actual usage is 20.49 GiB for consumed memory (weights + non-torch), 1.03 GiB for peak activation, and 0.2 GiB for CUDAGraph memory. Replace gpu_memory_utilization config with `--kv-cache-memory=7424261325` (6.91 GiB) to fit into requested memory, or `--kv-cache-memory=10137137152` (9.44 GiB) to fully utilize gpu memory. Current kv cache memory in use is 7.26 GiB.
+(Worker_TP1_EP1 pid=107989) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP1_EP1 pid=107989)   return func(*args, **kwargs)
+(Worker_TP0_EP0 pid=107988) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP0_EP0 pid=107988)   return func(*args, **kwargs)
+(Worker_TP2_EP2 pid=107990) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP2_EP2 pid=107990)   return func(*args, **kwargs)
+(Worker_TP3_EP3 pid=107991) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP3_EP3 pid=107991)   return func(*args, **kwargs)
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:52 [fused_topk_router.py:103] MI50 top-10 router active: M=4, dtype=torch.float16, padding=True
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:53 [fused_topk_router.py:103] MI50 top-10 router active: M=2, dtype=torch.float16, padding=True
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:53 [fused_topk_router.py:103] MI50 top-10 router active: M=1, dtype=torch.float16, padding=True
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:53 [jit_monitor.py:85] Kernel JIT monitor activated; monitored JIT compilations during inference will use mode=warn.
+(Worker_TP1_EP1 pid=107989) INFO 09-18 05:52:53 [jit_monitor.py:85] Kernel JIT monitor activated; monitored JIT compilations during inference will use mode=warn.
+(Worker_TP3_EP3 pid=107991) INFO 09-18 05:52:53 [jit_monitor.py:85] Kernel JIT monitor activated; monitored JIT compilations during inference will use mode=warn.
+(Worker_TP2_EP2 pid=107990) INFO 09-18 05:52:53 [jit_monitor.py:85] Kernel JIT monitor activated; monitored JIT compilations during inference will use mode=warn.
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:52:54 [torch_utils.py:277] Reducing Torch threads from 7 to 1 for serving. Set OMP_NUM_THREADS in the external environment to override.
+(EngineCore pid=107821) INFO 09-18 05:52:54 [core.py:368] init engine (profile, create kv cache, warmup model) took 22.20 s
+(EngineCore pid=107821) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(EngineCore pid=107821) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(EngineCore pid=107821) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(EngineCore pid=107821) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(EngineCore pid=107821) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(EngineCore pid=107821) INFO 09-18 05:52:57 [registry.py:141] All limits of multimodal modalities supported by the model are set to 0, running in text-only mode.
+(EngineCore pid=107821) WARNING 09-18 05:52:57 [vllm.py:1404] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+(EngineCore pid=107821) INFO 09-18 05:52:57 [kernel.py:369] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+(EngineCore pid=107821) WARNING 09-18 05:52:57 [vllm.py:1922] max_num_scheduled_tokens is set to 2048 based on the speculative decoding settings. This may lead to suboptimal performance. Consider increasing max_num_batched_tokens to accommodate the additional draft token slots, or decrease num_speculative_tokens.
+(EngineCore pid=107821) INFO 09-18 05:52:57 [compilation.py:329] Enabled custom fusions: norm_quant, act_quant
+(APIServer pid=<pid>) INFO 09-18 05:52:57 [entry.py:135] Supported tasks: ['generate']
+(APIServer pid=<pid>) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=<pid>) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=<pid>) INFO 09-18 05:52:59 [hf.py:547] Detected the chat template content format to be 'openai'. You can set `--chat-template-content-format` to override this.
+(APIServer pid=<pid>) WARNING 09-18 05:52:59 [model.py:1759] Default vLLM sampling parameters have been overridden by the model's `generation_config.json`: `{'temperature': 1.0, 'top_k': 20, 'top_p': 0.95}`. If this is not intended, please relaunch vLLM instance with `--generation-config vllm`.
+(APIServer pid=<pid>) INFO 09-18 05:52:59 [entry.py:139] Starting vLLM server on http://0.0.0.0:8002
+(APIServer pid=<pid>) INFO 09-18 05:52:59 [launcher.py:61] Available routes are:
+(APIServer pid=<pid>) INFO 09-18 05:52:59 [launcher.py:70] Route: /openapi.json, Methods: GET, HEAD
+(APIServer pid=<pid>) INFO 09-18 05:52:59 [launcher.py:70] Route: /docs, Methods: GET, HEAD
+(APIServer pid=<pid>) INFO 09-18 05:52:59 [launcher.py:70] Route: /docs/oauth2-redirect, Methods: GET, HEAD
+(APIServer pid=<pid>) INFO 09-18 05:52:59 [launcher.py:70] Route: /redoc, Methods: GET, HEAD
+(APIServer pid=<pid>) INFO 09-18 05:52:59 [launcher.py:70] Route: /load, Methods: GET
+(APIServer pid=<pid>) INFO 09-18 05:52:59 [launcher.py:70] Route: /version, Methods: GET
+(APIServer pid=<pid>) INFO 09-18 05:52:59 [launcher.py:70] Route: /health, Methods: GET
+(APIServer pid=<pid>) INFO 09-18 05:52:59 [launcher.py:70] Route: /metrics, Methods: GET
+(APIServer pid=<pid>) INFO 09-18 05:52:59 [launcher.py:70] Route: /tokenize, Methods: POST
+(APIServer pid=<pid>) INFO 09-18 05:52:59 [launcher.py:70] Route: /detokenize, Methods: POST
+(APIServer pid=<pid>) INFO 09-18 05:52:59 [launcher.py:70] Route: /v1/models, Methods: GET
+(APIServer pid=<pid>) INFO 09-18 05:52:59 [launcher.py:70] Route: /ping, Methods: GET
+(APIServer pid=<pid>) INFO 09-18 05:52:59 [launcher.py:70] Route: /ping, Methods: POST
+(APIServer pid=<pid>) INFO 09-18 05:52:59 [launcher.py:70] Route: /invocations, Methods: POST
+(APIServer pid=<pid>) INFO 09-18 05:52:59 [launcher.py:70] Route: /v1/chat/completions, Methods: POST
+(APIServer pid=<pid>) INFO 09-18 05:52:59 [launcher.py:70] Route: /v1/chat/completions/batch, Methods: POST
+(APIServer pid=<pid>) INFO 09-18 05:52:59 [launcher.py:70] Route: /v1/responses, Methods: POST
+(APIServer pid=<pid>) INFO 09-18 05:52:59 [launcher.py:70] Route: /v1/responses/{response_id}, Methods: GET
+(APIServer pid=<pid>) INFO 09-18 05:52:59 [launcher.py:70] Route: /v1/responses/{response_id}/cancel, Methods: POST
+(APIServer pid=<pid>) INFO 09-18 05:52:59 [launcher.py:70] Route: /v1/completions, Methods: POST
+(APIServer pid=<pid>) INFO 09-18 05:52:59 [launcher.py:70] Route: /v1/messages, Methods: POST
+(APIServer pid=<pid>) INFO 09-18 05:52:59 [launcher.py:70] Route: /v1/messages/count_tokens, Methods: POST
+(APIServer pid=<pid>) INFO 09-18 05:52:59 [launcher.py:70] Route: /generative_scoring, Methods: POST
+(APIServer pid=<pid>) INFO 09-18 05:52:59 [launcher.py:70] Route: /scale_elastic_ep, Methods: POST
+(APIServer pid=<pid>) INFO 09-18 05:52:59 [launcher.py:70] Route: /is_scaling_elastic_ep, Methods: POST
+(APIServer pid=<pid>) INFO 09-18 05:52:59 [launcher.py:70] Route: /v1/chat/completions/render, Methods: POST
+(APIServer pid=<pid>) INFO 09-18 05:52:59 [launcher.py:70] Route: /v1/messages/render, Methods: POST
+(APIServer pid=<pid>) INFO 09-18 05:52:59 [launcher.py:70] Route: /v1/completions/render, Methods: POST
+(APIServer pid=<pid>) INFO 09-18 05:52:59 [launcher.py:70] Route: /v1/chat/completions/derender, Methods: POST
+(APIServer pid=<pid>) INFO 09-18 05:52:59 [launcher.py:70] Route: /v1/completions/derender, Methods: POST
+(APIServer pid=<pid>) INFO 09-18 05:52:59 [launcher.py:70] Route: /inference/v1/generate, Methods: POST
+(APIServer pid=<pid>) INFO:     Started server process [<pid>]
+(APIServer pid=<pid>) INFO:     Waiting for application startup.
+(APIServer pid=<pid>) INFO:     Application startup complete.
+(APIServer pid=<pid>) INFO:     127.0.0.1:54000 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:54014 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:54024 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:44346 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:44348 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:44352 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:44354 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:44358 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:44364 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:44372 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:44376 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:44378 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:44392 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:34578 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:34584 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:34588 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:34592 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:34600 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:34612 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:34624 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:34630 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:34632 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:34636 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:40324 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:40336 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:40352 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:40354 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:40370 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:40380 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:40394 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:40404 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:40418 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:39082 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:39088 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:39098 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:39106 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:39114 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:39128 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:39130 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:39146 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:39154 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:39158 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:38948 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:38960 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:38972 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:38978 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:38988 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:39002 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:39014 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:39026 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:39038 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:39040 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:52244 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:52256 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:52270 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:52272 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:52280 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:52292 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:52300 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:52302 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:52310 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:52320 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:43896 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:43908 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:43910 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:43926 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:43930 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:43938 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:43952 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:43960 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:43970 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:43978 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:45528 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:45542 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:45550 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:45560 - "GET /health HTTP/1.1" 200 OK
+(PleOffloadWorker pid=108412) INFO 09-18 05:54:16 [worker.py:598] PLE sidecar prefaulted into the page cache: 32.0 GB in 105 s
+(APIServer pid=<pid>) INFO:     127.0.0.1:45572 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:45582 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:45586 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:45602 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:45604 - "GET /health HTTP/1.1" 200 OK
+(Worker_TP0_EP0 pid=107988) WARNING 09-18 05:54:17 [jit_monitor.py:141] Triton kernel JIT compilation during inference: fused_moe_kernel_gptq_awq. This causes a latency spike; consider extending warmup to cover this shape/config.
+(Worker_TP0_EP0 pid=107988) WARNING 09-18 05:54:17 [jit_monitor.py:141] Triton kernel JIT compilation during inference: _compress_qsa_groups_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(Worker_TP0_EP0 pid=107988) WARNING 09-18 05:54:17 [jit_monitor.py:141] Triton kernel JIT compilation during inference: _qsa_mqa_paged_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(Worker_TP0_EP0 pid=107988) WARNING 09-18 05:54:17 [jit_monitor.py:141] Triton kernel JIT compilation during inference: _expand_qsa_indices_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(Worker_TP0_EP0 pid=107988) WARNING 09-18 05:54:18 [jit_monitor.py:141] Triton kernel JIT compilation during inference: _qsa_sparse_paged_gqa_splitk_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(Worker_TP2_EP2 pid=107990) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP2_EP2 pid=107990)   return func(*args, **kwargs)
+(Worker_TP1_EP1 pid=107989) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP1_EP1 pid=107989)   return func(*args, **kwargs)
+(Worker_TP0_EP0 pid=107988) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP0_EP0 pid=107988)   return func(*args, **kwargs)
+(Worker_TP3_EP3 pid=107991) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP3_EP3 pid=107991)   return func(*args, **kwargs)
+(Worker_TP0_EP0 pid=107988) WARNING 09-18 05:54:19 [jit_monitor.py:141] Triton kernel JIT compilation during inference: _fused_post_conv_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:54:19 [fused_topk_router.py:103] MI50 top-10 router active: M=8, dtype=torch.float16, padding=True
+(Worker_TP0_EP0 pid=107988) WARNING 09-18 05:54:19 [jit_monitor.py:141] Triton kernel JIT compilation during inference: _route. This causes a latency spike; consider extending warmup to cover this shape/config.
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:54:19 [fused_topk_router.py:103] MI50 top-10 router active: M=8, dtype=torch.float16, padding=False
+(Worker_TP0_EP0 pid=107988) WARNING 09-18 05:54:19 [jit_monitor.py:141] Triton kernel JIT compilation during inference: _compute_local_logits_stats_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(Worker_TP0_EP0 pid=107988) WARNING 09-18 05:54:19 [jit_monitor.py:141] Triton kernel JIT compilation during inference: _rejection_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(Worker_TP0_EP0 pid=107988) WARNING 09-18 05:54:19 [jit_monitor.py:141] Triton kernel JIT compilation during inference: _resample_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(APIServer pid=<pid>) INFO 09-18 05:54:19 [loggers.py:310] Engine 000: Avg prompt throughput: 100.0 tokens/s, Avg generation throughput: 0.2 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 2.3%, Prefix cache hit rate: 0.0%
+(APIServer pid=<pid>) INFO 09-18 05:54:19 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 1.00, Accepted throughput: 0.00 tokens/s, Drafted throughput: 0.02 tokens/s, Accepted: 0 tokens, Drafted: 2 tokens, Per-position acceptance rate: 0.000, 0.000, Avg Draft acceptance rate: 0.0%
+(APIServer pid=<pid>) INFO:     127.0.0.1:47374 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:47378 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO 09-18 05:54:29 [loggers.py:310] Engine 000: Avg prompt throughput: 100.0 tokens/s, Avg generation throughput: 25.4 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%
+(APIServer pid=<pid>) INFO 09-18 05:54:29 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 2.63, Accepted throughput: 15.80 tokens/s, Drafted throughput: 19.40 tokens/s, Accepted: 158 tokens, Drafted: 194 tokens, Per-position acceptance rate: 0.907, 0.722, Avg Draft acceptance rate: 81.4%
+(APIServer pid=<pid>) INFO:     127.0.0.1:57432 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:57446 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO 09-18 05:54:39 [loggers.py:310] Engine 000: Avg prompt throughput: 300.0 tokens/s, Avg generation throughput: 36.8 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 2.3%, Prefix cache hit rate: 0.0%
+(APIServer pid=<pid>) INFO 09-18 05:54:39 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 2.62, Accepted throughput: 22.70 tokens/s, Drafted throughput: 28.00 tokens/s, Accepted: 227 tokens, Drafted: 280 tokens, Per-position acceptance rate: 0.900, 0.721, Avg Draft acceptance rate: 81.1%
+(APIServer pid=<pid>) INFO:     127.0.0.1:57450 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:57458 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:57468 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO 09-18 05:54:49 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 1.6 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 5.6%, Prefix cache hit rate: 0.0%
+(APIServer pid=<pid>) INFO 09-18 05:54:49 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 2.43, Accepted throughput: 1.00 tokens/s, Drafted throughput: 1.40 tokens/s, Accepted: 10 tokens, Drafted: 14 tokens, Per-position acceptance rate: 0.857, 0.571, Avg Draft acceptance rate: 71.4%
+(Worker_TP2_EP2 pid=107990) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP2_EP2 pid=107990)   return func(*args, **kwargs)
+(Worker_TP1_EP1 pid=107989) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP1_EP1 pid=107989)   return func(*args, **kwargs)
+(Worker_TP3_EP3 pid=107991) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP3_EP3 pid=107991)   return func(*args, **kwargs)
+(Worker_TP0_EP0 pid=107988) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP0_EP0 pid=107988)   return func(*args, **kwargs)
+(APIServer pid=<pid>) INFO:     127.0.0.1:60754 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO 09-18 05:54:59 [loggers.py:310] Engine 000: Avg prompt throughput: 999.9 tokens/s, Avg generation throughput: 12.8 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 3.6%, Prefix cache hit rate: 0.0%
+(APIServer pid=<pid>) INFO 09-18 05:54:59 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 2.49, Accepted throughput: 7.60 tokens/s, Drafted throughput: 10.20 tokens/s, Accepted: 76 tokens, Drafted: 102 tokens, Per-position acceptance rate: 0.784, 0.706, Avg Draft acceptance rate: 74.5%
+(APIServer pid=<pid>) INFO 09-18 05:55:09 [loggers.py:310] Engine 000: Avg prompt throughput: 999.9 tokens/s, Avg generation throughput: 2.3 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 5.9%, Prefix cache hit rate: 0.0%
+(APIServer pid=<pid>) INFO 09-18 05:55:09 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 2.44, Accepted throughput: 1.30 tokens/s, Drafted throughput: 1.80 tokens/s, Accepted: 13 tokens, Drafted: 18 tokens, Per-position acceptance rate: 0.778, 0.667, Avg Draft acceptance rate: 72.2%
+(APIServer pid=<pid>) INFO:     127.0.0.1:43960 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO 09-18 05:55:19 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 10.5 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 4.5%, Prefix cache hit rate: 0.0%
+(APIServer pid=<pid>) INFO 09-18 05:55:19 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 2.76, Accepted throughput: 6.70 tokens/s, Drafted throughput: 7.60 tokens/s, Accepted: 67 tokens, Drafted: 76 tokens, Per-position acceptance rate: 0.895, 0.868, Avg Draft acceptance rate: 88.2%
+(APIServer pid=<pid>) INFO:     127.0.0.1:40262 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO 09-18 05:55:29 [loggers.py:310] Engine 000: Avg prompt throughput: 999.9 tokens/s, Avg generation throughput: 12.8 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 3.6%, Prefix cache hit rate: 0.0%
+(APIServer pid=<pid>) INFO 09-18 05:55:29 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 2.69, Accepted throughput: 8.10 tokens/s, Drafted throughput: 9.60 tokens/s, Accepted: 81 tokens, Drafted: 96 tokens, Per-position acceptance rate: 0.875, 0.812, Avg Draft acceptance rate: 84.4%
+(APIServer pid=<pid>) INFO 09-18 05:55:39 [loggers.py:310] Engine 000: Avg prompt throughput: 1000.0 tokens/s, Avg generation throughput: 2.9 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 5.9%, Prefix cache hit rate: 0.0%
+(APIServer pid=<pid>) INFO 09-18 05:55:39 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 2.55, Accepted throughput: 1.70 tokens/s, Drafted throughput: 2.20 tokens/s, Accepted: 17 tokens, Drafted: 22 tokens, Per-position acceptance rate: 0.818, 0.727, Avg Draft acceptance rate: 77.3%
+(APIServer pid=<pid>) INFO:     127.0.0.1:41848 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO 09-18 05:55:49 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 9.9 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 4.5%, Prefix cache hit rate: 0.0%
+(APIServer pid=<pid>) INFO 09-18 05:55:49 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 2.40, Accepted throughput: 5.90 tokens/s, Drafted throughput: 8.40 tokens/s, Accepted: 59 tokens, Drafted: 84 tokens, Per-position acceptance rate: 0.762, 0.643, Avg Draft acceptance rate: 70.2%
+(PleOffloadWorker pid=108412) INFO 09-18 05:55:55 [worker.py:1246] PLE offload timing over 500 requests (2 fused): lookup 24.84 ms, replicate+publish 0.15 ms, total in worker 24.99 ms per request
+(Worker_TP0_EP0 pid=107988) INFO 09-18 05:55:55 [connector.py:486] PLE offload host wait over 500 launches: launch 0.04 ms + wait 146.37 ms per step (request thread: input stage+send 121.03 ms)
+(APIServer pid=<pid>) INFO:     127.0.0.1:40516 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:40524 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:40538 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO 09-18 05:55:59 [loggers.py:310] Engine 000: Avg prompt throughput: 1000.0 tokens/s, Avg generation throughput: 12.8 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 3.6%, Prefix cache hit rate: 0.0%
+(APIServer pid=<pid>) INFO 09-18 05:55:59 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 2.49, Accepted throughput: 7.60 tokens/s, Drafted throughput: 10.20 tokens/s, Accepted: 76 tokens, Drafted: 102 tokens, Per-position acceptance rate: 0.784, 0.706, Avg Draft acceptance rate: 74.5%
+(APIServer pid=<pid>) INFO 09-18 05:56:09 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 7.7%, Prefix cache hit rate: 0.0%
+(APIServer pid=<pid>) INFO:     127.0.0.1:51934 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO 09-18 05:56:39 [loggers.py:310] Engine 000: Avg prompt throughput: 3000.0 tokens/s, Avg generation throughput: 12.8 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 2.5%, Prefix cache hit rate: 0.0%
+(APIServer pid=<pid>) INFO 09-18 05:56:39 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 2.35, Accepted throughput: 1.82 tokens/s, Drafted throughput: 2.70 tokens/s, Accepted: 73 tokens, Drafted: 108 tokens, Per-position acceptance rate: 0.741, 0.611, Avg Draft acceptance rate: 67.6%
+(APIServer pid=<pid>) INFO 09-18 05:56:49 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 6.6%, Prefix cache hit rate: 0.0%
+(APIServer pid=<pid>) INFO:     127.0.0.1:48312 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO 09-18 05:57:19 [loggers.py:310] Engine 000: Avg prompt throughput: 2999.9 tokens/s, Avg generation throughput: 12.8 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%
+(APIServer pid=<pid>) INFO 09-18 05:57:19 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 2.43, Accepted throughput: 1.90 tokens/s, Drafted throughput: 2.65 tokens/s, Accepted: 76 tokens, Drafted: 106 tokens, Per-position acceptance rate: 0.811, 0.623, Avg Draft acceptance rate: 71.7%
+(APIServer pid=<pid>) INFO 09-18 05:57:29 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 6.6%, Prefix cache hit rate: 0.0%
+(APIServer pid=<pid>) INFO:     127.0.0.1:48214 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO 09-18 05:57:59 [loggers.py:310] Engine 000: Avg prompt throughput: 3000.0 tokens/s, Avg generation throughput: 12.8 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 3.6%, Prefix cache hit rate: 0.0%
+(APIServer pid=<pid>) INFO 09-18 05:57:59 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 2.65, Accepted throughput: 1.97 tokens/s, Drafted throughput: 2.40 tokens/s, Accepted: 79 tokens, Drafted: 96 tokens, Per-position acceptance rate: 0.854, 0.792, Avg Draft acceptance rate: 82.3%
+(APIServer pid=<pid>) INFO 09-18 05:58:09 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 6.6%, Prefix cache hit rate: 0.0%
+(APIServer pid=<pid>) INFO:     127.0.0.1:38464 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO 09-18 05:58:39 [loggers.py:310] Engine 000: Avg prompt throughput: 3000.0 tokens/s, Avg generation throughput: 12.8 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 3.6%, Prefix cache hit rate: 0.0%
+(APIServer pid=<pid>) INFO 09-18 05:58:39 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 2.78, Accepted throughput: 2.05 tokens/s, Drafted throughput: 2.30 tokens/s, Accepted: 82 tokens, Drafted: 92 tokens, Per-position acceptance rate: 0.913, 0.870, Avg Draft acceptance rate: 89.1%
+(APIServer pid=<pid>) INFO 09-18 05:58:49 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 7.7%, Prefix cache hit rate: 0.0%
+(APIServer pid=<pid>) INFO 09-18 05:59:19 [loggers.py:310] Engine 000: Avg prompt throughput: 2999.8 tokens/s, Avg generation throughput: 12.8 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%
+(APIServer pid=<pid>) INFO 09-18 05:59:19 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 2.70, Accepted throughput: 2.00 tokens/s, Drafted throughput: 2.35 tokens/s, Accepted: 80 tokens, Drafted: 94 tokens, Per-position acceptance rate: 0.872, 0.830, Avg Draft acceptance rate: 85.1%
+(APIServer pid=<pid>) INFO 09-18 05:59:29 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%
+(APIServer pid=<pid>) INFO:     127.0.0.1:39804 - "POST /tokenize HTTP/1.1" 200 OK
+(Worker_TP1_EP1 pid=107989) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP1_EP1 pid=107989)   return func(*args, **kwargs)
+(Worker_TP2_EP2 pid=107990) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP2_EP2 pid=107990)   return func(*args, **kwargs)
+(Worker_TP0_EP0 pid=107988) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP0_EP0 pid=107988)   return func(*args, **kwargs)
+(Worker_TP3_EP3 pid=107991) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP3_EP3 pid=107991)   return func(*args, **kwargs)
+(Worker_TP0_EP0 pid=107988) WARNING 09-18 05:59:51 [jit_monitor.py:141] Triton kernel JIT compilation during inference: layer_norm_fwd_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(Worker_TP2_EP2 pid=107990) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP2_EP2 pid=107990)   return func(*args, **kwargs)
+(Worker_TP1_EP1 pid=107989) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP1_EP1 pid=107989)   return func(*args, **kwargs)
+(Worker_TP3_EP3 pid=107991) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP3_EP3 pid=107991)   return func(*args, **kwargs)
+(Worker_TP0_EP0 pid=107988) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP0_EP0 pid=107988)   return func(*args, **kwargs)
+(APIServer pid=<pid>) INFO:     127.0.0.1:39812 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:50436 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:50440 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:50450 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:50464 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:50470 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:50478 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:50484 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:50496 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:50498 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:50514 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:50522 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:50524 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:50528 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:50536 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:50544 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:50558 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:50564 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:50566 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:50570 - "POST /tokenize HTTP/1.1" 200 OK
+(Worker_TP0_EP0 pid=107988) WARNING 09-18 05:59:59 [jit_monitor.py:141] Triton kernel JIT compilation during inference: _qsa_merge_splitk_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(Worker_TP2_EP2 pid=107990) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP2_EP2 pid=107990)   return func(*args, **kwargs)
+(Worker_TP3_EP3 pid=107991) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP3_EP3 pid=107991)   return func(*args, **kwargs)
+(Worker_TP1_EP1 pid=107989) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP1_EP1 pid=107989)   return func(*args, **kwargs)
+(Worker_TP0_EP0 pid=107988) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP0_EP0 pid=107988)   return func(*args, **kwargs)
+(APIServer pid=<pid>) INFO 09-18 06:00:00 [loggers.py:310] Engine 000: Avg prompt throughput: 32.5 tokens/s, Avg generation throughput: 5.0 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 2.2%, Prefix cache hit rate: 0.0%
+(APIServer pid=<pid>) INFO 09-18 06:00:00 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 3.00, Accepted throughput: 0.85 tokens/s, Drafted throughput: 0.85 tokens/s, Accepted: 34 tokens, Drafted: 34 tokens, Per-position acceptance rate: 1.000, 1.000, Avg Draft acceptance rate: 100.0%
+(Worker_TP0_EP0 pid=107988) WARNING 09-18 06:00:00 [jit_monitor.py:141] Triton kernel JIT compilation during inference: fused_moe_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(Worker_TP3_EP3 pid=107991) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP3_EP3 pid=107991)   return func(*args, **kwargs)
+(Worker_TP2_EP2 pid=107990) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP2_EP2 pid=107990)   return func(*args, **kwargs)
+(Worker_TP1_EP1 pid=107989) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP1_EP1 pid=107989)   return func(*args, **kwargs)
+(Worker_TP0_EP0 pid=107988) <home>/gfx906-venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+(Worker_TP0_EP0 pid=107988)   return func(*args, **kwargs)
+(APIServer pid=<pid>) INFO:     127.0.0.1:50586 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:33552 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:33568 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO:     127.0.0.1:33576 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=<pid>) INFO 09-18 06:00:10 [loggers.py:310] Engine 000: Avg prompt throughput: 10.4 tokens/s, Avg generation throughput: 19.7 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%
+(APIServer pid=<pid>) INFO 09-18 06:00:10 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 2.74, Accepted throughput: 12.50 tokens/s, Drafted throughput: 14.40 tokens/s, Accepted: 125 tokens, Drafted: 144 tokens, Per-position acceptance rate: 0.931, 0.806, Avg Draft acceptance rate: 86.8%
+(APIServer pid=<pid>) INFO 09-18 06:00:20 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%

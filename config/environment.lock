@@ -1,0 +1,19 @@
+{
+  "_dirty_flag": true,
+  "_generated_at": "2026-09-01T20:24:50+00:00",
+  "_generated_by": "harness/env_fingerprint.py",
+  "_git_commit": "2c4dfcc81b39324b10998d2a4787ffbf7b8eaf29",
+  "cpu_count": 8,
+  "gfx_target": "gfx906:xnack-",
+  "gpu_count": 1,
+  "guest_kernel": "<kernel>",
+  "hostname": "<vega-host>",
+  "kernel_version": "<kernel>",
+  "pve_version": "not measured",
+  "python_version": "3.12.3",
+  "ram_gb": "22.8",
+  "rocm_version": "7.2.4",
+  "torch_version": "2.13.0+gfx906.20260802001858",
+  "triton_commit": "version=3.6.0",
+  "vllm_commit": "not measured"
+}

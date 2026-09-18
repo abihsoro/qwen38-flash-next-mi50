@@ -1,0 +1,2 @@
+{"bit_identical_across_ranks": true, "bytes": 20480, "correct": true, "expected_value": 10.0, "impl": "custom_wave64_oneshot", "iqr_us": 1.39, "kind": "allreduce_latency", "median_us": 70.34, "min_us": 67.78, "phase": "phase2_collectives", "repeats": 200, "timeouts": 0}
+{"bit_identical_across_ranks": true, "bytes": 5120, "correct": true, "expected_value": 10.0, "impl": "custom_wave64_oneshot", "iqr_us": 0.86, "kind": "allreduce_latency", "median_us": 64.38, "min_us": 62.28, "phase": "phase2_collectives", "repeats": 200, "timeouts": 0}

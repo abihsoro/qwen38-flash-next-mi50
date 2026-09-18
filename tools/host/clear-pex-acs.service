@@ -1,0 +1,18 @@
+[Unit]
+Description=Clear PEX88096 GPU-path ACS dynamically for P2P routing
+# Must run after the switch is enumerated (pcieport present) and before any VM
+# binds vfio-pci to devices behind the switch. The kernel pcie_acs_override only
+# affects IOMMU grouping; the SILICON clear is required for P2P routing, and any
+# PCIe reset or reboot re-asserts it. <source-host> renumbers this PCI tree across boots,
+# so this must discover GPU paths through the switch instead of using fixed bus
+# addresses or endpoint GPU IDs.
+After=systemd-modules-load.service
+Before=libvirt-guests.service pve-guests.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/clear-pex-acs.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,743 @@
+{
+  "_comment": "Task registry for Work Order Rev 5 (supersedes Rev 4; mapping in DECISIONS.md D024). Statuses: pending | blocked-on-human | blocked-on-hardware | running | done | failed. Acceptance summaries; authoritative text = Rev 4 section 1 invariants + Rev 5 tracks.",
+  "tracks": {
+    "N-A": "host changes requiring reboots [HUMAN], before cards go in",
+    "N-B": "toolchain (longest single-card pole)",
+    "N-C": "repo mining (no GPU required)",
+    "N-D": "wave64 ports to correctness (1 GPU, no tuning)",
+    "N-E": "single-card measurements informing four-card work",
+    "M": "day-one bring-up with four cards",
+    "O": "optimization, after M4 only"
+  },
+  "tasks": [
+    {
+      "id": "P1",
+      "title": "Resolve the V620 source",
+      "human": true,
+      "preconditions": [],
+      "acceptance": "DECISIONS.md records the repo and the section-4 provenance",
+      "status": "done",
+      "progress": "D020: leapdragon/vllm-rdna2-qwen exists; priors founded"
+    },
+    {
+      "id": "P2",
+      "title": "ACS determination (PEX88096)",
+      "human": true,
+      "preconditions": [
+        "switch hardware"
+      ],
+      "acceptance": "ACSCap/ACSCtl read on downstream ports; override effect confirmed post-boot; IOMMU grouping",
+      "status": "blocked-on-hardware",
+      "progress": "D021: no PEX88096 yet; re-queues with cards (Rev 5 N-A2)"
+    },
+    {
+      "id": "N-A1",
+      "title": "Kernel command line for 4-card TP stability",
+      "human": true,
+      "preconditions": [],
+      "acceptance": "amdgpu.pcie_gen_cap=<bar-addr> amdgpu.aspm=0 amdgpu.runpm=0 amdgpu.gpu_recovery=1 amdgpu.noretry=1 amd_iommu=on iommu=pt in place pre-install",
+      "status": "blocked-on-human",
+      "progress": "D062: kernel cmdline (T6) can be staged + validated with the switch present (operator installs)"
+    },
+    {
+      "id": "N-A2",
+      "title": "ACS determination (PEX88096)",
+      "human": true,
+      "preconditions": [
+        "switch hardware"
+      ],
+      "acceptance": "ACSCap/ACSCtl read; override confirmed post-boot; IOMMU grouping (checklist A1)",
+      "status": "done",
+      "progress": "D071: STOP-A resolved - ACS enabled on all 4 downstream ports but overridable (pcie_acs_override=downstream,multifunction needed for P2P); per-port IOMMU groups 28-31"
+    },
+    {
+      "id": "N-A3",
+      "title": "Above-4G + ReBAR; >=32GB BAR from inside guest",
+      "human": true,
+      "preconditions": [],
+      "acceptance": "guest-visible BAR >= 32GB (verified D009 for card 1)",
+      "status": "done",
+      "progress": "D009: BAR0 32GiB above 4G verified in-guest"
+    },
+    {
+      "id": "N-A4",
+      "title": "VM topology: 4 GPUs, one VM, one IOMMU group (H3)",
+      "human": true,
+      "preconditions": [
+        "cards"
+      ],
+      "acceptance": "all four GPUs in one VM/IOMMU group",
+      "status": "blocked-on-hardware"
+    },
+    {
+      "id": "N-A5",
+      "title": "q35 + OVMF + 64-bit MMIO aperture >=256GB (1TB rec.)",
+      "human": true,
+      "preconditions": [],
+      "acceptance": "VM config verified",
+      "status": "blocked-on-human"
+    },
+    {
+      "id": "N-A6",
+      "title": "Ballooning off; hugepages; RAM sized for int4 sidecar",
+      "human": true,
+      "preconditions": [
+        "H4"
+      ],
+      "acceptance": "guest RAM with ~32GB page-cache headroom for int4 PLE sidecar; HugePages enabled; ballooning off",
+      "status": "blocked-on-human",
+      "progress": "H4 re-scoped by D024: 32GB int4 sidecar (not 102GB)"
+    },
+    {
+      "id": "N-A7",
+      "title": "No other GPU generation in machine",
+      "human": true,
+      "preconditions": [],
+      "acceptance": "confirmed (amdsmi indexing)",
+      "status": "blocked-on-human"
+    },
+    {
+      "id": "N-A8",
+      "title": "H1 power cap; PSU/cooling for 4x 300W passive",
+      "human": true,
+      "preconditions": [],
+      "acceptance": "H1 recorded; PSU headroom confirmed",
+      "status": "done",
+      "progress": "H1=150W per GPU (D005); cooling/PSU confirmation still open (P3 remainder)"
+    },
+    {
+      "id": "N-B1",
+      "title": "ROCm 7.14 for gfx906 availability",
+      "human": false,
+      "preconditions": [],
+      "acceptance": "7.14-gfx906 present and pinned (or fallback recorded)",
+      "status": "done",
+      "progress": "mixa3607 apt-gfx906 amdrocm7.14-gfx906 (TheRock 7.14.0-gfx906) installed (D013) - different route than fork's tarball, same acceptance"
+    },
+    {
+      "id": "N-B2",
+      "title": "Fallback options if 7.14/gfx906 unavailable",
+      "human": false,
+      "preconditions": [],
+      "acceptance": "fallback decision recorded (7.2.3 -> 6.4+nlzy)",
+      "status": "done",
+      "progress": "not needed; 7.14-gfx906 obtained"
+    },
+    {
+      "id": "N-B3",
+      "title": "torch/triton/torchvision for gfx906",
+      "human": false,
+      "preconditions": [
+        "N-B1"
+      ],
+      "acceptance": "wheels install; gfx906:xnack- confirmed; G1",
+      "status": "done",
+      "progress": "torch 2.13.0+gfx906 + triton 3.6.0+gfx906 installed (mixa3607 wheels + ai-infos source build, D013/D014); G1 PASS (D014)"
+    },
+    {
+      "id": "N-B4",
+      "title": "Consider fork's container path vs host install",
+      "human": false,
+      "preconditions": [],
+      "acceptance": "choice recorded",
+      "status": "done",
+      "progress": "host install chosen (D013); container path kept as fallback"
+    },
+    {
+      "id": "N-C1",
+      "title": "Clone the fork; extract 22-patch series",
+      "human": false,
+      "preconditions": [],
+      "acceptance": "clone + git log/diff --stat 2a46f85b43..rdna2/qwen38-flash-next",
+      "status": "done",
+      "progress": "D081: closed as superseded (PORT-MAP D026 written from other evidence)"
+    },
+    {
+      "id": "N-C2",
+      "title": "PORT-MAP: classify every commit vs transfer/redesign table",
+      "human": false,
+      "preconditions": [
+        "N-C1"
+      ],
+      "acceptance": "docs/gfx906/PORT-MAP.md",
+      "status": "done",
+      "progress": "D026: PORT-MAP complete (transfer/redesign table, kernel inventory, UNVERIFIED 15/17 resolved with evidence; v_dot4 settled empirically; P2P needs hardware)"
+    },
+    {
+      "id": "N-C3",
+      "title": "PROFILE-VEGA20 design target doc",
+      "human": false,
+      "preconditions": [],
+      "acceptance": "docs/gfx906/PROFILE-VEGA20.md, populated by Lane E",
+      "status": "done",
+      "progress": "docs/gfx906/PROFILE-VEGA20.md written (Lane E measurements: HBM ceilings, launch, queues, signaling, wave64 kernel table)"
+    },
+    {
+      "id": "N-C4",
+      "title": "RESULTS.md baseline comparison table",
+      "human": false,
+      "preconditions": [],
+      "acceptance": "baseline table in repo",
+      "status": "done",
+      "progress": "docs/gfx906/BASELINE.md written (V620 vs gfx906 comparison table)"
+    },
+    {
+      "id": "N-C5",
+      "title": "TROUBLESHOOTING.md trap checklist",
+      "human": false,
+      "preconditions": [],
+      "acceptance": "trap checklist (T1-T8 adopted into DECISIONS)",
+      "status": "done",
+      "progress": "docs/gfx906/TRAPS.md written (T1-T8 + gfx906-specific: v_dot4, host-read staleness, uncached-flag visibility, barrier oversubscription, hipBLASLt)"
+    },
+    {
+      "id": "N-C6",
+      "title": "CHANGES.md section-9 do-not-attempt list",
+      "human": false,
+      "preconditions": [],
+      "acceptance": "do-not-attempt list recorded (YTILE=2, LDS-staged fp16 GEMV, 4-deep MoE unroll, NCCL_P2P_LEVEL=SYS, spec tokens 4)",
+      "status": "done",
+      "progress": "docs/gfx906/DO-NOT-ATTEMPT.md written (fork CHANGES section-9 + gfx906 prohibitions)"
+    },
+    {
+      "id": "N-C7",
+      "title": "Apply transfer-as-is patches",
+      "human": false,
+      "preconditions": [
+        "N-C2"
+      ],
+      "acceptance": "transfer patches applied to the port tree",
+      "status": "running",
+      "progress": "D054-D061: surrogate serves (eager correct); T1/T3 pass (14-token + boundary flip, PLE-delay identical); T2 documented; N-E4 DONE (graphs-no-compile 3.3x correct); inductor miscompile on gfx906 recorded (compile OFF, Track O bisect); gfx906 serving config settled: compile off + graphs on D111/D112: surrogate serve REPRODUCED on the host/LXC path (LXC <ct>, <source-host>) - single-GPU golden PASS (boundary flip at tok 14) and TP2 across the 2 host GPUs WORKS (first multi-GPU TP run of the port anywhere; golden-like output, flip ~tok 11 = TP fp16 rounding). In-situ per-layer anchor: 2.69 ms/layer eager incl. collectives+PLE (46.5 tok/s, 8-layer surrogate). Container env fixes: python3-dev, amdsmi-preinit sitecustomize, 40 GB RAM (8 GB OOM-killed a TP worker)."
+    },
+    {
+      "id": "N-D1",
+      "title": "gemv_f16_gfx906 (wave64)",
+      "human": false,
+      "preconditions": [
+        "N-B3",
+        "N-C2"
+      ],
+      "acceptance": "relerr ~3e-4 vs fp32 reference across 12 dense shapes; correctness only",
+      "status": "done",
+      "progress": "D027: wave64 kernel validated - 12 shapes x M{1,4,5,8} PASS; fp32 acc 1.5e-7, fp16 out 3e-4 floor; lm_head 404us@786GB/s recorded (not a gate)"
+    },
+    {
+      "id": "N-D2",
+      "title": "moe_skinny_int4_decode_gfx906 + in-kernel expert_map",
+      "human": false,
+      "preconditions": [
+        "N-B3"
+      ],
+      "acceptance": "numerical match vs reference",
+      "status": "done",
+      "progress": "D030: wave64 MoE int4 decode validated (w13/w2 acc ~1e-7, EP path exercised); M{1,4,8,16} PASS"
+    },
+    {
+      "id": "N-D3",
+      "title": "rdna_allreduce inner loop wave64 (protocol unchanged)",
+      "human": false,
+      "preconditions": [
+        "N-B3"
+      ],
+      "acceptance": "correct fp32 reduce, single GPU",
+      "status": "done",
+      "progress": "D031: reduce loop validated bit-exact (W=4 sim, 0 mismatches, all ranks identical); protocol is wave-agnostic; concurrent-kernel uncached-flag visibility unreliable single-GPU (protocol -> M0/M2)"
+    },
+    {
+      "id": "N-D4",
+      "title": "rdna_fused_glue HC + shared-expert fusions wave64",
+      "human": false,
+      "preconditions": [
+        "N-B3"
+      ],
+      "acceptance": "numerical match",
+      "status": "done",
+      "progress": "D032: all four fused-glue kernels validated (relerr <= 1.3e-4); Lane D COMPLETE (N-D1..N-D4)"
+    },
+    {
+      "id": "N-D5",
+      "title": "gemv_i8_gfx906 (int8 dense SHADOWS - re-elevated D131; MTP-independent per the T45 dense-shadow use)",
+      "human": false,
+      "preconditions": [
+        "O5",
+        "D131 48L-graphs profile ranking dense_gemv as the dominant term (or approval to proceed on the D115 time data)"
+      ],
+      "acceptance": "numerical match",
+      "status": "running",
+      "progress": "D131: un-deferred for the dense-shadow use (fork T45: int8 shadows of the base-model dense decode projections - lm_head 1.27->0.64 ms, ~176 int8 vs 418 fp16 GEMVs/step at the fork). D007's MTP gate applied to a DIFFERENT gemv_i8 use (MTP head); the dense-shadow use is MTP-independent. gfx906 currently runs fp16 dense (VLLM_RDNA_DENSE_INT8=1 does not route on gfx906); tasks: (a) validate the wave64 gemv_i8 numerically (N-D5 acceptance), (b) route the dense decode through it under graphs, (c) time dense_gemv fp16 vs int8 on the surrogate (expect the fork's ~2-3x on streamed bytes); D115's dense_gemv 63 ms/20-token is the biggest GPU-time term."
+    },
+    {
+      "id": "N-E1",
+      "title": "HBM streaming ceiling (real patterns, H1 cap, post-soak)",
+      "human": false,
+      "preconditions": [
+        "N-B3"
+      ],
+      "acceptance": "results row N>=15, median+IQR; no datasheet figures",
+      "status": "done",
+      "progress": "D044/D092: ceiling ~810 GB/s CONFIRMED post-V420-flash (790-806 GB/s); kernel evidence valid; llama +25% pattern-specific - measure at the model level"
+    },
+    {
+      "id": "N-E2",
+      "title": "Empty-kernel launch latency in-guest (HIP + Triton)",
+      "human": false,
+      "preconditions": [
+        "N-B3"
+      ],
+      "acceptance": "in-guest operating value recorded",
+      "status": "done",
+      "progress": "D028: HIP 1.35us b2b / 11.24us rt; Triton 9.54us / 30.76us (in-guest, 150W)"
+    },
+    {
+      "id": "N-E3",
+      "title": "GPU_MAX_HW_QUEUES=4 probe",
+      "human": false,
+      "preconditions": [
+        "N-B3"
+      ],
+      "acceptance": "effect recorded",
+      "status": "done",
+      "progress": "D028: flat 1.3-1.4x for q=1/2/4/8 on gfx906/VFIO. D110: RE-PROBED on the host path (LXC <ct>) - q=2 = 1.89x aggregate (365.6 GB/s): the fork q-scaling REPRODUCES; the flat VFIO result was an artifact. q=4: 1.31x, q=8: 1.50x (not the fork 3.51x@4). GPU_MAX_HW_QUEUES=4 value restored as a real lever on the host path"
+    },
+    {
+      "id": "N-E4",
+      "title": "HIP graph microbench ratio AND model-level graphs (3.0x)",
+      "human": false,
+      "preconditions": [
+        "N-B3"
+      ],
+      "acceptance": "capture/replay bit-identical (G2, PASSED D014); ratio recorded; do not descope S7/Track O on the 1.09x microbench",
+      "status": "done",
+      "progress": "D060: model-level graph ratio MEASURED correct: graphs-no-compile 105 vs eager 31.5 tok/s (~3.3x); inductor miscompile = garble source (compile OFF on gfx906, D060/D061)"
+    },
+    {
+      "id": "N-E5",
+      "title": "Store-vs-load asymmetry probe (push-based premise)",
+      "human": false,
+      "preconditions": [
+        "N-B3"
+      ],
+      "acceptance": "2.5x push-over-pull confirmed or refuted on gfx906; M2 premise",
+      "status": "done",
+      "progress": "D047: single-GPU probe - serialized uncached store 0.058us vs load 0.349us (~6x store-cheaper, supports push+local-poll); peer asymmetry (2.5x premise) -> M0/M2 with cards"
+    },
+    {
+      "id": "N-E6",
+      "title": "Single-GPU write-ordering with fence-removed negative control",
+      "human": false,
+      "preconditions": [
+        "N-B3"
+      ],
+      "acceptance": "G2.2 single-GPU portion; closed with residual to M0.7",
+      "status": "done",
+      "progress": "D016/D018/D019: no single-GPU race window; closed-with-residual; peer clause -> M0.7 [ABS]"
+    },
+    {
+      "id": "M0",
+      "title": "P2P matrix 12 ordered pairs; large BAR x4; HIP IPC; coherency",
+      "human": false,
+      "preconditions": [
+        "cards",
+        "H3",
+        "N-A2"
+      ],
+      "acceptance": "G3 [ABS]: peer write works, stays on the switch",
+      "status": "done",
+      "progress": "D114: decision closed - host/LXC is the target; 2-card host-path items unblocked. D103-D115 chain: no guest P2P (D107, VFIO dropped); host P2P 28.5 GB/s + UNCACHED stores (D109/D110); kernel/bubble probe done (D115: ~50 kernels/layer, dispatch-bound). 4-card completion still [M] D115-D121: kernel/bubble probe ~50 kernels/layer (launch-bound, graphs remove the ~7.7ms/token bubble); Step-2 verdict: glue firing, norms+QSA already triton-fused (layer_norm_fwd, _qsa_*), vllm_c priority a non-lever; residual = torch-elem residue needing trace_attr frame attribution \u00b7 D141: all 12 ordered pairs on <host> byte-exact; can_access_peer=1 and EnablePeerAccess OK on every pair; median 14.40-14.44 GB/s (IQR <= 0.014); latency 16.96-18.13 us @ 20 KB. Fabric Gen4 x16 end-to-end; clear-pex-acs auto-clears 11 GPU-path bridges at boot."
+    },
+    {
+      "id": "M0.7",
+      "title": "Peer-BAR payload->fence->flag ordering (G2.2 residual) [ABS]",
+      "human": false,
+      "preconditions": [
+        "M0"
+      ],
+      "acceptance": ">=1e6 iters, all 12 ordered pairs, own fence-removed negative control MUST show violations (else test inadequate)",
+      "status": "done",
+      "progress": "D114: peer-BAR ordering testable on the 2 host cards (P2P works, D109). Full 12-pair/4-rank form still [M] \u00b7 D141 addendum: production ordering protocol (uncached staging + per-block __threadfence_system + arrive counter + block-0 system-release flag + owner-local polling) validated on 12/12 ordered pairs x 120 reps, zero violations/mismatches/timeouts, payload 1 MB filled in scrambled order. LIMITATION: negative controls (no-fence uncached, no-fence cached, +stagger) are ALSO clean, so the test cannot falsify the hardware-reorder hazard - the PASS shows the protocol works, NOT that the fence is load-bearing. Keep the fence (memory model + graph replay). A regression there would likely be silent."
+    },
+    {
+      "id": "M1",
+      "title": "RCCL latency sweep vs fork 156us/20KB baseline",
+      "human": false,
+      "preconditions": [
+        "M0"
+      ],
+      "acceptance": "sweep recorded",
+      "status": "done",
+      "progress": "D114: RCCL-vs-custom sweep executable on 2 host cards; D106 curve banked (RCCL-host 77.4 us @ 20KB 2-rank); fork 33 us AR is the M2 target D117: the custom wave64 one-shot AR measured 30.7 us/op @ 20 KB world=2 - RCCL-host 77.4 us baseline vs custom 30.7 us; 4-rank comparison when wired \u00b7 D141: RCCL world=4 latency sweep on <host> (5,20,80,160,320,640,1280 KB), all sizes byte-correct; 20 KB = 106.96 us median, landing inside D106's 4-rank projection of 95-160 us. RCCL recorded as the collective FLOOR."
+    },
+    {
+      "id": "M2",
+      "title": "gfx906_ar_oneshot (protocol transfers; wave64 inner loop)",
+      "human": false,
+      "preconditions": [
+        "M0.7",
+        "N-D3"
+      ],
+      "acceptance": "G5 <=34us at dominant size; rank-staggered peer ordering; BLOCKS/PACE knobs",
+      "status": "done",
+      "progress": "D114: unblocked on the host path. D110/D115/D117: UNCACHED kernel-store staging works; SDMA copy 11.8 us @ 20 KB is ONE component; the wave64 one-shot AR (fork T44 protocol) VALIDATED at 30.7 us/op @ 20 KB world=2, correct (kernels/gfx906/m2_ar2.cu). Remaining at that time (BOTH NOW SUPERSEDED - see the D126/D142 addendum 3 notes at the end of this field): multi-process in-vLLM wiring (4-rank) and the hipIpcOpenMemHandle asymmetry claim \u00b7 D141: fork wave64 one-shot AR validated at world=4 via m2_ar4.cu (the kernel was already world-generic; only the harness was W=2). 20 KB = 70.34 us median, 5 KB = 64.38 us, all 4 ranks == 10.0 and bit-identical, timeout=0. 1.52x faster than RCCL but misses G5. This HARNESS number is an in-process upper bound (launches serialise); the AR itself is LIVE in vLLM at world=4 - see the D142 addendum 3 note below. \u00b7 D141 addendum: GRAPH REPLAY correctness PASS - m2_ar4_graph.cu captured one HIP graph per device and re-verified every iteration: eager 100/100 correct (73.29 us median), replay 500/500 correct (79.45 us), device-side seqbuf advanced to exactly 610 per rank (= 5+100+5+500). This is the evidence that the DEVICE-DERIVED sequence works under replay, which is what keeps the seq&1 double-buffering legal. Replay was ~8% slower in this in-process 4-independent-graph form (no launch-overhead win here). \u00b7 D142 addendum 3 CORRECTION: the custom AR was NEVER unwired - D126 had already resolved the hipIpc item (single-process artifact), and the fork's AR is LIVE at world=4 in the TP4 serve (8 activation lines = 2 handles x 4 ranks, <=64 KB, covering the 20 KB dominant message). In-server A/B: AR_ON 47.70 tok/s vs AR_OFF 45.37 (byte-identical output) => ~+4% in-server. Single A/B only; a reverse A/B is the honest next step."
+    },
+    {
+      "id": "M3",
+      "title": "First full end-to-end: 73GB AWQ + 30GB int4 sidecar, TP4+EP, MTP off, float16, graphs on",
+      "human": false,
+      "preconditions": [
+        "M2",
+        "N-A6"
+      ],
+      "acceptance": "G4 [ABS] greedy match first 64 tokens",
+      "status": "done",
+      "progress": "D067: --moe-backend triton verified on gfx906 (correct output, 16.7 tok/s fallback) \u00b7 D142: TP4 FULLY RESIDENT on <host> <container>. 18.23 GiB/rank x 4 = 72.9 GiB, NO weight offload (no --offload-backend uva, no --cpu-offload-gb), MTP=0, float16, PLE via the int4 sidecar (128 shards mmapped; 'ngram_embedding.weight stubbed, gathers served from sidecar'). Cold load 72.7 s from NVMe. Deterministic. First baseline 49.04 tok/s with graphs-no-compile - LATER CORRECTED (D143 addendum): that was the TOP of the distribution, not its centre. Nine independent gate medians over 3 serve launches span 46.946-48.017, so the honest baseline is ~47.7 tok/s and the G6 gap is ~4.6%, not ~1.9% (cudagraph FULL_DECODE_ONLY, compile OFF per D060). Acceptance for G4 caveated above."
+    },
+    {
+      "id": "M4",
+      "title": "Real profile: kernels, gaps, collectives, EP imbalance",
+      "human": false,
+      "preconditions": [
+        "M3"
+      ],
+      "acceptance": "supersedes all estimates; feeds Track O",
+      "status": "done",
+      "progress": "D143: TP4 profile captured in-engine via the vLLM profiler endpoints (VLLM_TORCH_PROFILER_DIR **and** --profiler-config profiler=torch \u2014 the kind defaults to None, so setting the dir alone leaves the /start_profile route unmounted and returns 404). Per-rank kernel time 2753.6 ms vs wall 3220.9 ms = 0.855, so components sum plausibly and ATTRIBUTION IS ACCEPTED (85.5% of wall is kernel time). Families: gemm_dense 24.3%, collectives 21.0%, moe_int4 19.8%, elementwise 11.8% (303,380 launches), hc_glue 9.3%, attention_qsa 4.4%, shared_expert 3.4%, gdn 1.9%, norm 1.9%, sampler 0.4%. Single largest kernel = rdna_ar_oneshot (21% of kernel time, 49,664 launches) though the AR on/off A/B shows only ~4% wall impact because the 4 ranks overlap. Ranked targets: (1) collectives/AR count, (2) gemm_dense GEMV geometry, (3) MoE incl. topkGating 449 ms, (4) elementwise/graph-boundary residue."
+    },
+    {
+      "id": "O1",
+      "title": "Launch bubbles (~9ms/1788 kernels): graphs then fusion",
+      "human": false,
+      "preconditions": [
+        "M4"
+      ],
+      "acceptance": "I5-measured gain, T1/T2/T3 pass",
+      "status": "pending"
+    },
+    {
+      "id": "O2",
+      "title": "All-reduce wait / EP imbalance (load-balancing, not kernel)",
+      "human": false,
+      "preconditions": [
+        "M4"
+      ],
+      "acceptance": "I5-measured",
+      "status": "pending"
+    },
+    {
+      "id": "O3",
+      "title": "MoE int4 GEMV (per-block LDS staging suspicion)",
+      "human": false,
+      "preconditions": [
+        "M4"
+      ],
+      "acceptance": "I5-measured",
+      "status": "pending"
+    },
+    {
+      "id": "O4",
+      "title": "MoE config tuning for gfx906 - D144 rejected the decode-side autotuner, but the route was REOPENED and SUCCEEDED for PREFILL (D148)",
+      "human": false,
+      "preconditions": [
+        "O5"
+      ],
+      "acceptance": "I5-measured; acceptance impact assessed",
+      "status": "done",
+      "progress": "FINAL STATE (D148/D149): a tuned MoE configuration EXISTS and is IN PRODUCTION - the prefill MoE tiles are part of the selected running preset at <tuning>/moe_configs. Read the entries below as the chronological path, not the conclusion: the decode-side autotuner failed (D144), then the route was reopened with a search targeting real prefill batches and succeeded. \u00b7 D143 addendum 2: MoE autotune ATTEMPTED and INCOMPLETE - no tuned config produced, no A/B run, G6 unaffected. Five blockers found and fixed: (1) benchmark_moe.py hard-imports ray -> installed ray 2.58.0 (protobuf UNCHANGED at 6.33.6; only msgpack+ray added); (2) ray died on libamd_smi.so - the lib is present but its DEP DIR /opt/rocm/core-7.14/lib/rocm_sysdeps/lib was not on the loader path (this also means the amdsmi sitecustomize shim has been SILENTLY failing all along); (3) AttributeError num_local_experts -> patched with num_experts fallback; (4) would have written N=5632 (the DENSE intermediate_size) instead of N=640 (moe_intermediate_size) -> patched, caught by the filename pre-check; (5) ray rejects ROCR_VISIBLE_DEVICES while benchmark_moe.py itself swaps HIP->ROCR unconditionally (written for old Ray) -> patched to gate on ray version. SIXTH BLOCKER UNRESOLVED: ray workers SEGFAULT importing torch inside the benchmark actor. Not OOM (cgroup oom_kill 0, 127 GB free) and not a general ray/torch incompatibility (isolation probe: ray fine, torch fine in a worker, num_gpus=1 pinning fine). Wanted file: E=128,N=640,device_name=AMD_Radeon_Graphics,dtype=int4_w4a16.json (vLLM ships 332 configs, all NVIDIA). RECOMMENDATION: write a minimal ray-free tuner - everything needed is now known. Serve untouched; rig idle. \u00b7 TITLE CORRECTED (D144 bookkeeping): O4 previously read 'lm_head int8 shadow', but the task has been carrying MoE autotune. The lm_head int8 idea is NOT lost - it belongs with the dense/GEMV work (D143 ranks gemm_dense as the highest-headroom code target). \u00b7 D144: the ray-free tuner (tools/m0/moe_tune_noray.py) WORKS - it reused upstream's real tune()/benchmark_config via ActorClass.__ray_metadata__.modified_class, forced the known shape (E=128, shard_intermediate=1280, hidden=2560, topk=10, group=128, int4_w4a16), and produced exactly E=128,N=640,device_name=AMD_Radeon_Graphics,dtype=int4_w4a16.json. The serve demonstrably LOADED it (fused_moe.py:1154). A/B/A' result: controls agreed to 0.05% (47.63 vs 47.65 tok/s) and the tuned arm was 24.94 tok/s = -47.7%, with ALL 9 artifacts byte-identical (sha 0128852903291e32) so it is numerics-safe but a pure perf regression. REJECTED - do not use VLLM_TUNED_CONFIG_FOLDER. The upstream autotuner's objective does not transfer to this stack. Also caught a regression: merely INSTALLING ray broke the serve (vLLM imports ray at startup and ray's AMD guard rejects ROCR_VISIBLE_DEVICES); ray+msgpack were uninstalled and the serve re-verified. PIVOT per plan: dense GEMV geometry (D143's highest-headroom/lowest-risk target). topkGating 449 ms was never in scope here. \u00b7 CORRECTION BY THE EXPERT REVIEW (D148), which supersedes the 'closed as a dead end' framing for the PREFILL path: the old tuner bypassed its candidate settings for small batches and let its largest small-batch entry control much larger prefills, so D144 was measuring the wrong workload with the wrong search. The replacement search targets ACTUAL prefill batches and preserves small-batch defaults; all 68 initial and 65 extended cases passed their numerical comparisons, and the MoE-only full-model arm matched all nine control prompt cases exactly across all 27 scored outputs. Selected file uses M/N/K tiles of 8/64/32 at batch 128/256/512, 32/64/32 at 1,024, and 32/64/32 with one stage at 1,536/2,048; isolated in its own tuning folder; no compiled extension rebuilt and every original binary hash still matches. D144's decode-side finding stands: a config tuned for one shape does not transfer to another."
+    },
+    {
+      "id": "O5",
+      "title": "Speculative decode (MTP) - CLOSED: MTP3 rejected by A/B/A', MTP2 SELECTED and running (D149)",
+      "human": false,
+      "preconditions": [
+        "M4"
+      ],
+      "acceptance": "acceptance rate measured (2.7-3.1 accepted tokens/step reference)",
+      "status": "done",
+      "progress": "D147 (MTP=3, this rig): LOSSLESS - the greedy output hash is byte-identical to MTP=0 across all three A/B/A' arms, the first correctness confirmation of MTP on gfx906, and the MTP=4 text-changing failure does NOT reproduce at 3. But MTP=3 does NOT deliver the V620's 1.9x: best ~+5% TG, and the gate said -5%, i.e. the two metrics disagreed in sign, so nothing was adopted on that arm. Prefill regressed 12% and startup 72->83 s. \u00b7 D148/D149 (expert review, superseding): K=1 and K=2 were tested and K=2 is the operator-selected configuration. At a 512-token prompt K=2 gave ~58.0/59.2/62.6 tok/s for prose/code/reasoning with mean acceptance lengths 2.49-2.75 and ~43 ms per speculative round, at the cost of ~0.2 s TTFT. Combined-stack and long-output MTP testing was canceled at the operator's stopping request; the final MTP2/32K preset is what is running. NOTE: my MTP=3 test and their MTP=2 selection are consistent - K=3 was simply the wrong speculative depth for this model."
+    },
+    {
+      "id": "O6",
+      "title": "MTP expert-route reuse (D052; R9700 ~27% bandwidth)",
+      "human": false,
+      "preconditions": [
+        "M5"
+      ],
+      "acceptance": "steps_per_second per D048; route-reuse across draft tokens without accuracy loss",
+      "status": "pending",
+      "progress": "D052: Track O candidate, evaluated after M5 on steps_per_second"
+    },
+    {
+      "id": "N-E7",
+      "title": "Routing skew simulation (rank-wait term)",
+      "human": false,
+      "preconditions": [
+        "N-B3"
+      ],
+      "acceptance": "max-rank-over-mean load per step histogrammed; predicts the fork's ~1.8ms non-kernel all-reduce term",
+      "status": "done",
+      "progress": "D065: routing skew measured - per-layer max/mean 1.16-1.41; per-step wait ratio ~1.28 (busiest rank ~28% over mean) - the rank-wait term's multiplier"
+    },
+    {
+      "id": "N-E8",
+      "title": "All-reduce fixed-cost floor (1-rank degenerate)",
+      "human": false,
+      "preconditions": [
+        "N-B3"
+      ],
+      "acceptance": "launch+flag+spin+counter+reduce fixed cost; G5 34us budget check",
+      "status": "done",
+      "progress": "D066/D079: fixed-cost floor separate-launch ~15-20us; FUSED persistent kernel validated 1.85us/step (5.6x cut) - G5 budget opens to ~26-29us; M2 adopts the shape"
+    },
+    {
+      "id": "N-E9",
+      "title": "tp4_rank0 kernel evidence (D050/D080)",
+      "human": false,
+      "preconditions": [
+        "N-B3"
+      ],
+      "acceptance": "12 rank shapes recorded admissible (D080)",
+      "status": "done",
+      "progress": "D080: 12 TP4 rank-shape rows written (relerr <=6e-5)"
+    },
+    {
+      "id": "N-C8",
+      "title": "QSA prefill LDS budget sweep (64 KiB; eager path tiling)",
+      "human": false,
+      "preconditions": [
+        "N-C7"
+      ],
+      "acceptance": "prefill 16/128/512/2048/8192 tokens passes with LDS/VGPR/occupancy recorded; any failure found on one card (D094)",
+      "status": "done",
+      "progress": "D095: prefill 16..8192 all PASS (LDS risk cleared; fork tiling holds on the gfx906 eager path; R9700-class crash does not reproduce)"
+    },
+    {
+      "id": "N-C9",
+      "title": "Capability banner with fail-loud (I1 enforcement)",
+      "human": false,
+      "preconditions": [
+        "N-C7"
+      ],
+      "acceptance": "startup banner prints each optimized path's state; non-zero exit if a REQUESTED path is unavailable; harness refuses a row",
+      "status": "done",
+      "progress": "D096: capability_check.py + append_row gate - fail-loud exit=1 verified; row refused without a state file or on inactive required path"
+    },
+    {
+      "id": "O7",
+      "title": "QSA KV compression (INT8 per-channel; gfx906 has no FP8)",
+      "human": false,
+      "preconditions": [
+        "M4"
+      ],
+      "acceptance": "capacity/cost measured (V100 ref: 1.84x for ~3%); INT8 route",
+      "status": "pending",
+      "progress": "D094: Track O addition"
+    },
+    {
+      "id": "O8",
+      "title": "Expert LRU cache (capacity Plan B)",
+      "human": false,
+      "preconditions": [
+        "M4"
+      ],
+      "acceptance": "recorded as one phenomenon (llama.cpp 80-85% hit; R9700 route reuse)",
+      "status": "pending",
+      "progress": "D094: Track O addition"
+    },
+    {
+      "id": "O9",
+      "title": "Dense GEMV geometry / tiling for gfx906 (incl. lm_head) - CLOSED: measured low-ceiling by D145 (~2.6% of wall; lm_head saturated), copyBuffer origin refuted by D146",
+      "human": false,
+      "preconditions": [
+        "M4"
+      ],
+      "acceptance": "G6-relevant wall-clock gain measured by the standard A/B/A' gate: >2% vs BOTH controls with byte-identical greedy output (sha 0128852903291e32), else reject",
+      "status": "done",
+      "progress": "FINAL STATE: closed with NO code change. The lever was measured down rather than abandoned blindly - lm_head is at 96% of the HBM ceiling and the family's realistic ceiling is ~2.6% of wall, which the expert review independently corroborated (its production-compatible wave64 sweep found only modest shape-dependent gains and selected no C++ geometry change). Read on for the measurements. \u00b7 NEXT TARGET (D143 profile, reaffirmed by D144). gemm_dense is 24.3% of TP4 kernel time - the largest single family - and gemv_f16_rdna2_<8,1> alone accounts for 1253 ms across 50,691 launches (~24.7 us each). That is ~24x lower arithmetic intensity than a tuned GEMM, so geometry/tile selection is the lever. D143 ranks this the highest-headroom AND lowest-risk code target, ahead of MoE. Scope note: the old O4 title mentioned an 'lm_head int8 shadow' - lm_head GEMV is part of this family, so that idea lives here now. Method: freeze the current serve config (TP4 MTP=0 fp16 graphs-no-compile, AR on, no offload, VLLM_TUNED_CONFIG_FOLDER deliberately UNSET per D144), change ONE thing, and gate with A/B/A' because whole-serve drift is ~1%. Explicitly NOT in scope: MoE tile configs (closed negative, D144: -47.7%) and AR refinement (already live, measured effect only ~4%). \u00b7 D145 STEP 1-5 DONE (no code change adopted; G6 unaffected). SHAPES identified two ways: the launcher encodes N in grid.x, and the project harness already hardcodes the TP4 per-rank shapes, matching the trace exactly (lm_head 62080x2560, 516 launches = 1/decode step). BASELINE at M=1 (all 12 PASS, relerr ~3e-4): lm_head 779 GB/s = 96% of the 810 ceiling (SATURATED, 12.3% of gemv); mid shapes 416-621; hc.down 196 (24%); hc.inject 6 (1%). REJECTED: WAVES sweep (-5.1% total, and mechanistically cannot help - grid*block gives total threads ~= N*32 regardless of WAVES, so it never changes occupancy). FALSIFIED OWN HYPOTHESIS: I claimed the k-loop was un-unrolled; it is already a 4-deep predicated unroll using __builtin_amdgcn_fdot2. My variant was based on a partial file read and silently produced zeros; only the U=1 control (which must reproduce production) caught it. RESIZED: gemv_f16_rdna2 is 15.2% of kernel time, and the whole lever's realistic ceiling is ~2.6% of WALL, with lm_head contributing 0%; each sub-lever is 0.4-1.6%, at/below the ~1% noise floor. NEXT: either implement split-K for the small-N family (~0.6% expected, likely rejected) or RE-TARGET to elementwise (11.8% of kernel time, 303,380 launches, launch-count-dominated - a different failure mode with more upside). \u00b7 D145 addendum (attribution pass): the requested >80% kernel->op linkage is NOT achievable from this trace - measured 13.1% over 317,447 family launches. Cause is structural: a kernel's External id equals the launching event's Ev Idx, but cuda_runtime events carry NO Ev Idx (221,038 runtime vs 162,245 cpu_ops), so most kernels point at an un-indexable event; correlation->flow-start cannot rescue it either (only 15,757 's' events vs 221,038 'f'). Containment must use the launching CPU thread - GPU kernels are on stream tids, so same-tid containment scores 0%. A better trace is needed for op-level attribution; the BY-NAME ranking needs no ids and is complete: family = 12.56% of kernel time. Arithmetic gate: >=2.3% of kernel time is needed for a 2% wall win, and the largest single name (copyBuffer) is 1.76%, so the unit must be a count-clustered GROUP. Candidates: copyish family 4.26% kernel = ~3.65% wall (the only group above the bar); a 5x ~13,716 cluster (MeanOps+pow+rsqrt+float16_copy+direct_copy) = one eager RMSNorm decomposition ~3.0% kernel ~2.5% wall, BUT it contradicts D118-D121 ('norms already fused') and must be reconciled first; ~27,431x2 (fp16->fp32 copy + OnSelf_add<float>) ~1.7% wall; ~25,650x2 (Fill<Half> + add<Half>) ~1.6% wall. NEXT (operator-approved pivot): a DIRECT causAL test - toggle VLLM_ROCM_USE_SKINNY_GEMM in an A/B/A' to test whether the ~47.5k copyBuffer launches are the per-call `.contiguous()` at utils.py:289. Split-K deliberately SKIPPED (~0.6% wall, eaten by the reduction launch). \u00b7 D146 CLOSED: skinny-GEMM causal test. (1) The copyBuffer hypothesis is REFUTED - toggling VLLM_ROCM_USE_SKINNY_GEMM leaves EVERY elementwise family byte-identical (copyBuffer 12,295 in all three arms; fp16->fp32 7,128; fill 7,580; mul 9,752 etc.) while total kernel time differed 2.3x (3755 vs 8594 ms), so the copies are genuinely orthogonal to the GEMM path. The `x.reshape(-1,k).contiguous()` at utils.py:289 is NOT the source; copy attribution is CLOSED per operator rule. (2) VLLM_ROCM_USE_SKINNY_GEMM is worth 2.83x - ON 47.51 tok/s vs OFF 16.76, with controls agreeing to 0.02% (47.51 vs 47.52, the tightest A/B/A' yet) and all 9 gates deterministic. Nothing about the baseline changes. (3) A 32-token profiled window is now a cheap reliable kernel-count harness (4 valid rank traces in 1-2 min with the D143 flush-wait). Tooling note: count_copybuffer.py had a divisor bug (forgot the 4 rank traces); corrected to 96.1 copyBuffer launches per token per rank, matching the ~93 reference."
+    },
+    {
+      "id": "TP8-1",
+      "title": "TP8 probe - topology: one switch, one root complex, one NUMA node (D150)",
+      "human": false,
+      "preconditions": [
+        "M0",
+        "M4"
+      ],
+      "acceptance": "Topology captured from host and container; every GPU pair uniform; spare switch ports identified",
+      "status": "done",
+      "progress": "DONE (D150). All four MI50s hang off ONE PEX88096 under ONE root complex ([<bus>]) via one GPP bridge (<pci>). rocm-smi --showtopo: EVERY pair identical - weight 40, 2 hops, link type PCIE - and all four GPUs on NUMA node 1. No XGMI (all inter-GPU traffic is PCIe, expected for MI50 on a non-AMD platform); agrees with D141's 12/12 ordered pairs byte-exact at 14.40-14.44 GB/s. HEADROOM CONFIRMED: two downstream ports are unpopulated - <pci> -> [<bus-range>] with two empty ports [<bus>]/[<bus>], and <pci> -> [<bus>] carrying a WHOLE SECOND PEX88096 with nothing behind it - so four more cards can be added WITHOUT crossing root complexes or NUMA nodes. Useful precedent: GPU2/GPU3 already sit behind a SECOND-LEVEL switch (ae via <pci>) while GPU0/GPU1 are direct, yet weights, hops and measured bandwidth stay uniform, so an extra switch stage is not automatically harmful. CORRECTS D078: all four report pcie 16.0GT/s x16 = Gen4 x16, NOT the Gen3 x16 max D078 recorded; corroborated by the measured 14.4 GB/s (~90% of a Gen4 x16 budget, roughly double what Gen3 x16 could sustain)."
+    },
+    {
+      "id": "TP8-2",
+      "title": "TP8 probe - RCCL collectives at world=4 (D150)",
+      "human": false,
+      "preconditions": [
+        "TP8-1"
+      ],
+      "acceptance": "all_reduce and all_gather measured small and large, every case validating with zero wrong elements",
+      "status": "done",
+      "progress": "DONE (D150). Built ROCm/rccl-tests in <container> - see TRAPS #21 for the three build/run blockers (no git; hipify-perl off-PATH; no rpath). RESULTS: all_reduce small-message latency 24.6-30.8 us from 2 KiB to 16 KiB, FLAT and stable; all_gather 27.1-31.1 us over 2-32 KiB. Large messages saturate cleanly - all_reduce 14.19 GB/s algbw / 21.29 busbw at 256 MiB, all_gather 26.7 / 20.0 - with NO degradation to 256 MiB, matching the fabric's measured per-pair capability. All cases #wrong = 0; out-of-place and in-place agree. VERDICT against the operator's rules: small messages are neither poor nor erratic AND large-message bandwidth is strong, so the interconnect does NOT block TP8. WATCH ITEM: a hard algorithm knee at 32 KiB in all_reduce (25.47 us @ 16 KiB -> 42.02 us @ 32 KiB, +65% latency for 2x payload); the workload's dominant AR message is ~20 KB, just below that cliff. UN-RECONCILED: three incompatible figures now exist for RCCL world=4 latency at ~20 KB - D141 records 106.96 us, the expert review ~18.4 us (per-rank kernel medians), and rccl-tests 25-42 us (whole-op wall). They time different things; do not mix them, and treat D141's as un-reconciled (3-4x higher than a whole-op measurement of the same op)."
+    },
+    {
+      "id": "TP8-3",
+      "title": "TP8 probe - fresh TP4 baseline under teardown-day state (D150)",
+      "human": false,
+      "preconditions": [
+        "P1"
+      ],
+      "acceptance": "Service unchanged, 1 Hz rocm-smi sampling throughout, medians at 1K/10K/30K compared against the saved finals",
+      "status": "done",
+      "progress": "DONE (D150). MTP2 service re-run unchanged with 186 x 1 Hz rocm-smi samples. PREFILL REPRODUCES FAITHFULLY: 647.4 / 809.0 / 808.4 vs saved 641.9 / 806.9 / 805.1 (+0.9%, +0.3%, +0.4%). DECODE IS MODESTLY BUT REPRODUCIBLY LOWER: 59.94 / 58.85 / 55.08 vs saved 60.34 / 61.22 / 57.34 (-0.7%, -3.9%, -3.9%); the 1K and 30K ranges do not overlap the saved ones, so this is a real shift not sampling noise. CAUSE, from the monitor: the rig is POWER-CAP LIMITED, not thermally throttled - median 148 W against the 150 W cap (56-60% of samples >=145 W), sclk median 1556 MHz with full 1800 only 12-21% of the time, GFX 100%, junction peak 97 C (below the ~100 C region). GPU1 runs 14-18 C hotter than GPU3 (89/97 vs 75/79 junction); in TP4 the SLOWEST RANK GATES EVERY STEP, so a hot GPU1 costs throughput directly and this worsens with eight cards. REFERENCE DECISION per the operator's rule: USE THIS RUN for TP8 inference - PP ~647/809/808, decode ~59.9/58.9/55.1 - because it is more conservative and contemporaneous with the RCCL data. POWER/COOLING CAUTION: 4 x 150 W = 600 W today; eight cards at the same cap would be 1200 W if per-card draw held (TP8 halves each card's workload so per-card power should fall, but check PSU and enclosure cooling - GPU1 is already at 97 C junction)."
+    },
+    {
+      "id": "TP8-4",
+      "title": "TP8 go/no-go - CAPACITY decision only: TP8 is a cheap-capacity strategy, NOT a performance strategy (D151)",
+      "human": true,
+      "preconditions": [
+        "P2",
+        "P3"
+      ],
+      "acceptance": "All 56 ordered pairs byte-exact at ~14 GB/s AND small-message all-reduce latency at world=8 still in the tens of microseconds; otherwise stop",
+      "status": "pending",
+      "progress": "FINAL VERDICT (D151, operator conclusion) - read this before acting on the D150 recommendation. **TP8 is a cheap-capacity strategy, not a performance strategy.** It may let the rig run models or context sizes that are otherwise uneconomical, but it should NOT be expected to deliver better decode throughput than the current TP4 setup. REALISTIC EXPECTATION: TP8 decode will probably land BELOW the current ~40-60 tok/s aggregate range - unless the 8-GPU machine has a MUCH better interconnect/topology than this one. USE-CASE OUTLOOK: single-stream decode likely WORSE than TP4; multi-user decode throughput likely FLAT to worse; long prefill/TTFT maybe acceptable, possibly modestly better; capacity per dollar is STILL THE MAIN REASON to do TP8; the overall 'cheap 128 GB serving box' is viable only if speed expectations are modest. FOUR SIGNALS: aggregate decode stays ~40-45 tok/s from 1 to 8 concurrency (more requests do not fill unused compute); per-request speed collapses as concurrency rises (requests share the same bottleneck); GPU power DROPS to ~111 W at 4-8 concurrency (the GPUs are waiting more, not working harder); p95 rises sharply (scheduler/communication bubbles become user-visible). If this were compute-limited, aggregate would CLIMB with concurrency and power would stay near 150 W - instead aggregate is flat and power falls, pointing to synchronization, communication, scheduler overhead or CPU/NUMA stalls rather than a lack of active requests. THE POWER DROP IS DECISIVE: at 4-way concurrency there should have been plenty of queued work, yet the rig backed off to ~111 W - a saturated machine cannot reduce its draw when handed MORE work. AND ADDING RANKS IS UNLIKELY TO FIX IT: four more TP ranks usually INCREASE collective cost and synchronization pressure, so TP8 pushes the wrong way on the exact axis that already limits the rig. The one escape hatch is a materially better interconnect/topology than the PEX88096 one measured here - which is what the physical pre-checks establish. SO: the checks remain worth doing but justified by CAPACITY PER DOLLAR, not by any decode-speed expectation. If the goal is decode throughput, the lever is the per-token serialized work identified in D145/D146 and confirmed here - not more cards."
+    },
+    {
+      "id": "TP8-5",
+      "title": "TP8 probe - decode concurrency sweep: aggregate FLAT 1->8, refutes the weight-bandwidth case (D150)",
+      "human": false,
+      "preconditions": [
+        "TP8-3"
+      ],
+      "acceptance": "Aggregate and per-request throughput, round latency median/p95, and GPU power measured at 1/2/4/8 concurrent decode-heavy requests",
+      "status": "done",
+      "progress": "DONE (D150 addendum). 1K prompt, 512 generated, greedy, STREAMING (so round latency is measured, not inferred), unique prompt salt per request, GPU sampled at 1 Hz per phase. RESULTS: aggregate 44.41 / 40.21 / 45.24 / 40.30 tok/s at concurrency 1 / 2 / 4 / 8 = FLAT (12% band, no trend); scaling 1.00x / 0.91x / 1.02x / 0.91x. Ideal linear scaling at 4 would be 178 tok/s, measured 45 = NONE. Per-request 52.39 / 25.37 / 13.62 / 11.37 tok/s (scales ~1/n as expected). Round median 43.2 / 66.0 / 197.2 / 200.6 ms and p95 143.6 / 174.8 / 308.0 / 348.5 ms with multi-second stalls (3466 ms max at 2), so interactive feel degrades under load. GPU POWER FALLS as concurrency rises - 150.0 / 146.5 / 111.0 / 109.0 W - while the use counter stays ~100%, i.e. the SMs are STALLED WAITING, not saturated: the workload is LATENCY/SERIALIZATION BOUND and the 100% use figure counts issue cycles, not useful work. THIS REFUTES the weight-bandwidth case for TP8 (see D150 section 6): if weights bound decode, batching 4 would read them once and emit 4x the tokens; it emitted 1.0x. So the earlier 18.23 GiB / 810 GB/s ~= 44 tok/s agreement with the measured ~47.7 was a NUMERICAL COINCIDENCE - the MoE is sparse (top-10 of 128 local experts) so the full per-rank footprint is never read per token. CONSISTENT WITH D145/D146: the elementwise/copy residue is 303k latency-bound launches. Measurement trap hit and fixed: the first pass counted streamed CHUNKS as tokens, understating throughput ~2.8x because MTP2 puts several accepted tokens in one chunk; usage.completion_tokens is authoritative and the ratios were unaffected. \u00b7 CONSEQUENCE (D151): this sweep is the evidence base for the final verdict that TP8 is a cheap-capacity strategy, not a performance strategy - aggregate decode flat from 1 to 8 concurrency, GPU power FALLING to ~111 W while 'use' stays 100%, and sharply rising p95. Expect TP8 decode to land BELOW the current ~40-60 tok/s aggregate range unless the 8-GPU machine has a much better interconnect. Do not treat these numbers as a baseline that TP8 is expected to beat."
+    }
+  ],
+  "gates": [
+    {
+      "id": "G0",
+      "when": "N-B",
+      "predicate": "gfx906:xnack- consistent; guest BAR >= 32GB",
+      "status": "PASSED (D009)"
+    },
+    {
+      "id": "G1",
+      "when": "N-B",
+      "predicate": "toolchain green on one card",
+      "status": "PASSED (D014)"
+    },
+    {
+      "id": "G2",
+      "when": "N-E4",
+      "predicate": "HIP graph capture/replay bit-identical",
+      "status": "PASSED (D014)"
+    },
+    {
+      "id": "G2.2",
+      "when": "N-E6 + M0.7",
+      "predicate": "ordered peer-visible signalling; single-GPU portion closed with residual to M0.7",
+      "status": "single-GPU portion CLOSED (D019). PEER PORTION (M0.7) NOW CLOSED - D141 addendum: peer-BAR payload->fence->arrive->flag ordering validated on 12/12 ordered pairs x 120 reps, zero violations. Caveat recorded: the test cannot falsify the hardware-reorder hazard (controls are also clean), so it proves the protocol works on this hardware, not that the fence is load-bearing."
+    },
+    {
+      "id": "G3",
+      "when": "M0",
+      "predicate": "peer write works, stays on the switch [ABS]",
+      "status": "PASSED on the host/LXC path (D109: 28.5 GB/s switch-internal; D114: VFIO dropped, transport closed). VFIO guest cannot P2P (D107) - retired"
+    },
+    {
+      "id": "G4",
+      "when": "M3",
+      "predicate": "greedy match first 64 tokens [ABS]",
+      "status": "TP4 fully-resident serve RUNS and is DETERMINISTIC (D142: two greedy runs, identical sha256 0128852903291e32; also identical to the eager run). HONEST CAVEAT: golden/ is still empty because S3 never ran, so the first-64-token MATCH is NOT evaluable. Recorded as determinism + captured text/hash - NOT a pass."
+    },
+    {
+      "id": "G5",
+      "when": "M2",
+      "predicate": "<= 34 us at the dominant message size (119 collectives/step: 34us = 4.0ms, 45us = 5.4ms of a ~15.4ms MTP0 step). A miss adjusts the t/s target - it does NOT stop the project (D066 decomposition: fixed cost ~15-20us is the risk; fused poll+reduce targets 5-8us)",
+      "status": "D141 4-card measurement on <host>: RCCL world=4 = 106.96 us median @ 20 KB (inside D106's 95-160 us projection; RCCL is the recorded floor). Custom wave64 one-shot AR world=4 = 70.34 us, all ranks == 10.0, bit-identical, timeout=0 (1.52x faster than RCCL) but NOT wired into vLLM. Both MISS the 34 us budget, so per the plan the first TP4 boots with RCCL and custom AR off. G5 remains a t/s-adjustment gate, not a stop.",
+      "impact": "non-fatal: moves the t/s target, not a STOP"
+    },
+    {
+      "id": "G6",
+      "when": "Track O",
+      "predicate": ">= 50 t/s at MTP=0, H1 power cap; judged on steps_per_second per D048 (tok/s recorded, non-governing). Parity target: fork's 60-62 t/s MTP0",
+      "status": "FINAL OPERATING STATE (D149): TP4+EP, 150 W/card, **MTP2**, tuned prefill MoE tiles, mask-aware MI50 top-10 router, 2048-token prefill chunks, 32768-token context, fp16, no weight offload. TunableOp and dense INT8 off. <container> port 8002, PID <pid>, launch <launch-tag>.  \u00b7 MEASURED (medians of three scored requests per exact prompt length, two warmups each, 128 generated tokens, one active request, zero cached prompt tokens, synthetic prose corpus): 1K -> PP 641.9 tok/s, TTFT 1.558 s, decode 60.34 (range 60.12-60.35); 10K -> PP 806.9, TTFT 12.393 s, decode 61.22 (range 39.02-65.35, spread is material); 30K -> PP 805.1, TTFT 37.263 s, decode 57.34 (range 57.00-61.83).  \u00b7 BASELINE SEMANTICS CORRECTED TWICE, both now settled: (1) the 49.04 first recorded was a high outlier, giving ~47.7 (D143 addendum); (2) more importantly, **the ~47.7 gate timed the WHOLE HTTP REQUEST, so it includes prompt time and is NOT comparable to a decode rate** - the corrected reference is ~55-56 decode tok/s on this corpus (D148). Any future claim must state which of the two it is measuring.  \u00b7 G6 is >= 50 t/s at MTP=0 judged on steps/s per D048; the final configuration runs MTP2 at 30-32K context, so the original MTP=0 terms no longer describe the operating point. Reproduce with `tools/review_20260918/scripts/launch.sh balanced` (presets: `mtp0` = optimized MTP0/2K, `reference` = original defaults, `stop`)."
+    }
+  ],
+  "stops": [
+    {
+      "id": "STOP-A",
+      "task": "P2/N-A2",
+      "condition": "ACS cannot be disabled or overridden on the switch"
+    },
+    {
+      "id": "STOP-B",
+      "task": "N-A3",
+      "condition": "guest-visible BAR < 32GB after host remediation"
+    },
+    {
+      "id": "STOP-C",
+      "task": "N-B",
+      "condition": "toolchain fails on the fallback path"
+    },
+    {
+      "id": "STOP-D",
+      "task": "M0",
+      "condition": "P2P blocked or redirected through the root complex on the PHYSICAL path (M0 switch-internal bandwidth fails) - the guest-topology P2P absence (D103/D104) is NOT this STOP"
+    },
+    {
+      "id": "STOP-E",
+      "task": "any",
+      "condition": "two consecutive sessions with no task reaching its acceptance predicate"
+    }
+  ],
+  "decisions": {
+    "H1": {
+      "value": 150,
+      "unit": "W per GPU",
+      "decided_by": "operator",
+      "decided_at": "2026-09-01",
+      "recorded_in": "DECISIONS.md D005"
+    },
+    "H4": {
+      "status": "open",
+      "re_scoped": "guest RAM sized for 32GB int4 PLE sidecar page cache (D024), not 102GB",
+      "blocks": "N-A6"
+    },
+    "H5": {
+      "status": "open",
+      "note": "text-only serving: fork uses --language-model-only; vision elided (T7)",
+      "blocks": "S2 port scope"
+    },
+    "GPU_GUEST": {
+      "value": "<vm>",
+      "detail": "ssh <user>@<lan-ip>; PVE host <source-host>",
+      "decided_at": "2026-09-01",
+      "recorded_in": "D006"
+    }
+  },
+  "rev4_to_rev5": "S0->G0; S1->G1; S1b->N-E6/G2.2; S2->N-C/N-D+PLE; S3->carried tiers; S4->N-C3+M4; S5->Lane E; S6->Lane D; S7->Track O; S8->M0/M0.7/M1; M2->M2; M5->O5; M6->O4 (D024)",
+  "status_update": {
+    "as_of": "2026-09-17 \u2014 TP4 bring-up, D141/D142",
+    "bullets": [
+      "**TP4 IS UP AND FULLY RESIDENT on <host> (new rig).** Four MI50-class Vega20 cards (`<device-id>`) behind the PEX880xx switch on a <board> / 2x <cpu>. Container <ct> `<container>`: Ubuntu 24.04, **128 GiB RAM**, 64 cores, ROCm 7.14.0-gfx906, torch 2.13.0+gfx906, RCCL 2.30.4.",
+      "**Fabric (Phase 1) PASSES:** all 12 ordered peer pairs byte-exact at 14.40-14.44 GB/s (IQR <= 0.014), latency 16.96-18.13 us @ 20 KB; Gen4 x16 end-to-end; `clear-pex-acs` discovers all four GPUs and clears 11 GPU-path bridges at boot (D141).",
+      "**Collectives (Phase 2) DONE:** RCCL world=4 = 106.96 us @ 20 KB (the recorded floor). The custom wave64 one-shot AR at world=4 = 70.34 us, correct and bit-identical, **and it is LIVE \u2014 not unwired** (D126 resolved the D117 hipIpc item as a single-process harness artifact; the fork's AR engages in the TP4 serve with 8 activation lines = 2 handles x 4 ranks, <=64 KB, covering the 20 KB dominant message). In-server A/B: **47.70 tok/s with AR vs 45.37 without, byte-identical output (~+4%)**.",
+      "**Phase 3 ACHIEVED:** TP4 + EP, MTP=0, fp16, **no weight offload** - 18.23 GiB/rank x 4 = 72.9 GiB fully resident, PLE served from the int4 sidecar. Deterministic greedy output. **Baseline ~47.7 tok/s** at MTP=0 with graphs-no-compile (compile stays OFF on gfx906, D060) - CORRECTED: the 49.04 first recorded was a high outlier at the top of a 46.946-48.017 span (D143 addendum). Progression this session: 2.54 (TP2+UVA offload, D137) -> 10.95 (TP4 eager) -> ~47.7 tok/s, so the G6 gap is ~4.6%, not ~1.9%.",
+      "**Model-store blocker solved via v620-serve's method:** the AWQ checkpoint is missing `model-00001-of-00005.safetensors`, which holds ONLY the 128 `ngram_embedding.shard_*` tensors (the 102.4 GB BF16 n-gram table the int4 sidecar replaces). The fix is LXC <source-ct>'s trick - bind-mount the patched `<index-overlay>/model.safetensors.index.json` (5 shards, 0 ngram entries, 222,618 tensors) over the model's index. The model directory is unmodified.",
+      "**Environment hardening:** `iommu=pt` added to <host>'s kernel cmdline (RCCL warned of 'instability or hang' without it; `Default domain type` is now `Passthrough`). Model assets (127 GB) and <container>'s rootfs were moved off the HDD pool (`<pool>`, `<pool>`) onto the NVMe pool (`<pool>`, 4x <nvme>), cutting cold checkpoint load from ~399 s to 72.7 s. Rollback volume `<pool>/<subvol>` is retained.",
+      "**CURRENT COMPASS - OPTIMISATION CLOSED (2026-09-18).** The selected configuration is MTP2 / 32K / 150 W per card with tuned prefill MoE tiles and the MI50 top-10 router; see the final results below. Every lane pursued in Phase 5 reached a recorded conclusion: MoE decode tiles (rejected, then reopened successfully for prefill), the cheap batched-tokens lever (flat), dense GEMV geometry (measured low-ceiling: lm_head is at 96% of the HBM ceiling and the family's realistic ceiling is ~2.6% of wall), split-K (deliberately not pursued), the copyBuffer/contiguity hypothesis (refuted by an exact null - skinny GEMM is worth 2.83x and unaffected), and MTP3 (lossless but not the 1.9x). The operator stopped further experiments at the ~10% additional-decode-gain threshold; no further tuning is planned.",
+      "**Phase 4 (M4) DONE \u2014 TP4 profile ledger, attribution ACCEPTED (D143).** Captured in-engine with the vLLM profiler endpoints. Per-rank kernel time 2753.6 ms vs wall 3220.9 ms = 0.855, so the components sum plausibly per the plan's requirement. Ledger: gemm_dense 24.3%, collectives 21.0%, moe_int4 19.8%, elementwise 11.8% (303,380 launches \u2014 the graph-boundary residue), hc_glue 9.3%, qsa 4.4%, shared_expert 3.4%. The single largest kernel in the model is our own rdna_ar_oneshot at 21% of kernel time \u2014 but the AR on/off A/B shows only ~4% of wall, because the four ranks overlap, so kernel-share overstates its wall cost. Phase 5 can now pick its target from measured data instead of the V620 ladder by analogy.",
+      "**Cheap G6 lever tested and REJECTED (D143 addendum); baseline corrected.** `--max-num-batched-tokens` 2048 vs 1024 was flat: B 47.74 sits BETWEEN the two controls (A 47.85, A' 47.36) and the control-vs-control drift (1.02%) is larger than the effect (0.22%). All 9 gate runs were deterministic with the same hash 0128852903291e32, so the change is safe but useless - rejected cleanly, no re-baselining on noise. **Also: the recorded 49.04 tok/s was a high outlier.** Nine independent gate medians span 46.946-48.017, so the honest baseline is ~47.7 tok/s and the gap to G6 (>=50) is ~4.6%, not ~1.9%. Whole-serve noise floor ~1%. The MoE lever is NOT a flag - the 'Using default MoE config' warning means no tuned Triton JSON exists for device_name=gfx906 - so MoE needs an autotune run - SINCE ATTEMPTED AND CLOSED NEGATIVE (D144). The agreed next target is now DENSE GEMV GEOMETRY, not MoE.",
+      "**SUPERSEDED BY D144** - **MoE autotune attempted, INCOMPLETE (D143 addendum 2).** Harder than it looked: five distinct incompatibilities fixed (missing ray; libamd_smi.so's dep dir absent from the loader path; Mixtral-only config attribute names; the dense-vs-MoE intermediate size, which would have written N=5632 instead of N=640; and benchmark_moe.py's own HIP->ROCR swap that ray 2.58 forbids), and a SIXTH unresolved: ray workers segfault importing torch inside the benchmark actor (ruled out OOM and general ray/torch breakage). No tuned config exists and G6 is unaffected. Recommended path: a minimal ray-free tuner, since every parameter it needs is now known. Side finding: TRAPS #11 is WRONG - LD_LIBRARY_PATH does not hide the GPUs; the original reading was a stale-process confound. (Kept for the record of the five fixes; the sixth blocker was resolved by writing the ray-free tuner, and the resulting config was then REJECTED as -47.7% slower.)",
+      "**MoE tuning CLOSED as a dead end - clean negative result (D144).** The ray-free tuner works end-to-end: it reused upstream's real tuning code, produced exactly E=128,N=640,device_name=AMD_Radeon_Graphics,dtype=int4_w4a16.json, and the serve demonstrably loaded it. The A/B/A' is emphatic: controls agreed to 0.05% (47.63 vs 47.65 tok/s) while the tuned arm ran at 24.94 tok/s = **-47.7%**, with all 9 gate artifacts byte-identical, so it is numerics-safe but a pure performance regression. REJECTED; do not set VLLM_TUNED_CONFIG_FOLDER on this model. The upstream autotuner's isolated objective does not transfer to this stack. Two process wins: the control arm caught that merely INSTALLING ray broke the serve (vLLM imports ray at startup; ray's AMD guard rejects ROCR_VISIBLE_DEVICES) - ray and msgpack were removed and the serve re-verified - and the filename gate proved the config was really loaded rather than silently ignored. **Pivot: dense GEMV geometry**, D143's highest-headroom / lowest-risk target.",
+      "**O9 dense GEMV, step 1-5: shapes identified, baseline microbenched, and the lever SIZED DOWN (D145).** The kernel's launcher encodes N in grid.x and the project harness already hardcodes the TP4 shapes, both matching the trace (lm_head 62080x2560 = 1 launch per decode step). At M=1 **lm_head runs at 779 GB/s = 96% of the HBM ceiling and is saturated** (12.3% of all gemv time), mid shapes sit at 416-621 GB/s, hc.down at 196 and hc.inject at 6. Two levers tested and rejected: WAVES choice (-5.1% total, and it provably cannot raise occupancy since total threads ~= N*32 regardless of WAVES), and a k-unroll variant whose premise was my own error - the kernel already does a 4-deep predicated unroll with v_dot2 (fdot2). I had inferred the loop's shape from a partial file read; the U=1 control that had to reproduce production is the only reason it was caught rather than mis-reported. **Net: gemv_f16_rdna2 is 15.2% of kernel time but the whole lever's ceiling is ~2.6% of WALL, with individual sub-levers at or below the ~1% noise floor.** Next: split-K for small-N (~0.6%, likely rejected) or re-target to elementwise (11.8% of kernel time across 303,380 launches - launch-count-dominated, more upside). **D145 therefore DE-PRIORITISES this lane** (it was D143's 'highest headroom, lowest risk' and that framing was wrong). Pivot per operator: the elementwise/copyBuffer residue, with the first action being a focused attribution pass - now done, and it shows the family is fragmentated (largest single kernel 1.8% of kernel time, below the 2.3% needed for a 2% wall win), so the target must be a count-clustered GROUP: e.g. the four kernels sharing exactly 13,932 launches (mean+pow+rsqrt+copy = one eager RMSNorm decomposition, ~1.9% of wall), ~27.8k pairs (OnSelf_add<float> + fp16->fp32 copy), ~25.9k pairs (Fill<Half> + add<Half>), and copyBuffer at 47,526 launches (~93/token, suspiciously close to the 99 gemv calls/token - consistent with the defensive `x.reshape(-1,k).contiguous()` in the skinny-GEMM path).",
+      "**Elementwise/copyBuffer attribution: the trace cannot resolve parents; the by-name ranking is complete (D145 addendum).** The requested >80% kernel->op linkage is unreachable - measured 13.1% over 317,447 family launches, because a kernel's External id points at the launching event's Ev Idx while cuda_runtime events carry no Ev Idx at all. Op-level attribution needs a better trace, not more analysis. The by-name data is unaffected and decides the ranking: the family is 12.56% of kernel time, but **a target must be >=2.3% of kernel time to clear the 2% wall bar and the largest single kernel is 1.76%** - so the unit of work is a count-clustered group. Only the copyish family clears it as a whole (4.26% kernel = ~3.65% wall). Next step is a direct causal test (toggle VLLM_ROCM_USE_SKINNY_GEMM) rather than more trace archaeology.",
+      "**Skinny-GEMM causal test: copyBuffer hypothesis REFUTED; skinny GEMM worth 2.83x (D146).** Toggling VLLM_ROCM_USE_SKINNY_GEMM left every elementwise family byte-identical (copyBuffer 12,295 launches in all three arms) while total kernel time differed 2.3x - so the copies are causally orthogonal to the dense-GEMM path and `utils.py:289`'s per-call `.contiguous()` is NOT their source. Copy attribution is CLOSED. Separately and confirmatorily: **skinny GEMM is worth 2.83x** (47.51 tok/s ON vs 16.76 OFF), with controls agreeing to 0.02% - the tightest A/B/A' yet - so the baseline config stands unchanged. Per operator direction the next target is **O5 / MTP=3** (documented 1.9x on V620); topkGating stays a harder post-MTP target.",
+      "**O5 MTP=3: LOSSLESS but NOT the 1.9x - REJECTED (D147).** MTP=3 reproduces the MTP=0 greedy output hash BYTE-IDENTICALLY, so the port's MTP integration is correct and the MTP=4 text-changing failure does not reproduce at 3 - a genuine new confirmation. But the performance does not transfer: best case ~+5% TG, worst case -5%, versus the 1.9x that made O5 attractive (the V620's 2.7-3.1 accepted tokens/step clearly does not hold on gfx906, as PORT-MAP warned). **Nothing adopted: the two metrics disagree in SIGN** (TG +5.2% vs gate -5.0%) and MTP=3's gate spread blew up to 11.3 vs the control's 0.5, while its prefill cost (-12%) and startup cost (72->83 s) are unambiguous. Operator targets MISSED: TG128 ~53-56 vs >75, PP ~350 vs >500. Phase 5 now has every candidate closed by evidence; the standing baseline remains ~47.7 tok/s (G6 gap ~4.6%). The diagnostic that would explain the shortfall is a direct acceptance-rate measurement (tools/rdna2/watch.py).",
+      "**OPTIMISATION CLOSED - final state selected by the operator (D148/D149).** <container> is running TP4+EP at 150 W/card with **MTP2**, tuned prefill MoE tiles, a mask-aware MI50 top-10 router, 2048-token prefill chunks and a **32768-token context**; TunableOp and dense INT8 are off. Three-run medians (exact prompt lengths, two warmups each, 128 generated tokens, zero cached prompt tokens): **1K - PP 641.9 tok/s, decode 60.34 \u00b7 10K - PP 806.9, decode 61.22 (range 39.02-65.35) \u00b7 30K - PP 805.1, decode 57.34.** Against the pre-review reference this is a **~45-75% prefill improvement at 128-1536 tokens** with a modest decode gain. **Two of my own conclusions were corrected by the review and are recorded as such:** (1) D144 closed MoE tuning as a dead end, but the route WORKS for prefill - the old tuner bypassed small-batch settings and let a small-batch entry govern much larger prefills, so it was measuring the wrong workload; the corrected search passed all 133 cases and matched all nine control prompts across 27 outputs. (2) More importantly, **the ~47.7 tok/s gate I had been using timed the whole HTTP request, so it includes prompt time and is not comparable to a decode rate** - the corrected reference is ~55-56 decode tok/s. Also dispositioned in the review: NUMA affinity flat; default all-reduce block policy won; GEMV/INT8 found only modest shape-dependent gains and NO C++ geometry change was selected (consistent with D145); elementwise/fill kernels were NOT removed speculatively because several initialise graph padding and state. Remaining MTP3-vs-MTP2 note: K=3 was tested here and rejected (A/B/A' metrics disagreed in sign); K=2 is what was selected.",
+      "**TP8 feasibility probe: viable, and the case is WEIGHT BANDWIDTH not collectives (D150).** Three captures done. (1) TOPOLOGY: all four MI50s hang off ONE PEX88096 under ONE root complex and ONE NUMA node, with every GPU pair uniform (weight 40, 2 hops, PCIE) - and the switch has SPARE downstream ports, including a whole second PEX88096 with nothing behind it, so four more cards can be added without crossing root complexes or NUMA nodes. This also CORRECTS D078: the links are Gen4 x16 (16.0GT/s), not Gen3. (2) RCCL at world=4 is strong at both ends: small-message all-reduce latency 24.6-30.8 us and FLAT, large messages saturating at 14.19 GB/s algbw - exactly the fabric's measured per-pair capability, with no degradation to 256 MiB. So the interconnect does not block TP8. Watch item: a hard algorithm knee at 32 KiB, with the workload's ~20 KB AR message sitting just below it. (3) A fresh TP4 baseline reproduces prefill faithfully (647/809/808) with decode 0.7-3.9% lower (59.9/58.9/55.1); 1 Hz monitoring shows the rig is POWER-CAP limited at ~148 W against the 150 W cap (sclk full only 12-21% of the time), not thermally throttled - though GPU1 runs 14-18 C hotter than GPU3, and the slowest rank gates every step. **Per the operator's rule the fresh run is now the TP8 reference.** The economics: TP4 decode is weight-bandwidth-bound (18.23 GiB/rank / ~810 GB/s ~= 44 tok/s, matching the measured ~47.7), so TP8's ~9.1 GiB/rank implies a ~89 tok/s CEILING - far more than anything the collectives will cost. Next gate is physical: 56-pair fabric matrix and world=8 RCCL before any software investment.",
+      "**Decode concurrency sweep: aggregate throughput is FLAT 1->8, and it REFUTES the weight-bandwidth case for TP8 (D150 addendum).** With 1K prompts and 512 generated tokens at 1/2/4/8 concurrent requests, aggregate throughput measured **44.4 / 40.2 / 45.2 / 40.3 tok/s** - flat within a 12% band, i.e. **1.0x scaling where ideal would be 4x**. Per-request falls ~1/n as expected (52.4 -> 11.4 tok/s), round p95 degrades 144 -> 348 ms with multi-second stalls. The decisive evidence is the POWER: **150.0 / 146.5 / 111.0 / 109.0 W** while the GPU use counter stays ~100%, so the SMs are **stalled waiting, not saturated** - the workload is latency/serialization bound. **This falsifies my own D150 projection:** if weights bound decode, batching 4 would read them once and emit 4x the tokens; it emitted 1.0x, so the earlier 18.23 GiB / 810 GB/s ~= 44 tok/s agreement with ~47.7 was a numerical coincidence (the MoE is sparse, so the full per-rank footprint is never read per token). **Revised verdict: TP8 will not improve decode throughput, single-stream or multi-stream; its case is CAPACITY** (far more than 32K context, or unquantized weights). TP8-4 is retargeted accordingly, and the physical pre-checks (56-pair matrix, world=8 RCCL) still stand. Consistent with D145/D146: the elementwise/copy residue is 303k latency-bound launches.",
+      "**FINAL TP8 VERDICT: a cheap-capacity strategy, not a performance strategy (D151).** **TP8 is expected to land BELOW the current ~40-60 tok/s aggregate decode range** unless the 8-GPU machine has a much better interconnect/topology than this one. Single-stream decode likely worse than TP4; multi-user decode throughput likely flat to worse; long prefill/TTFT maybe acceptable, possibly modestly better; **capacity per dollar remains the only strong reason to do TP8**, and the 'cheap 128 GB serving box' is viable only with modest speed expectations. The decisive evidence is the part that is hardest to argue with: **GPU power DROPPED to ~111 W at 4-way concurrency while the use counter stayed at 100%** - a saturated machine cannot reduce its draw when handed MORE work. Aggregate throughput was flat from 1 to 8 concurrency (ideal 4x, measured 1.0x), per-request speed collapsed, and p95 climbed 144 -> 348 ms. That points to synchronization, communication, scheduler overhead or CPU/NUMA stalls rather than a lack of active requests - and adding four more TP ranks would INCREASE collective cost and sync pressure, pushing the wrong way on the exact axis that already limits the rig. **If the goal is decode throughput, the lever is the per-token serialized work identified in D145/D146 - not more cards.** The physical pre-checks (56-pair fabric matrix, world=8 RCCL) remain worth doing but are now justified by capacity per dollar. The operating configuration is unchanged: MTP2 / 32K / 150 W with the D148/D149 presets."
+    ]
+  }
+}

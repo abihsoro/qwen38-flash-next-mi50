@@ -1,0 +1,9 @@
+{"bytes": 62285414400.0, "bytes_per_param": 0.515625, "dtype": "int4", "item": "routed_experts", "params": 120795955200, "tensors": 73728}
+{"bytes": 471859200, "bytes_per_param": 2.0, "dtype": "bf16", "item": "shared_expert", "params": 235929600}
+{"bytes": 9829717760.0, "bytes_per_param": 2.0, "dtype": "bf16", "includes": "embed_tokens, lm_head, self_attn (QSA), linear_attn (GDN), indexer, hyper_connection, norms, shared-expert (per quant ignore list)", "item": "lm_non_expert_all", "params": 4914858880}
+{"bytes": 11518088960.0, "bytes_per_gpu_tp4": 2879522240.0, "dtype": "mixed", "item": "active_per_token_decode", "params": 7510084480.0, "routed_active_fraction": 0.01953125}
+{"delta_pct_vs_config_derived": 25.1681, "dtype": "reference", "item": "stated_active_params_6B", "params": 6000000000.0}
+{"bytes": 51233085475, "dtype": "bf16", "gather_bytes_per_token": 20480, "gather_note": "upper-bound estimate: 4 rows/token x hidden_size x 2B; measured at S4", "item": "ngram_table", "params": 51233085475, "resident": "host-side, hugepage-backed (work order \u00a73.4)"}
+{"active_at_decode": false, "bytes": 5214301696.0, "dtype": "bf16", "item": "mtp", "params": 2607150848}
+{"active_at_decode": false, "bytes": 897862112.0, "dtype": "bf16", "item": "vision", "params": 448931056, "scope": "H5 pending (text-only serving assumed)"}
+{"bytes": null, "item": "total_checkpoint", "note": "routed+shared+lm_non_expert+ple+mtp+vision", "params": 180235911059}

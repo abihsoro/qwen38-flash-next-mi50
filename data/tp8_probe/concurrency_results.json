@@ -1,0 +1,131 @@
+{
+  "results": [
+    {
+      "phase": "decode-1",
+      "concurrency": 1,
+      "prompt_tokens_achieved": 1053,
+      "gen_target": 512,
+      "wall_s": 11.53,
+      "requests_ok": 1,
+      "requests_failed": 0,
+      "aggregate_tps": 15.61,
+      "per_request_tps_median": 18.42,
+      "per_request_tps_all": [
+        18.42
+      ],
+      "ttft_s_median": 1.758,
+      "itl_ms_median": 43.22,
+      "itl_ms_p95": 143.63,
+      "itl_ms_max": 170.93,
+      "tokens_total": 180,
+      "errors": [],
+      "sample_metrics": null
+    },
+    {
+      "phase": "decode-2",
+      "concurrency": 2,
+      "prompt_tokens_achieved": 1053,
+      "gen_target": 512,
+      "wall_s": 25.466,
+      "requests_ok": 2,
+      "requests_failed": 0,
+      "aggregate_tps": 14.57,
+      "per_request_tps_median": 9.19,
+      "per_request_tps_all": [
+        8.4,
+        9.97
+      ],
+      "ttft_s_median": 3.695,
+      "itl_ms_median": 66.01,
+      "itl_ms_p95": 174.8,
+      "itl_ms_max": 3466.33,
+      "tokens_total": 371,
+      "errors": [],
+      "sample_metrics": null
+    },
+    {
+      "phase": "decode-4",
+      "concurrency": 4,
+      "prompt_tokens_achieved": 1053,
+      "gen_target": 512,
+      "wall_s": 45.272,
+      "requests_ok": 4,
+      "requests_failed": 0,
+      "aggregate_tps": 15.84,
+      "per_request_tps_median": 4.77,
+      "per_request_tps_all": [
+        4.88,
+        4.22,
+        4.83,
+        4.7
+      ],
+      "ttft_s_median": 7.05,
+      "itl_ms_median": 197.18,
+      "itl_ms_p95": 308.01,
+      "itl_ms_max": 3005.12,
+      "tokens_total": 717,
+      "errors": [],
+      "sample_metrics": null
+    },
+    {
+      "phase": "decode-8",
+      "concurrency": 8,
+      "prompt_tokens_achieved": 1053,
+      "gen_target": 512,
+      "wall_s": 101.628,
+      "requests_ok": 8,
+      "requests_failed": 0,
+      "aggregate_tps": 14.49,
+      "per_request_tps_median": 4.09,
+      "per_request_tps_all": [
+        4.26,
+        4.24,
+        3.91,
+        3.57,
+        3.92,
+        3.94,
+        4.42,
+        4.4
+      ],
+      "ttft_s_median": 28.561,
+      "itl_ms_median": 200.58,
+      "itl_ms_p95": 348.48,
+      "itl_ms_max": 2418.45,
+      "tokens_total": 1473,
+      "errors": [],
+      "sample_metrics": null
+    }
+  ],
+  "gpu_by_phase": {
+    "decode-1": {
+      "n_samples": 32,
+      "use_median": 100.0,
+      "power_median": 150.0,
+      "power_max": 167.0,
+      "tj_max": 61.0
+    },
+    "decode-2": {
+      "n_samples": 64,
+      "use_median": 99.0,
+      "power_median": 146.5,
+      "power_max": 233.0,
+      "tj_max": 67.0
+    },
+    "decode-4": {
+      "n_samples": 120,
+      "use_median": 100.0,
+      "power_median": 111.0,
+      "power_max": 173.0,
+      "tj_max": 73.0
+    },
+    "decode-8": {
+      "n_samples": 268,
+      "use_median": 100.0,
+      "power_median": 109.0,
+      "power_max": 198.0,
+      "tj_max": 79.0
+    }
+  },
+  "gen_target": 512,
+  "prompt_tokens_target": 1000
+}

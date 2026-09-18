@@ -1,0 +1,131 @@
+{
+  "health": 200,
+  "model_response": "391",
+  "hardware": [
+    {
+      "pci": "<pci>",
+      "numa": "1",
+      "power1_cap": 150000000,
+      "power1_input": 139000000,
+      "temp1_input": 40000,
+      "temp2_input": 53000,
+      "temp3_input": 43000,
+      "pp_dpm_sclk": "0: 925Mhz \n1: 938Mhz \n2: 1076Mhz \n3: 1179Mhz \n4: 1264Mhz \n5: 1339Mhz \n6: 1556Mhz \n7: 1711Mhz \n8: 1800Mhz *",
+      "pp_dpm_mclk": "0: 350Mhz \n1: 800Mhz \n2: 1000Mhz *"
+    },
+    {
+      "pci": "<pci>",
+      "numa": "1",
+      "power1_cap": 150000000,
+      "power1_input": 138000000,
+      "temp1_input": 41000,
+      "temp2_input": 54000,
+      "temp3_input": 41000,
+      "pp_dpm_sclk": "0: 925Mhz \n1: 938Mhz \n2: 1076Mhz \n3: 1179Mhz \n4: 1264Mhz \n5: 1339Mhz \n6: 1556Mhz \n7: 1711Mhz \n8: 1800Mhz *",
+      "pp_dpm_mclk": "0: 350Mhz \n1: 800Mhz \n2: 1000Mhz *"
+    },
+    {
+      "pci": "<pci>",
+      "numa": "1",
+      "power1_cap": 150000000,
+      "power1_input": 134000000,
+      "temp1_input": 40000,
+      "temp2_input": 53000,
+      "temp3_input": 44000,
+      "pp_dpm_sclk": "0: 925Mhz \n1: 938Mhz \n2: 1076Mhz \n3: 1179Mhz \n4: 1264Mhz \n5: 1339Mhz \n6: 1556Mhz \n7: 1711Mhz \n8: 1800Mhz *",
+      "pp_dpm_mclk": "0: 350Mhz \n1: 800Mhz \n2: 1000Mhz *"
+    },
+    {
+      "pci": "<pci>",
+      "numa": "1",
+      "power1_cap": 150000000,
+      "power1_input": 126000000,
+      "temp1_input": 39000,
+      "temp2_input": 51000,
+      "temp3_input": 42000,
+      "pp_dpm_sclk": "0: 925Mhz \n1: 938Mhz \n2: 1076Mhz \n3: 1179Mhz \n4: 1264Mhz \n5: 1339Mhz \n6: 1556Mhz \n7: 1711Mhz \n8: 1800Mhz *",
+      "pp_dpm_mclk": "0: 350Mhz \n1: 800Mhz \n2: 1000Mhz *"
+    }
+  ],
+  "server": {
+    "pid": <pid>,
+    "tag": "<launch-tag>",
+    "args": {
+      "action": "start",
+      "tag": "<launch-tag>",
+      "mtp": 0,
+      "chunk": 2048,
+      "ar_blocks": 0,
+      "numa": true,
+      "profile": false,
+      "env": [
+        "VLLM_TUNED_CONFIG_FOLDER=<tuning>/moe_configs",
+        "VLLM_MI50_TOPK=1"
+      ]
+    },
+    "command": [
+      "numactl",
+      "--cpunodebind=1",
+      "--preferred=1",
+      "<home>/gfx906-venv/bin/python3",
+      "-m",
+      "vllm.entrypoints.openai.api_server",
+      "--model",
+      "<models>/models/qwen38-flash-next-awq",
+      "--served-model-name",
+      "qwen38-flash-next",
+      "--dtype",
+      "float16",
+      "--tensor-parallel-size",
+      "4",
+      "--enable-expert-parallel",
+      "--max-model-len",
+      "2048",
+      "--gpu-memory-utilization",
+      "0.90",
+      "--max-num-seqs",
+      "4",
+      "--max-num-batched-tokens",
+      "2048",
+      "-cc.mode=none",
+      "-cc.cudagraph_mode=full",
+      "--language-model-only",
+      "--enable-prefix-caching",
+      "--enable-per-request-metrics",
+      "--enable-prompt-tokens-details",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "8002"
+    ],
+    "environment": {
+      "ROCR_VISIBLE_DEVICES": "0,1,2,3",
+      "HSA_NO_SCRATCH_RECLAIM": "1",
+      "VLLM_ROCM_USE_AITER": "0",
+      "TORCH_BLAS_PREFER_HIPBLASLT": "0",
+      "PYTORCH_TUNABLEOP_ENABLED": "0",
+      "PYTORCH_TUNABLEOP_HIPBLASLT_ENABLED": "0",
+      "VLLM_PLE_CPU_OFFLOAD": "1",
+      "VLLM_PLE_QUANT_DIR": "<models>/qwen38-flash-next-ple/ples_int4",
+      "VLLM_PLE_OFFLOAD_READY_TIMEOUT": "3600",
+      "VLLM_RDNA_DENSE_INT8": "1",
+      "VLLM_RDNA_AR": "1",
+      "VLLM_DISABLE_COMPILE_CACHE": "1",
+      "VLLM_ROCM_USE_SKINNY_GEMM": "1",
+      "VLLM_RDNA_AR_BLOCKS": "0",
+      "VLLM_TUNED_CONFIG_FOLDER": "<tuning>/moe_configs",
+      "VLLM_MI50_TOPK": "1"
+    },
+    "started_at": 1789709275.7176113,
+    "process_start_ticks": "3242020",
+    "source_sha256": {
+      "<workdir>/vllm-w/vllm/model_executor/layers/rdna_dense_int8.py": "a3ae2e63fbde366895bc544299f3f08bffc88f7b8596fda368fb6392137af43e",
+      "<workdir>/vllm-w/vllm/model_executor/layers/fused_moe/router/fused_topk_router.py": "e1c01eb97df6a4874505054a268bdaf15fef2a8ba48f87c5d87c9732a17df86f",
+      "<workdir>/vllm-w/vllm/model_executor/layers/fused_moe/router/mi50_topk.py": "455a23fc5c1b07f2ba86a93a04511cad94dee88be997e5085abce3800afc50a0"
+    },
+    "moe_config_sha256": {
+      "E=128,N=640,device_name=AMD_Radeon_Graphics,dtype=int4_w4a16.json": "99c732928e568e4313917f9e5f92cd8aa555c9bb6542a7efc734926ab93f8feb"
+    }
+  },
+  "int8_original_restored": true
+}
